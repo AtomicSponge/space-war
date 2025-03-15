@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://cksyp24oxgrtb"]
+[gd_scene load_steps=2 format=3 uid="uid://cksyp24oxgrtb"]
 
-[node name="AnimatedBackground" type="Area2D"]
+[ext_resource type="Script" uid="uid://0hbg7brw53cq" path="res://animated_background.gd" id="1_nhbe4"]
+
+[node name="AnimatedBackground" type="ColorRect"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_nhbe4")
+
+[node name="WhiteStar" type="AnimatedSprite2D" parent="."]
+
+[node name="RedStar" type="AnimatedSprite2D" parent="."]
+
+[node name="BlueStar" type="AnimatedSprite2D" parent="."]

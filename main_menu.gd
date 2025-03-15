@@ -8,10 +8,8 @@ const MENU_OPTIONS = [ "New Game", "High Scores", "Options", "Quit" ]
 var current_option = 0
 
 # Called when the node enters the scene tree for the first time.
-# Hide the left/right option btns until a mouse enters them.
 func _ready() -> void:
 	main_btn.text = MENU_OPTIONS[current_option]
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

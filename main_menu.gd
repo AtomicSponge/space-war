@@ -20,6 +20,7 @@ func _on_main_button_pressed() -> void:
 	match current_option:
 		0:
 			# New Game
+			# add_child(Game.new())
 			pass
 		1:
 			# High Scores

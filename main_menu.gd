@@ -4,11 +4,11 @@ extends Node
 @onready var option_left_btn = $MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/OptionLeftButton
 @onready var option_right_btn = $MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/OptionRightButton
 
-var MENU_OPTIONS = [ "New Game", "High Scores", "Options", "Quit" ]
-var MAX_MENU_ITEMS = MENU_OPTIONS.size() - 1
+const MENU_OPTIONS = [ "New Game", "High Scores", "Options", "Quit" ]
 var current_option = 0
 
 # Called when the node enters the scene tree for the first time.
+# Hide the left/right option btns until a mouse enters them.
 func _ready() -> void:
 	option_left_btn.modulate.a = 0
 	option_right_btn.modulate.a = 0
@@ -23,12 +23,16 @@ func _process(_delta: float) -> void:
 func _on_main_button_pressed() -> void:
 	match current_option:
 		0:
+			# New Game
 			pass
 		1:
+			# High Scores
 			pass
 		2:
+			# Options
 			pass
 		_:
+			# Quit
 			get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 			get_tree().quit()
 
@@ -56,6 +60,10 @@ func _on_option_left_button_pressed() -> void:
 
 # Right option button pressed
 func _on_option_right_button_pressed() -> void:
-	if current_option < MAX_MENU_ITEMS:
+	if current_option < MENU_OPTIONS.size() - 1:
 		current_option = current_option + 1
 		main_btn.text = MENU_OPTIONS[current_option]
+
+# Blink option select buttons
+func _on_main_button_mouse_entered() -> void:
+	pass # Replace with function body.

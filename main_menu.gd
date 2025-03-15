@@ -5,6 +5,7 @@ extends Node
 @onready var option_right_btn = $MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/OptionRightButton
 
 var MENU_OPTIONS = [ "New Game", "High Scores", "Options", "Quit" ]
+var MAX_MENU_ITEMS = MENU_OPTIONS.size() - 1
 var current_option = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -55,6 +56,6 @@ func _on_option_left_button_pressed() -> void:
 
 # Right option button pressed
 func _on_option_right_button_pressed() -> void:
-	if current_option < 3:
+	if current_option < MAX_MENU_ITEMS:
 		current_option = current_option + 1
 		main_btn.text = MENU_OPTIONS[current_option]

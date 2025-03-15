@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b36ii6ibsau8d"]
+
+[node name="MainMenuHierarchy" type="Node"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 1216.0
+offset_bottom = 640.0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainerTop" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainerBottom" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/CenterContainerBottom"]
+layout_mode = 2
+text = "New Game"
+
+[node name="HighScores" type="Node" parent="."]
+
+[node name="OptionsMenu" type="Node" parent="."]

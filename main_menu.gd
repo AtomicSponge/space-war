@@ -45,7 +45,3 @@ func _on_option_right_button_pressed() -> void:
 	if current_option < MENU_OPTIONS.size() - 1:
 		current_option = current_option + 1
 		main_btn.text = MENU_OPTIONS[current_option]
-
-# Blink option select buttons
-func _on_main_button_mouse_entered() -> void:
-	pass # Replace with function body.

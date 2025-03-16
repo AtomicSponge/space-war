@@ -19,15 +19,12 @@ func _on_main_button_pressed() -> void:
 		0:
 			# New Game
 			SceneManager.SwitchScene("Game")
-			pass
 		1:
 			# High Scores
 			SceneManager.SwitchScene("HighScores")
-			pass
 		2:
 			# Options
 			SceneManager.SwitchScene("Options")
-			pass
 		_:
 			# Quit
 			SceneManager.QuitGame()

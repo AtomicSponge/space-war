@@ -1,4 +1,5 @@
 extends Node
+class_name NSceneManager
 
 # A collection of scenes in the game. Scenes are added through the Inspector panel
 @export var Scenes = {}
@@ -35,11 +36,3 @@ func RestartScene() -> void:
 func QuitGame() -> void:
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 	get_tree().quit()
-	
-# Description: Return the number of scenes in the collection
-func GetSceneCount() -> int:
-	return Scenes.size()
-	
-# Description: Returns the alias of the current scene
-func GetCurrentSceneAlias() -> String:
-	return m_CurrentSceneAlias

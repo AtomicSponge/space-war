@@ -30,8 +30,7 @@ func _on_main_button_pressed() -> void:
 			pass
 		_:
 			# Quit
-			get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
-			get_tree().quit()
+			SceneManager.QuitGame()
 
 # Left option button pressed
 func _on_option_left_button_pressed() -> void:

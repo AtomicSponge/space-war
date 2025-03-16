@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://y6n1crvcsol3"]
+[gd_scene load_steps=3 format=3 uid="uid://y6n1crvcsol3"]
+
+[ext_resource type="Script" uid="uid://cyh63xslpk6k" path="res://scripts/credits.gd" id="1_0bpdh"]
+[ext_resource type="PackedScene" uid="uid://cksyp24oxgrtb" path="res://objects/animated_background.tscn" id="2_2ckv8"]
 
 [node name="Credits" type="Node"]
+script = ExtResource("1_0bpdh")
+
+[node name="AnimatedBackground" parent="." instance=ExtResource("2_2ckv8")]

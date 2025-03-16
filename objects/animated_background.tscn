@@ -14,3 +14,5 @@ script = ExtResource("1_nhbe4")
 [node name="RedStar" type="AnimatedSprite2D" parent="."]
 
 [node name="BlueStar" type="AnimatedSprite2D" parent="."]
+
+[node name="YellowStar" type="AnimatedSprite2D" parent="."]

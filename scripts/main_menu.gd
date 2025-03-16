@@ -16,17 +16,17 @@ func _process(_delta: float) -> void:
 # Called when the main menu button is activated
 func _on_main_button_pressed() -> void:
 	match CurrentOption:
+		# New Game
 		0:
-			# New Game
 			SceneManager.SwitchScene("Game")
+		# High Scores
 		1:
-			# High Scores
 			SceneManager.SwitchScene("HighScores")
+		# Options
 		2:
-			# Options
 			SceneManager.SwitchScene("Options")
+		# Quit
 		_:
-			# Quit
 			SceneManager.QuitGame()
 
 # Left option button pressed

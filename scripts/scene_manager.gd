@@ -2,15 +2,11 @@ extends Node
 class_name NSceneManager
 
 # A collection of scenes in the game. Scenes are added through the Inspector panel
-@export var Scenes = {}
-
-# Alias of the currently selected scene
-var m_CurrentSceneAlias = ""
+@export var Scenes: Dictionary = {}
 
 # Description: Find the initial scene as defined in the project settings
 func _ready() -> void:
 	var mainScene = ProjectSettings.get_setting("application/run/main_scene")
-	m_CurrentSceneAlias = Scenes.find_key(mainScene)
 
 # Description: Add a new scene to the scene collection
 # Parameter sceneAlias: The alias used for finding the scene in the collection

@@ -5,8 +5,8 @@ class_name NSceneManager
 @export var Scenes: Dictionary = {}
 
 # Description: Find the initial scene as defined in the project settings
-func _ready() -> void:
-	var mainScene = ProjectSettings.get_setting("application/run/main_scene")
+#func _ready() -> void:
+	#ProjectSettings.get_setting("application/run/main_scene")
 
 # Description: Add a new scene to the scene collection
 # Parameter sceneAlias: The alias used for finding the scene in the collection

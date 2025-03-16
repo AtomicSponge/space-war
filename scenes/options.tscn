@@ -7,3 +7,13 @@
 script = ExtResource("1_c2u1v")
 
 [node name="AnimatedBackground" parent="." instance=ExtResource("2_yjkok")]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1184.0
+offset_top = 648.0
+offset_right = 1229.0
+offset_bottom = 679.0
+text = "Back
+"
+
+[connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]

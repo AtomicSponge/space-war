@@ -1,8 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://cksyp24oxgrtb"]
+[gd_scene load_steps=4 format=3 uid="uid://cksyp24oxgrtb"]
 
 [ext_resource type="Script" uid="uid://0hbg7brw53cq" path="res://scripts/animated_background.gd" id="1_nhbe4"]
+[ext_resource type="Shader" uid="uid://btfd88ffl2blr" path="res://objects/starfield.gdshader" id="1_rjel2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tfgwx"]
+shader = ExtResource("1_rjel2")
+shader_parameter/dimensions = Vector2(1024, 600)
+shader_parameter/small_stars = 50.0
+shader_parameter/small_stars_far_size = 0.5
+shader_parameter/small_stars_near_size = 1.0
+shader_parameter/large_stars = 8.0
+shader_parameter/large_stars_far_size = 0.5
+shader_parameter/large_stars_near_size = 1.0
+shader_parameter/far_stars_color = Color(0.5, 0, 1, 1)
+shader_parameter/near_stars_color = Color(1, 1, 1, 1)
+shader_parameter/base_scroll_speed = 0.05
+shader_parameter/additional_scroll_speed = 0.05
 
 [node name="AnimatedBackground" type="ColorRect"]
+material = SubResource("ShaderMaterial_tfgwx")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

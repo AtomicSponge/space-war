@@ -6,7 +6,7 @@ func NewGame() -> void:
 
 # Called at the end of a game
 func GameOver() -> void:
-	GameState.SaveGameSettings()
+	GameState.SaveGameData()
 	SceneManager.SwitchScene("MainMenu")
 
 # Called when the node enters the scene tree for the first time.

@@ -5,17 +5,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tfgwx"]
 shader = ExtResource("1_rjel2")
-shader_parameter/dimensions = Vector2(1024, 600)
-shader_parameter/small_stars = 50.0
-shader_parameter/small_stars_far_size = 0.5
-shader_parameter/small_stars_near_size = 1.0
-shader_parameter/large_stars = 8.0
-shader_parameter/large_stars_far_size = 0.5
-shader_parameter/large_stars_near_size = 1.0
-shader_parameter/far_stars_color = Color(0.5, 0, 1, 1)
-shader_parameter/near_stars_color = Color(1, 1, 1, 1)
-shader_parameter/base_scroll_speed = 0.05
-shader_parameter/additional_scroll_speed = 0.05
+shader_parameter/bg_color = Vector4(0, 0, 0, 0)
 
 [node name="AnimatedBackground" type="ColorRect"]
 material = SubResource("ShaderMaterial_tfgwx")

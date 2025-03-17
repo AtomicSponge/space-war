@@ -33,6 +33,14 @@ func SaveGameData() -> void:
 	file.store_var(save_data)
 	file.close()
 
+# Display an alert
+func alert(text: String) -> void:
+	var dialog = AcceptDialog.new()
+	dialog.dialog_text = text
+	var scene_tree = Engine.get_main_loop()
+	scene_tree.current_scene.add_child(dialog)
+	dialog.popup_centered()
+
 #  Load game settings on start-up
 func _ready() -> void:
 	LoadGameData()

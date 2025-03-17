@@ -13,6 +13,7 @@ const _save_path = "user://game.dat"
 # Load game settings - called during startup
 func LoadGameData() -> void:
 	if not FileAccess.file_exists(_save_path):
+		alert('Could not load game data!')
 		return
 	var file = FileAccess.open_encrypted_with_pass(_save_path, FileAccess.READ, "dragongelatohierarchy")
 	var save_data = file.get_var()
@@ -29,6 +30,7 @@ func SaveGameData() -> void:
 	
 	var file = FileAccess.open_encrypted_with_pass(_save_path, FileAccess.WRITE, "dragongelatohierarchy")
 	if not FileAccess.file_exists(_save_path):
+		alert('Could not save game data!')
 		return
 	file.store_var(save_data)
 	file.close()
@@ -44,5 +46,4 @@ func alert(text: String) -> void:
 
 #  Load game settings on start-up
 func _ready() -> void:
-	alert('test')
 	LoadGameData()

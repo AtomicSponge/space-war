@@ -13,7 +13,7 @@ func LoadGameSettings() -> void:
 
 # Save game settings
 func SaveGameSettings() -> void:
-	const data = {}
+	#const data = {}
 	pass
 
 #  Load game settings on start-up

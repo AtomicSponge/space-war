@@ -1,8 +1,8 @@
 extends Node
 
-@onready var MainBtn = $MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/MainButton
+@onready var MainBtn: TextureButton = $MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/MainButton
 
-var MenuOptions = [ 
+var MenuOptions: Array = [ 
 	load("res://gfx/new_game_btn.png"),
 	load("res://gfx/high_scores_btn.png"),
 	load("res://gfx/options_btn.png"),

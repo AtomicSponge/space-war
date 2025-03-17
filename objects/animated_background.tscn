@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://cksyp24oxgrtb"]
+[gd_scene load_steps=5 format=3 uid="uid://cksyp24oxgrtb"]
 
 [ext_resource type="Script" uid="uid://0hbg7brw53cq" path="res://scripts/animated_background.gd" id="1_nhbe4"]
+[ext_resource type="Texture2D" uid="uid://o6fauulod0b3" path="res://gfx/white_star_dim.png" id="2_tfgwx"]
+[ext_resource type="Texture2D" uid="uid://dau736sxynsog" path="res://gfx/white_star_bright.png" id="3_6jrix"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jb0tf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tfgwx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6jrix")
+}],
+"loop": true,
+"name": &"star",
+"speed": 5.0
+}]
 
 [node name="AnimatedBackground" type="ColorRect"]
 anchors_preset = 15
@@ -10,6 +26,10 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("1_nhbe4")
 
 [node name="WhiteStar" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jb0tf")
+animation = &"star"
+frame = 1
+frame_progress = 0.915073
 
 [node name="RedStar" type="AnimatedSprite2D" parent="."]
 

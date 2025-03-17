@@ -37,10 +37,12 @@ func SaveGameData() -> void:
 func alert(text: String) -> void:
 	var dialog = AcceptDialog.new()
 	dialog.dialog_text = text
+	dialog.connect('confirmed', dialog.queue_free)
 	var scene_tree = Engine.get_main_loop()
 	scene_tree.current_scene.add_child(dialog)
 	dialog.popup_centered()
 
 #  Load game settings on start-up
 func _ready() -> void:
+	alert('test')
 	LoadGameData()

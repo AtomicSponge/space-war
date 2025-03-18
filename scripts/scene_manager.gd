@@ -7,13 +7,13 @@ class_name NSceneManager
 # Description: Add a new scene to the scene collection
 # Parameter sceneAlias: The alias used for finding the scene in the collection
 # Parameter scenePath: The full path to the scene file in the file system
-func AddScene(sceneAlias: String, scenePath: String) -> void:
-	Scenes[sceneAlias] = scenePath
+#func AddScene(sceneAlias: String, scenePath: String) -> void:
+	#Scenes[sceneAlias] = scenePath
 
 # Description: Remove an existing scene from the scene collection
 # Parameter sceneAlias: The scene alias of the scene to remove from the collection
-func RemoveScene(sceneAlias: String) -> void:
-	Scenes.erase(sceneAlias)
+#func RemoveScene(sceneAlias: String) -> void:
+	#Scenes.erase(sceneAlias)
 
 # Description: Switch to the requested scene based on its alias
 # Parameter sceneAlias: The scene alias of the scene to switch to

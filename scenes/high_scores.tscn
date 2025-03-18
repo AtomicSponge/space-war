@@ -6,7 +6,7 @@
 [node name="HighScores" type="Node"]
 script = ExtResource("1_jirj5")
 
-[node name="AnimatedBackground" parent="." instance=ExtResource("2_3582i")]
+[node name="Backgroud" parent="." instance=ExtResource("2_3582i")]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_left = 64.0

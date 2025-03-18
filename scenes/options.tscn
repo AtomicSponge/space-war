@@ -6,7 +6,7 @@
 [node name="Options" type="Node"]
 script = ExtResource("1_c2u1v")
 
-[node name="AnimatedBackground" parent="." instance=ExtResource("2_yjkok")]
+[node name="Background" parent="." instance=ExtResource("2_yjkok")]
 
 [node name="Button" type="Button" parent="."]
 offset_left = 1184.0

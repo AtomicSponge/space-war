@@ -6,7 +6,7 @@
 shader = ExtResource("1_rjel2")
 shader_parameter/bg_color = Vector4(0, 0, 0, 0)
 
-[node name="AnimatedBackground" type="ColorRect"]
+[node name="Background" type="ColorRect"]
 material = SubResource("ShaderMaterial_tfgwx")
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cksyp24oxgrtb"]
 
-[ext_resource type="Script" uid="uid://0hbg7brw53cq" path="res://scripts/animated_background.gd" id="1_nhbe4"]
+[ext_resource type="Script" uid="uid://0hbg7brw53cq" path="res://scripts/background.gd" id="1_nhbe4"]
 [ext_resource type="Shader" uid="uid://btfd88ffl2blr" path="res://objects/starfield.gdshader" id="1_rjel2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tfgwx"]

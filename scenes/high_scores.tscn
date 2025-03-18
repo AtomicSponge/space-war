@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bcjakbt2ul5t8"]
 
 [ext_resource type="Script" uid="uid://bhp0a8nfypswb" path="res://scripts/high_scores.gd" id="1_jirj5"]
-[ext_resource type="PackedScene" uid="uid://cksyp24oxgrtb" path="res://objects/animated_background.tscn" id="2_3582i"]
+[ext_resource type="PackedScene" uid="uid://cksyp24oxgrtb" path="res://objects/background.tscn" id="2_3582i"]
 
 [node name="HighScores" type="Node"]
 script = ExtResource("1_jirj5")

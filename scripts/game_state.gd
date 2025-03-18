@@ -33,9 +33,7 @@ func SaveGameData() -> void:
 	# Serialize game data
 	var save_data = {
 		"settings": {},
-		"high_scores": [
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-		]
+		"high_scores": HighScores
 	}
 	
 	var file = FileAccess.open_encrypted_with_pass(_save_path, FileAccess.WRITE, "dragongelatohierarchy")

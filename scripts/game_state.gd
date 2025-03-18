@@ -7,6 +7,9 @@ var PlayerName: String = ""
 var PlayerLives: int = 0
 var PlayerExperience: float = 0
 
+# Scores
+var HighScores: Array = []
+
 # Private variables
 const _save_path = "user://game.dat"
 
@@ -14,13 +17,16 @@ const _save_path = "user://game.dat"
 func LoadGameData() -> void:
 	if not FileAccess.file_exists(_save_path):
 		return
+
 	var file = FileAccess.open_encrypted_with_pass(_save_path, FileAccess.READ, "dragongelatohierarchy")
 	if file == null:
 		alert('Could not load game data!')
 		return
 	var save_data = file.get_var()
 	file.close()
+
 	# De-seralize game data
+	HighScores = save_data["high_scores"]
 
 # Save game settings - called at game over
 func SaveGameData() -> void:

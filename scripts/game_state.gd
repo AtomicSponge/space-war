@@ -18,9 +18,11 @@ func LoadGameData() -> void:
 	var file = FileAccess.open_encrypted_with_pass(_save_path, FileAccess.READ, "dragongelatohierarchy")
 	var save_data = file.get_var()
 	file.close()
+	# De-seralize game data
 
-# Save game settings
+# Save game settings - called at game over
 func SaveGameData() -> void:
+	# Serialize game data
 	var save_data = {
 		"settings": {},
 		"high_scores": [

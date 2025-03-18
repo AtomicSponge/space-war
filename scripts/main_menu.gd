@@ -16,11 +16,6 @@ var CurrentOption: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	MainBtn.texture_normal = MenuOptions[CurrentOption]
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 
 # Called when the main menu button is activated
 func _on_main_button_pressed() -> void:

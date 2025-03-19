@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://u01waoa3b6u0"]
+
+[ext_resource type="Script" uid="uid://cdhrpqb1o7lfn" path="res://scripts/pause_menu.gd" id="1_aktha"]
+
+[node name="PauseMenu" type="Node"]
+script = ExtResource("1_aktha")

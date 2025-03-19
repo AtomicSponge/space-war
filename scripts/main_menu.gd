@@ -37,10 +37,14 @@ func _on_main_button_pressed() -> void:
 func _on_option_left_button_pressed() -> void:
 	if CurrentOption > 0:
 		CurrentOption = CurrentOption - 1
-		MainBtn.texture_normal = MenuOptions[CurrentOption]
+	else:
+		CurrentOption = MenuOptions.size() - 1
+	MainBtn.texture_normal = MenuOptions[CurrentOption]
 
 # Right option button pressed
 func _on_option_right_button_pressed() -> void:
 	if CurrentOption < MenuOptions.size() - 1:
 		CurrentOption = CurrentOption + 1
-		MainBtn.texture_normal = MenuOptions[CurrentOption]
+	else:
+		CurrentOption = 0
+	MainBtn.texture_normal = MenuOptions[CurrentOption]

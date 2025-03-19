@@ -10,6 +10,8 @@ script = ExtResource("1_06t4h")
 [node name="Background" parent="." instance=ExtResource("2_ekxnf")]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = -1
+anchor_bottom = 0.0222222
 offset_left = 64.0
 offset_top = 64.0
 offset_right = 1216.0

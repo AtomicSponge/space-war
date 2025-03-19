@@ -11,6 +11,7 @@ script = ExtResource("1_yqjtg")
 [node name="PauseMenu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="PauseMenu"]
 layout_mode = 2

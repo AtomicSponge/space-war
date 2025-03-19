@@ -1,2 +1,2 @@
-Starfield:
-	https://godotshaders.com/shader/stars-shader/
+- Starfield: <https://godotshaders.com/shader/stars-shader/>
+- Player Ship: <https://opengameart.org/content/spaceships-32x32>

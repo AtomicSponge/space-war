@@ -10,17 +10,9 @@ func _process(_delta: float) -> void:
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
-		$Sprite2D.flip_v = false
-		$Sprite2D.flip_h = true
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
-		$Sprite2D.flip_v = true
-		$Sprite2D.flip_h = true
 	if Input.is_action_pressed("move_down"):
 		velocity.y += 1
-		$Sprite2D.flip_v = true
-		$Sprite2D.flip_h = false
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
-		$Sprite2D.flip_v = false
-		$Sprite2D.flip_h = false

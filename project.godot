@@ -29,6 +29,10 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 
+[gui]
+
+theme/custom_font="uid://3w8u2len0ftl"
+
 [input]
 
 pause_game={

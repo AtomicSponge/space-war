@@ -34,6 +34,8 @@ layout_mode = 2
 
 [node name="OptionLeftButton" type="Button" parent="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 86
 text = "<<"
 
 [node name="MainButton" type="TextureButton" parent="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer"]
@@ -42,6 +44,8 @@ texture_normal = ExtResource("3_bqqt6")
 
 [node name="OptionRightButton" type="Button" parent="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 86
 text = ">>"
 
 [node name="ScrollTimer" type="Timer" parent="."]

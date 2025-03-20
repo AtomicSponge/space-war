@@ -12,6 +12,7 @@ func GameOver() -> void:
 		if GameState.PlayerScore > GameState.HighScores[idx]:
 			GameState.HighScores.insert(idx, GameState.PlayerScore)
 			GameState.HighScores = GameState.HighScores.slice(0, 9)
+			GameState.sort_custom(func(a, b): return a > b)
 			# Save gamestate to disk then switch to high scores
 			GameState.SaveGameData()
 			SceneManager.SwitchScene("HighScores")

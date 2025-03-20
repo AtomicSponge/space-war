@@ -9,7 +9,7 @@ var PlayerExperience: float = 0
 var PlayerScore: int = 0
 
 # Scores
-var HighScores: Array = []
+var HighScores: Array[int] = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
 
 # Private variables
 const _save_path = "user://game.dat"

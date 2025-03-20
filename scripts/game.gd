@@ -8,9 +8,13 @@ func NewGame() -> void:
 func GameOver() -> void:
 	# Check if player reached a high score
 	for idx in GameState.HighScores.size() - 1:
+		#  New high score reached
 		if GameState.PlayerScore > GameState.HighScores[idx]:
 			GameState.HighScores.insert(idx, GameState.PlayerScore)
 			GameState.HighScores = GameState.HighScores.slice(0, 9)
+			# Save gamestate to disk then switch to high scores
+			GameState.SaveGameData()
+			SceneManager.SwitchScene("HighScores")
 	# Save gamestate to disk then switch to main menu
 	GameState.SaveGameData()
 	SceneManager.SwitchScene("MainMenu")

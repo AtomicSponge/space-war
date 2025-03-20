@@ -20,7 +20,7 @@ layout_mode = 2
 [node name="CenterContainerTop" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainerTop"]
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer/CenterContainerTop"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 45
@@ -29,7 +29,7 @@ text = "HIGH SCORES"
 [node name="CenterContainerBottom" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainerBottom"]
+[node name="ScoresLabel" type="Label" parent="MarginContainer/VBoxContainer/CenterContainerBottom"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 35

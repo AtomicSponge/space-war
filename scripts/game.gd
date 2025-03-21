@@ -2,7 +2,8 @@ extends Node
 
 # Called when a new game starts
 func NewGame() -> void:
-	pass
+	GameState.PlayerLives = GameState.NumberLives
+	GameState.PlayerContinues = GameState.NumberContinues
 
 # Called at the end of a game
 func GameOver() -> void:
@@ -22,7 +23,7 @@ func GameOver() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	NewGame()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

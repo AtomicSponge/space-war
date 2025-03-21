@@ -1,11 +1,18 @@
 extends Node
 
 # Game Settings
+var NumberLives: int = 3
+var NumberContinues: int = 0
+const MIN_LIVES = 0
+const MAX_LIVES = 5
+const MIN_CONTINUES = 0
+const MAX_CONTINUES = 3
+const DEFAULT_LIVES = 3
+const DEFAULT_CONTINUES = 0
 
 # Player Data
-var PlayerName: String = ""
-var PlayerLives: int = 0
-var PlayerExperience: float = 0
+var PlayerLives: int = 3
+var PlayerContinues: int = 0
 var PlayerScore: int = 0
 
 # Scores
@@ -27,13 +34,16 @@ func LoadGameData() -> void:
 	file.close()
 
 	# De-seralize game data
+	NumberLives = save_data["number_lives"]
+	NumberContinues = save_data["number_continues"]
 	HighScores = save_data["high_scores"]
 
 # Save game settings - called at game over
 func SaveGameData() -> void:
 	# Serialize game data
 	var save_data = {
-		"settings": {},
+		"number_lives": NumberLives,
+		"number_continues": NumberContinues,
 		"high_scores": HighScores
 	}
 	

@@ -4,6 +4,7 @@ extends Node
 func NewGame() -> void:
 	get_tree().paused = true
 	$Player.hide()
+	$ReadyLabel.show()
 	GameState.PlayerLives = GameState.NumberLives
 	GameState.PlayerContinues = GameState.NumberContinues
 	await get_tree().create_timer(2.5).timeout

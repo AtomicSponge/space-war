@@ -3,12 +3,12 @@ extends Node
 # Game Settings
 var NumberLives: int = 3
 var NumberContinues: int = 0
-const MIN_LIVES = 0
-const MAX_LIVES = 5
-const MIN_CONTINUES = 0
-const MAX_CONTINUES = 3
-const DEFAULT_LIVES = 3
-const DEFAULT_CONTINUES = 0
+const MIN_LIVES: int = 0
+const MAX_LIVES: int = 5
+const MIN_CONTINUES: int = 0
+const MAX_CONTINUES: int = 3
+const DEFAULT_LIVES: int = 3
+const DEFAULT_CONTINUES: int = 0
 
 # Player Data
 var PlayerLives: int = 3

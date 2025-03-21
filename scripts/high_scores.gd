@@ -1,12 +1,14 @@
 extends Node
 
+@onready var ScoresLabel = $MarginContainer/VBoxContainer/CenterContainerBottom/ScoresLabel
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	var scores = ""
+	for score in GameState.HighScores:
+		scores += "%016d\n\n" % score
+	ScoresLabel.text = scores
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
+# Back btn to return to Main Menu
 func _on_back_button_pressed() -> void:
 	SceneManager.SwitchScene("MainMenu")

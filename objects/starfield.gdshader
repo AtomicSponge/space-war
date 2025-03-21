@@ -1,3 +1,5 @@
+// original:  https://godotshaders.com/shader/stars-shader/
+
 shader_type canvas_item;
 
 uniform vec4 bg_color = vec4(0.0, 0.0, 0.0, 0.0);
@@ -8,17 +10,17 @@ float rand(vec2 st) {
 
 void fragment() {
 	float size = 100.0;
-	float prob = 0.9;
+	float prob = 0.99;
 	vec2 pos = floor(1.0 / size * FRAGCOORD.xy);
 	float color = 0.0;
 	float starValue = rand(pos);
 
 	if (starValue > prob)
 	{
-		vec2 center = size * pos + vec2(size, size) * 0.5;
-		float t = 0.9 + 0.2 * sin(TIME * 8.0 + (starValue - prob) / (1.0 - prob) * 45.0);
-		color = 1.0 - distance(FRAGCOORD.xy, center) / (0.5 * size);
-		color = color * t / (abs(FRAGCOORD.y - center.y)) * t / (abs(FRAGCOORD.x - center.x));
+		//vec2 center = size * pos + vec2(size, size) * 0.5;
+		//float t = 0.9 + 0.2 * sin(TIME * 8.0 + (starValue - prob) / (1.0 - prob) * 45.0);
+		//color = 1.0 - distance(FRAGCOORD.xy, center) / (0.5 * size);
+		//color = color * t / (abs(FRAGCOORD.y - center.y)) * t / (abs(FRAGCOORD.x - center.x));
 	}
 	else if (rand(SCREEN_UV.xy / 20.0) > 0.996)
 	{

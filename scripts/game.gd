@@ -2,8 +2,14 @@ extends Node
 
 # Called when a new game starts
 func NewGame() -> void:
+	$Player.hide()
 	GameState.PlayerLives = GameState.NumberLives
 	GameState.PlayerContinues = GameState.NumberContinues
+	get_tree().paused = true
+	await get_tree().create_timer(2.5).timeout
+	get_tree().paused = false
+	$ReadyLabel.hide()
+	$Player.show()
 
 # Called at the end of a game
 func GameOver() -> void:

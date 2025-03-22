@@ -4,7 +4,7 @@ extends Node
 
 # Array of strings for the main button
 # This is manualy created
-var MenuOptions: Array[String] = [ 
+const MenuOptions: Array[String] = [ 
 	"NEW GAME", "HIGH SCORES", "OPTIONS", "QUIT"
 ]
 # Current menu option selected by player

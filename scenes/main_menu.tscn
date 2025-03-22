@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b36ii6ibsau8d"]
+[gd_scene load_steps=6 format=3 uid="uid://b36ii6ibsau8d"]
 
 [ext_resource type="Script" uid="uid://cip5vykmxnw01" path="res://scripts/main_menu.gd" id="1_06t4h"]
 [ext_resource type="PackedScene" uid="uid://cksyp24oxgrtb" path="res://objects/background.tscn" id="2_ekxnf"]
-[ext_resource type="Texture2D" uid="uid://bxpbyxk6l1bii" path="res://gfx/new_game_btn.png" id="3_bqqt6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqqt6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ekxnf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wu84c"]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_06t4h")
@@ -42,14 +45,24 @@ theme_override_font_sizes/font_size = 86
 theme_override_styles/normal = SubResource("StyleBoxEmpty_bqqt6")
 text = "<<"
 
-[node name="MainButton" type="TextureButton" parent="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer"]
+[node name="Container" type="Control" parent="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer"]
+custom_minimum_size = Vector2(320, 100)
 layout_mode = 2
-texture_normal = ExtResource("3_bqqt6")
+
+[node name="MainButton" type="Button" parent="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/Container"]
+layout_mode = 2
+offset_right = 320.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 44
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ekxnf")
+text = "NEW GAME"
 
 [node name="OptionRightButton" type="Button" parent="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 86
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wu84c")
 text = ">>"
 
 [node name="ScrollTimer" type="Timer" parent="."]
@@ -57,5 +70,5 @@ wait_time = 0.2
 one_shot = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/OptionLeftButton" to="." method="_on_option_left_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/MainButton" to="." method="_on_main_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/Container/MainButton" to="." method="_on_main_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/OptionRightButton" to="." method="_on_option_right_button_pressed"]

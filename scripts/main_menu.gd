@@ -1,14 +1,11 @@
 extends Node
 
-@onready var MainBtn: TextureButton = $MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/MainButton
+@onready var MainBtn: Button = $MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/Container/MainButton
 
 # Array of textures for the main button
 # This is manualy created
-var MenuOptions: Array[Resource] = [ 
-	preload("res://gfx/new_game_btn.png"),
-	preload("res://gfx/high_scores_btn.png"),
-	preload("res://gfx/options_btn.png"),
-	preload("res://gfx/quit_btn.png")
+var MenuOptions: Array[String] = [ 
+	"NEW GAME", "HIGH SCORES", "OPTIONS", "QUIT"
 ]
 # Current menu option selected by player
 var CurrentOption: int = 0
@@ -16,7 +13,7 @@ var CurrentOption: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$ScrollTimer.stop()
-	MainBtn.texture_normal = MenuOptions[CurrentOption]
+	MainBtn.text = MenuOptions[CurrentOption]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -47,7 +44,7 @@ func _menu_left() -> void:
 		CurrentOption = CurrentOption - 1
 	else:
 		CurrentOption = MenuOptions.size() - 1
-	MainBtn.texture_normal = MenuOptions[CurrentOption]
+	MainBtn.text = MenuOptions[CurrentOption]
 
 # Move menu index right
 func _menu_right() -> void:
@@ -55,7 +52,7 @@ func _menu_right() -> void:
 		CurrentOption = CurrentOption + 1
 	else:
 		CurrentOption = 0
-	MainBtn.texture_normal = MenuOptions[CurrentOption]
+	MainBtn.text = MenuOptions[CurrentOption]
 
 # Select a menu option
 func _menu_select() -> void:

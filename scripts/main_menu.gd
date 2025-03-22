@@ -4,7 +4,7 @@ extends Node
 
 # Array of textures for the main button
 # This is manualy created
-var MenuOptions: Array = [ 
+var MenuOptions: Array[Resource] = [ 
 	preload("res://gfx/new_game_btn.png"),
 	preload("res://gfx/high_scores_btn.png"),
 	preload("res://gfx/options_btn.png"),

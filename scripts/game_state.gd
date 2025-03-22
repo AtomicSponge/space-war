@@ -19,7 +19,7 @@ var PlayerScore: int = 0
 var HighScores: Array[int] = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
 
 # Private variables
-const _save_path = "user://game.dat"
+const _save_path: String = "user://game.dat"
 
 # Load game settings - called during startup
 func LoadGameData() -> void:

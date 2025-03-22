@@ -1,6 +1,6 @@
 extends Node
 
-@onready var ScoresLabel = $MarginContainer/VBoxContainer/CenterContainerBottom/ScoresLabel
+@onready var ScoresLabel: Label = $MarginContainer/VBoxContainer/CenterContainerBottom/ScoresLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

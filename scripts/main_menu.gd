@@ -2,7 +2,7 @@ extends Node
 
 @onready var MainBtn: Button = $MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/Container/MainButton
 
-# Array of textures for the main button
+# Array of strings for the main button
 # This is manualy created
 var MenuOptions: Array[String] = [ 
 	"NEW GAME", "HIGH SCORES", "OPTIONS", "QUIT"

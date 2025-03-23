@@ -1,6 +1,8 @@
 extends Node
 class_name NSceneManager
 
+@onready var _anim_player = $AnimationPlayer
+
 # A collection of scenes in the game. Scenes are added through the Inspector panel
 @export var Scenes: Dictionary = {}
 
@@ -18,6 +20,7 @@ class_name NSceneManager
 # Description: Switch to the requested scene based on its alias
 # Parameter sceneAlias: The scene alias of the scene to switch to
 func SwitchScene(sceneAlias: String) -> void:
+	await _anim_player.play("Fade")
 	get_tree().change_scene_to_file(Scenes[sceneAlias])
 
 # Description: Restart the current scene

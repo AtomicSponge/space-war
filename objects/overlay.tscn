@@ -37,4 +37,16 @@ text = "0000000000000000"
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="MessageLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -368.0
+offset_top = -48.0
+offset_right = 376.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 128
+text = "GET READY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Camera2D" type="Camera2D" parent="."]

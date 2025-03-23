@@ -7,6 +7,7 @@ func NewGame() -> void:
 	$ReadyLabel.show()
 	GameState.PlayerLives = GameState.NumberLives
 	GameState.PlayerContinues = GameState.NumberContinues
+	GameState.PlayerScore = 0
 	await get_tree().create_timer(2.5).timeout
 	$ReadyLabel.hide()
 	$Player.show()

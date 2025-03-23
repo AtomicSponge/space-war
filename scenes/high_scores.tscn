@@ -58,7 +58,13 @@ offset_left = 1168.0
 offset_top = 656.0
 offset_right = 1220.0
 offset_bottom = 687.0
+theme_override_colors/font_disabled_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 text = "BACK"
 
 [connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]

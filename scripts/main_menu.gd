@@ -15,29 +15,6 @@ func _ready() -> void:
 	$ScrollTimer.stop()
 	MainBtn.text = MenuOptions[CurrentOption]
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if Input.is_action_pressed("menu_left") and $ScrollTimer.is_stopped():
-		_menu_left()
-		$ScrollTimer.start()
-	if Input.is_action_pressed("menu_right") and $ScrollTimer.is_stopped():
-		_menu_right()
-		$ScrollTimer.start()
-	if Input.is_action_pressed("menu_select"):
-		_menu_select()
-
-# Called when the main menu button is activated
-func _on_main_button_pressed() -> void:
-	_menu_select()
-
-# Left option button pressed
-func _on_option_left_button_pressed() -> void:
-	_menu_left()
-
-# Right option button pressed
-func _on_option_right_button_pressed() -> void:
-	_menu_right()
-	
 # Move menu index left
 func _menu_left() -> void:
 	if CurrentOption > 0:
@@ -69,3 +46,26 @@ func _menu_select() -> void:
 		# Quit
 		_:
 			SceneManager.QuitGame()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	if Input.is_action_pressed("menu_left") and $ScrollTimer.is_stopped():
+		_menu_left()
+		$ScrollTimer.start()
+	if Input.is_action_pressed("menu_right") and $ScrollTimer.is_stopped():
+		_menu_right()
+		$ScrollTimer.start()
+	if Input.is_action_pressed("menu_select"):
+		_menu_select()
+
+# Called when the main menu button is activated
+func _on_main_button_pressed() -> void:
+	_menu_select()
+
+# Left option button pressed
+func _on_option_left_button_pressed() -> void:
+	_menu_left()
+
+# Right option button pressed
+func _on_option_right_button_pressed() -> void:
+	_menu_right()

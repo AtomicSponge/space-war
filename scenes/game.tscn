@@ -16,7 +16,7 @@ visible = false
 
 [node name="Overlay" parent="." instance=ExtResource("4_iywne")]
 
-[node name="ReadyLabel" type="Label" parent="."]
+[node name="MessageLabel" type="Label" parent="."]
 offset_left = -368.0
 offset_top = -48.0
 offset_right = 376.0

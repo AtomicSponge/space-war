@@ -11,7 +11,7 @@ const DEFAULT_LIVES: int = 3
 const DEFAULT_CONTINUES: int = 0
 
 # Player Data
-var PlayerLives: int = 3
+var PlayerLives: int = 2
 var PlayerContinues: int = 0
 var PlayerScore: int = 0
 

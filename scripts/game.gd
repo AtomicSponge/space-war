@@ -24,7 +24,7 @@ func GameOver() -> void:
 	Player.hide()
 	MessageLabel.text = "GAME OVER"
 	MessageLabel.show()
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(2.5).timeout
 	get_tree().paused = false
 	# Check if player reached a high score
 	for idx in GameState.HighScores.size() - 1:

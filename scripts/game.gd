@@ -47,7 +47,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	# Player lost, end game
 	if GameState.PlayerLives < 0:
-		GameOver()
+		if GameState.PlayerContinues > 0:
+			pass # Ask for continue
+		else:
+			GameOver()
 
 	# Pause game
 	if Input.is_action_pressed("pause_game"):

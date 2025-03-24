@@ -1,13 +1,13 @@
 extends Node
 
 # Game Settings
-var NumberLives: int = 3
+var NumberLives: int = 2
 var NumberContinues: int = 0
 const MIN_LIVES: int = 0
 const MAX_LIVES: int = 5
 const MIN_CONTINUES: int = 0
 const MAX_CONTINUES: int = 3
-const DEFAULT_LIVES: int = 3
+const DEFAULT_LIVES: int = 2
 const DEFAULT_CONTINUES: int = 0
 
 # Player Data

@@ -43,6 +43,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_iywne")
 [node name="Player" parent="." instance=ExtResource("3_lnu2h")]
 visible = false
 
+[node name="PlayerCamera" type="Camera2D" parent="Player"]
+
 [node name="Overlay" parent="." instance=ExtResource("4_iywne")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_lbhrr")]

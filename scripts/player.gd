@@ -27,4 +27,4 @@ func _process(delta: float) -> void:
 		pass
 	
 	position += velocity * delta
-	position = position.clamp(Vector2(-640, -360), Vector2(640, 360))
+	position = position.clamp(Vector2(-645, -365), Vector2(645, 365))

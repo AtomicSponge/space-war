@@ -48,10 +48,16 @@ func GameOver() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	NewGame()
+	Player.set_position(StartPosition.position)
+	Player.hide()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	# Game not running, start it.
+	if GameStarted == false:
+		NewGame()
+
 	# Player lost, end game
 	if GameState.PlayerLives < 0:
 		if GameState.PlayerContinues > 0:

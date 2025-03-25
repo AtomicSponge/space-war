@@ -25,14 +25,15 @@ script = ExtResource("1_yqjtg")
 [node name="Background" parent="." instance=ExtResource("1_uwrxv")]
 
 [node name="ArenaBorder" type="Panel" parent="."]
-offset_left = -664.0
-offset_top = -384.0
-offset_right = 664.0
-offset_bottom = 384.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 1296.0
+offset_bottom = 736.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_iywne")
 
 [node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(640, 360)
 
 [node name="Player" parent="." instance=ExtResource("3_lnu2h")]
 visible = false

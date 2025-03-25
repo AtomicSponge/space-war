@@ -1,11 +1,14 @@
 extends Area2D
 
 @export var speed: int = 400
-@export var rotation_speed: float = 1.5
+
+@onready var Sprite: Sprite2D = $PlayerSprite
+
+var screen_size: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	screen_size = get_viewport_rect().size
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -26,5 +29,7 @@ func _process(delta: float) -> void:
 	else:
 		pass
 	
+	Sprite.rotation = lerp_angle(Sprite.rotation, atan2(velocity.x, -velocity.y), delta * 10.0)
+	
 	position += velocity * delta
-	position = position.clamp(Vector2(-645, -365), Vector2(645, 365))
+	position = position.clamp(Vector2.ZERO, screen_size)

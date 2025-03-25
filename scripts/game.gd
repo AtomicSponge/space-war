@@ -3,6 +3,7 @@ extends Node
 @onready var Player = $Player
 @onready var MessageLabel = $Overlay/MessageLabel
 @onready var PauseMenu = $PauseMenu
+@onready var StartPosition = $StartPosition
 
 # Flag to check if the game is in session
 var GameStarted: bool = false
@@ -10,6 +11,7 @@ var GameStarted: bool = false
 # Called when a new game starts
 func NewGame() -> void:
 	get_tree().paused = true
+	Player.set_position(StartPosition.position)
 	Player.hide()
 	MessageLabel.text = "GET READY"
 	MessageLabel.show()

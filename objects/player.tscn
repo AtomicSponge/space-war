@@ -9,7 +9,7 @@
 script = ExtResource("1_ykyjo")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PlayerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_eqqp1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -4,6 +4,9 @@ extends Node
 @onready var MessageLabel = $Overlay/MessageLabel
 @onready var PauseMenu = $PauseMenu
 
+# Flag to check if the game is in session
+var GameStarted: bool = false
+
 # Called when a new game starts
 func NewGame() -> void:
 	get_tree().paused = true
@@ -17,9 +20,11 @@ func NewGame() -> void:
 	MessageLabel.hide()
 	Player.show()
 	get_tree().paused = false
+	GameStarted = true
 
 # Called at the end of a game
 func GameOver() -> void:
+	GameStarted = false
 	get_tree().paused = true
 	Player.hide()
 	MessageLabel.text = "GAME OVER"
@@ -52,7 +57,7 @@ func _process(_delta: float) -> void:
 		else:
 			GameOver()
 
-	# Pause game
-	if Input.is_action_pressed("pause_game"):
+	# Pause game - check GameStarted flag to prevent pop-up durring game start/end events
+	if Input.is_action_pressed("pause_game") and GameStarted:
 		get_tree().paused = true
 		PauseMenu.show()

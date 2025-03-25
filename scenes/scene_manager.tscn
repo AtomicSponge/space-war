@@ -39,18 +39,9 @@ _data = {
 &"RESET": SubResource("Animation_65mdo")
 }
 
-[node name="SceneManager" type="ColorRect"]
-modulate = Color(0, 0, 0, 0)
-z_index = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1280.0
-offset_top = -720.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+[node name="SceneManager" type="CanvasLayer"]
+process_mode = 3
+layer = 2
 script = ExtResource("1_we8k5")
 Scenes = {
 &"Game": &"res://scenes/game.tscn",
@@ -59,7 +50,18 @@ Scenes = {
 &"Options": &"res://scenes/options.tscn"
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Fader" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 0)
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fader"]
 process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_65mdo")

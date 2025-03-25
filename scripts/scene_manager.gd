@@ -4,6 +4,8 @@ class_name NSceneManager
 # A collection of scenes in the game. Scenes are added through the Inspector panel
 @export var Scenes: Dictionary = {}
 
+@onready var AniPlayer = $Fader/AnimationPlayer
+
 # Description: Add a new scene to the scene collection
 # Parameter sceneAlias: The alias used for finding the scene in the collection
 # Parameter scenePath: The full path to the scene file in the file system
@@ -19,21 +21,21 @@ class_name NSceneManager
 # Parameter sceneAlias: The scene alias of the scene to switch to
 func SwitchScene(sceneAlias: String) -> void:
 	get_tree().paused = true
-	$AnimationPlayer.play("Fade")
-	await $AnimationPlayer.animation_finished
+	AniPlayer.play("Fade")
+	await AniPlayer.animation_finished
 	get_tree().change_scene_to_file(Scenes[sceneAlias])
-	$AnimationPlayer.play_backwards("Fade")
-	await $AnimationPlayer.animation_finished
+	AniPlayer.play_backwards("Fade")
+	await AniPlayer.animation_finished
 	get_tree().paused = false
 
 # Description: Restart the current scene
 func RestartScene() -> void:
 	get_tree().paused = true
-	$AnimationPlayer.play("Fade")
-	await $AnimationPlayer.animation_finished
+	AniPlayer.play("Fade")
+	await AniPlayer.animation_finished
 	get_tree().reload_current_scene()
-	$AnimationPlayer.play_backwards("Fade")
-	await $AnimationPlayer.animation_finished
+	AniPlayer.play_backwards("Fade")
+	await AniPlayer.animation_finished
 	get_tree().paused = false
 
 # Description: Quit the game

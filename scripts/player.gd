@@ -8,7 +8,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
@@ -18,3 +18,13 @@ func _process(_delta: float) -> void:
 		velocity.y += 1
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
+
+	# Moving
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * speed
+	# Stopped
+	else:
+		pass
+	
+	position += velocity * delta
+	position = position.clamp(Vector2(-640, -360), Vector2(640, 360))

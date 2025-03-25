@@ -19,6 +19,7 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [node name="Game" type="Node"]
+process_mode = 1
 script = ExtResource("1_yqjtg")
 
 [node name="Background" parent="." instance=ExtResource("1_uwrxv")]

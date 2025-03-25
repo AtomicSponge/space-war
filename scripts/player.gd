@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 	# Stopped
 	else:
 		pass
-	
+
 	if velocity.x != 0 or velocity.y != 0:
 		Sprite.rotation = lerp_angle(Sprite.rotation, atan2(velocity.x, -velocity.y), delta * 10.0)
 	

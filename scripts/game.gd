@@ -4,7 +4,7 @@ extends Node
 @onready var MessageLabel = $Overlay/MessageLabel
 @onready var PauseMenu = $PauseMenu
 @onready var StartPosition = $StartPosition
-@onready var Continue = $continue
+@onready var Continue = $Continue
 
 # Flag to check if the game is in session
 var GameStarted: bool = false
@@ -62,8 +62,11 @@ func _process(_delta: float) -> void:
 	# Player lost, end game
 	if GameState.PlayerLives < 0:
 		if GameState.PlayerContinues > 0:
+			get_tree().paused = true
 			Continue.show()
 			Continue.ContinueTimer.start()
+			await Continue.ContinueTimer.timeout
+			get_tree().paused = false
 		else:
 			GameOver()
 

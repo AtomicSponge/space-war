@@ -21,3 +21,4 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event is InputEventKey or InputEventJoypadButton or InputEventMouseButton:
 			ContinueSelected = true
 			ContinueTimer.stop()
+			hide()

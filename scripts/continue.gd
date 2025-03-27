@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal continue_selected
+
 @onready var CounterLabel = $MarginContainer/VBoxContainer/CenterContainerBottom/CounterLabel
 @onready var ContinueTimer = $ContinueTimer
 
@@ -12,3 +14,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not ContinueTimer.is_stopped():
 		CounterLabel.text = "%d" % snappedi(ContinueTimer.time_left, 1)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not ContinueTimer.is_stopped():
+		if event is InputEventKey or InputEventJoypadButton or InputEventMouseButton:
+			continue_selected.emit()

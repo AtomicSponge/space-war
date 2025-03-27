@@ -63,11 +63,12 @@ func _process(_delta: float) -> void:
 		# Player has continues, ask to resume
 		if GameState.PlayerContinues > 0:
 			get_tree().paused = true
+			Continue.ContinueSelected = false
 			Continue.show()
 			Continue.ContinueTimer.start()
 			await Continue.ContinueTimer.timeout
 			get_tree().paused = false
-			if true:
+			if Continue.ContinueSelected == true:
 				GameState.PlayerLives = GameState.NumberLives
 				GameState.PlayerContinues = GameState.PlayerContinues - 1
 			else:

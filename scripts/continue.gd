@@ -11,4 +11,4 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if not ContinueTimer.is_stopped():
-		CounterLabel.text = snappedi(ContinueTimer.time_left, 10)
+		CounterLabel.text = "%d" % snappedi(ContinueTimer.time_left, 1)

@@ -51,7 +51,6 @@ func GameOver() -> void:
 func _ready() -> void:
 	Player.set_position(StartPosition.position)
 	Player.hide()
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -61,12 +60,19 @@ func _process(_delta: float) -> void:
 
 	# Player lost, end game
 	if GameState.PlayerLives < 0:
+		# Player has continues, ask to resume
 		if GameState.PlayerContinues > 0:
 			get_tree().paused = true
 			Continue.show()
 			Continue.ContinueTimer.start()
 			await Continue.ContinueTimer.timeout
 			get_tree().paused = false
+			if true:
+				GameState.PlayerLives = GameState.NumberLives
+				GameState.PlayerContinues = GameState.PlayerContinues - 1
+			else:
+				GameOver()
+		# No continues, just end the game
 		else:
 			GameOver()
 

@@ -44,6 +44,8 @@ visible = false
 [node name="Overlay" parent="." instance=ExtResource("4_iywne")]
 
 [node name="Continue" parent="." instance=ExtResource("5_p57ef")]
+process_mode = 3
+visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_lbhrr")]
 visible = false

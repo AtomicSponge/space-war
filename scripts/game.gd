@@ -73,6 +73,9 @@ func _process(_delta: float) -> void:
 				Player.show()
 				GameState.PlayerLives = GameState.NumberLives
 				GameState.PlayerContinues = GameState.PlayerContinues - 1
+				GameState.PlayerScore = GameState.PlayerScore - (GameState.DEATH_PENALTY * 10)
+				if GameState.PlayerScore < 0:
+					GameState.PlayerScore = 0
 			# Continue not selected, end game
 			else:
 				GameOver()

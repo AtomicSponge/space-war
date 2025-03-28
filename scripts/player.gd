@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 		var b = Bullet.instantiate()
 		owner.add_child(b)
 		b.position = ShotMarker.global_position
-		#b.transform = ShotMarker.global_transform
+		b.look_at(get_global_mouse_position())
 		ShotTimer.start()
 	
 	# Handle movement

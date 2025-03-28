@@ -20,5 +20,5 @@ shape = SubResource("CircleShape2D_eqqp1")
 [node name="ShotMarker" type="Marker2D" parent="."]
 
 [node name="ShotTimer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.1
 one_shot = true

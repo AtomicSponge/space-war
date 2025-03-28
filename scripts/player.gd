@@ -1,16 +1,23 @@
 extends Area2D
 
 @export var speed: int = 400
+@export var Bullet: PackedScene
 
 @onready var Sprite: Sprite2D = $PlayerSprite
 @onready var ScreenSize: Vector2 = get_viewport_rect().size
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
+@onready var ShotMarker: Marker2D = $ShotMarker
+@onready var ShotTimer: Timer = $ShotTimer
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# Handle attacking
+	if Input.is_action_pressed("attack") and ShotTimer.is_stopped():
+		var b = Bullet.instantiate()
+		owner.add_child(b)
+		b.transform = ShotMarker.global_transform
+		ShotTimer.start()
+	
+	# Handle movement
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
@@ -27,7 +34,8 @@ func _process(delta: float) -> void:
 	# Stopped
 	else:
 		pass
-
+	
+	# Rotate sprite
 	if velocity.x != 0 or velocity.y != 0:
 		Sprite.rotation = lerp_angle(Sprite.rotation, atan2(velocity.x, -velocity.y), delta * 10.0)
 	

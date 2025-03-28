@@ -1,6 +1,7 @@
 - Starfield: <https://godotshaders.com/shader/stars-shader/>
 - Player Ship: <https://opengameart.org/content/spaceships-32x32>
 - Font: <https://fontstruct.com/fontstructions/show/168674>
+- Bullets: <https://opengameart.org/content/bullet-collection-1-m484>
 
 ```
 The FontStruction “silvergun”

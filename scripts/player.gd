@@ -14,7 +14,8 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("attack") and ShotTimer.is_stopped():
 		var b = Bullet.instantiate()
 		owner.add_child(b)
-		b.transform = ShotMarker.global_transform
+		b.position = ShotMarker.global_position
+		#b.transform = ShotMarker.global_transform
 		ShotTimer.start()
 	
 	# Handle movement

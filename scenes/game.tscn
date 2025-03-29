@@ -48,3 +48,5 @@ visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_lbhrr")]
 visible = false
+
+[connection signal="quit_game" from="PauseMenu" to="." method="_on_pause_menu_quit_game"]

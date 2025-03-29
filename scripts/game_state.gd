@@ -9,7 +9,7 @@ const MIN_CONTINUES: int = 0
 const MAX_CONTINUES: int = 3
 const DEFAULT_LIVES: int = 2
 const DEFAULT_CONTINUES: int = 0
-const DEATH_PENALTY = 100000
+const DEATH_PENALTY: int = 100000
 
 # Player Data
 var PlayerLives: int = 2

@@ -87,3 +87,4 @@ func _process(_delta: float) -> void:
 	if Input.is_action_pressed("pause_game") and GameStarted:
 		get_tree().paused = true
 		PauseMenu.show()
+		PauseMenu.ResumeButton.grab_focus()

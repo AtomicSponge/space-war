@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@onready var ResumeButton = $FadeScreen/CenterContainer/VBoxContainer/ResumeButton
+
 # Resume button pressed
 func _on_resume_button_pressed() -> void:
 	hide()

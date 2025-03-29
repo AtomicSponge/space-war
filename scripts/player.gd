@@ -15,7 +15,9 @@ func _process(delta: float) -> void:
 		var b = Bullet.instantiate()
 		owner.add_child(b)
 		b.position = ShotMarker.global_position
+		#var testJoy = Input.get_vector("joystick_aim_left", "joystick_aim_right", "joystick_aim_up", "joystick_aim_down", 0.05).normalized()
 		if Input.get_joy_axis(0, JOY_AXIS_RIGHT_X) != 0 or Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y) != 0:
+		#if testJoy > 0 or testJoy < 0:
 			b.rotation = Vector2(Input.get_joy_axis(0, JOY_AXIS_RIGHT_X), Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)).angle()
 		else:
 			b.look_at(get_global_mouse_position())

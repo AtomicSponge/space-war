@@ -53,7 +53,7 @@ text = "1000000000000000000000
 
 1000000000000000000000"
 
-[node name="Button" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="."]
 offset_left = 1168.0
 offset_top = 656.0
 offset_right = 1220.0
@@ -67,4 +67,4 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 text = "BACK"
 
-[connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

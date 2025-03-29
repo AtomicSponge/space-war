@@ -2,7 +2,7 @@ extends CanvasLayer
 
 signal quit_game
 
-@onready var ResumeButton = $FadeScreen/CenterContainer/VBoxContainer/ResumeButton
+@onready var ResumeButton: Button = $FadeScreen/CenterContainer/VBoxContainer/ResumeButton
 
 # Resume button pressed
 func _on_resume_button_pressed() -> void:

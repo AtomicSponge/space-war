@@ -83,7 +83,7 @@ func _process(_delta: float) -> void:
 		else:
 			GameOver()
 
-	# Pause game - check GameStarted flag to prevent pop-up durring game start/end events
+	# Pause game - check GameStarted flag to prevent pop-up during game start/end events
 	if Input.is_action_pressed("pause_game") and GameStarted:
 		get_tree().paused = true
 		PauseMenu.show()

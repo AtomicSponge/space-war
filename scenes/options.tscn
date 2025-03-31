@@ -48,18 +48,18 @@ theme_override_font_sizes/font_size = 64
 text = "OPTIONS"
 
 [node name="LivesLabel" type="Label" parent="."]
-offset_left = 760.0
+offset_left = 512.0
 offset_top = 248.0
-offset_right = 858.0
+offset_right = 610.0
 offset_bottom = 272.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "LIVES"
 
 [node name="LivesScrollBar" type="HScrollBar" parent="."]
-offset_left = 904.0
+offset_left = 792.0
 offset_top = 232.0
-offset_right = 1088.0
+offset_right = 1024.0
 offset_bottom = 280.0
 theme_override_styles/grabber = SubResource("StyleBoxLine_yjkok")
 theme_override_styles/grabber_highlight = SubResource("StyleBoxLine_2iy26")
@@ -67,25 +67,27 @@ theme_override_styles/grabber_pressed = SubResource("StyleBoxLine_kv8mn")
 step = 1.0
 
 [node name="NumLivesLabel" type="Label" parent="."]
-offset_left = 1128.0
+offset_left = 1064.0
 offset_top = 248.0
-offset_right = 1168.0
-offset_bottom = 260.0
+offset_right = 1104.0
+offset_bottom = 272.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
 text = "0"
 
 [node name="ContinueLabel" type="Label" parent="."]
-offset_left = 680.0
+offset_left = 512.0
 offset_top = 376.0
-offset_right = 858.0
+offset_right = 690.0
 offset_bottom = 400.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "CONTINUES"
 
 [node name="ContinueScrollBar" type="HScrollBar" parent="."]
-offset_left = 904.0
+offset_left = 792.0
 offset_top = 360.0
-offset_right = 1088.0
+offset_right = 1024.0
 offset_bottom = 408.0
 theme_override_styles/grabber = SubResource("StyleBoxLine_1sggn")
 theme_override_styles/grabber_highlight = SubResource("StyleBoxLine_e6vpq")
@@ -93,13 +95,29 @@ theme_override_styles/grabber_pressed = SubResource("StyleBoxLine_o7i7e")
 step = 1.0
 
 [node name="NumContinuesLabel" type="Label" parent="."]
-offset_left = 1136.0
+offset_left = 1064.0
 offset_top = 376.0
-offset_right = 1176.0
-offset_bottom = 388.0
+offset_right = 1104.0
+offset_bottom = 400.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
 text = "0"
 
-[node name="ApplyButton" type="Button" parent="."]
+[node name="ResetButton" type="Button" parent="."]
+offset_left = 992.0
+offset_top = 648.0
+offset_right = 1064.0
+offset_bottom = 679.0
+theme_override_colors/font_disabled_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+text = "RESET"
+
+[node name="SaveButton" type="Button" parent="."]
 offset_left = 1088.0
 offset_top = 648.0
 offset_right = 1151.0
@@ -133,6 +151,10 @@ offset_left = 504.0
 offset_top = 481.0
 offset_right = 1088.0
 offset_bottom = 513.0
+theme_override_colors/font_selected_color = Color(1, 0.494118, 0, 1)
+theme_override_colors/font_hovered_selected_color = Color(1, 0.494118, 0, 1)
+theme_override_colors/font_hovered_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 32
 text_overrun_behavior = 2
 item_count = 2
@@ -141,4 +163,6 @@ fixed_column_width = 275
 item_0/text = "FULL SCREEN"
 item_1/text = "WINDOWED MODE"
 
+[connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

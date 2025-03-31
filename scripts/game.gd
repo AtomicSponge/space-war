@@ -51,7 +51,7 @@ func GameOver() -> void:
 func _ready() -> void:
 	Player.set_position(StartPosition.position)
 	Player.hide()
-
+ 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	# Game not running, start it.

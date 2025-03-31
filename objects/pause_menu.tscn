@@ -9,10 +9,6 @@ script = ExtResource("1_aktha")
 [node name="FadeScreen" type="ColorRect" parent="."]
 offset_right = 1280.0
 offset_bottom = 720.0
-focus_neighbor_left = NodePath("CenterContainer/VBoxContainer/ResumeButton")
-focus_neighbor_top = NodePath("CenterContainer/VBoxContainer/ResumeButton")
-focus_neighbor_right = NodePath("CenterContainer/VBoxContainer/QuitButton")
-focus_neighbor_bottom = NodePath("CenterContainer/VBoxContainer/QuitButton")
 color = Color(0, 0, 0, 0.54902)
 
 [node name="CenterContainer" type="CenterContainer" parent="FadeScreen"]

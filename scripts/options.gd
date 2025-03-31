@@ -7,6 +7,8 @@ extends Node
 @onready var DisplayList = $DisplayList
 @onready var BackButton = $BackButton
 
+var CurrentDisplayMode: int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	LivesScrollBar.max_value = GameState.MAX_LIVES
@@ -17,9 +19,11 @@ func _ready() -> void:
 	ContinueScrollBar.value = GameState.NumberContinues
 	NumLivesLabel.text = "%d" % LivesScrollBar.value
 	NumContinuesLabel.text = "%d" % ContinueScrollBar.value
-	if DisplayServer.window_get_mode(DisplayServer.WINDOW_MODE_WINDOWED):
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
+		CurrentDisplayMode = 0
 		DisplayList.select(0)
-	if DisplayServer.window_get_mode(DisplayServer.WINDOW_MODE_FULLSCREEN):
+	elif DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		CurrentDisplayMode = 1
 		DisplayList.select(1)
 	BackButton.grab_focus()
 
@@ -44,6 +48,12 @@ func _on_reset_button_pressed() -> void:
 func _on_save_button_pressed() -> void:
 	GameState.NumberLives = LivesScrollBar.value
 	GameState.NumberContinues = ContinueScrollBar.value
+	if DisplayList.is_selected(0) and CurrentDisplayMode == 1:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		CurrentDisplayMode = 0
+	elif DisplayList.is_selected(1) and CurrentDisplayMode == 0:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		CurrentDisplayMode = 1
 	if GameState.SaveGameData() != -1:
 		var dialog = AcceptDialog.new()
 		dialog.title = "SAVED"

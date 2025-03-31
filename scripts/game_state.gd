@@ -19,13 +19,16 @@ var PlayerScore: int = 0
 # Scores
 var HighScores: Array[int] = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
 
+# Display Settings
+var DisplayMode: int = 0
+
 # Private variables
 const _save_path: String = "user://game.dat"
 
 # Load game settings - called during startup
 func LoadGameData() -> int:
 	if not FileAccess.file_exists(_save_path):
-		return 0
+		return 1
 
 	var file = FileAccess.open_encrypted_with_pass(_save_path, FileAccess.READ, "dragongelatohierarchy")
 	if file == null:
@@ -38,15 +41,23 @@ func LoadGameData() -> int:
 	NumberLives = save_data["number_lives"]
 	NumberContinues = save_data["number_continues"]
 	HighScores = save_data["high_scores"]
+	DisplayMode = save_data["display_mode"]
+
 	return 0
 
 # Save game settings - called at game over
 func SaveGameData() -> int:
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
+		DisplayMode = 0
+	elif DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		DisplayMode = 1
+
 	# Serialize game data
 	var save_data = {
 		"number_lives": NumberLives,
 		"number_continues": NumberContinues,
-		"high_scores": HighScores
+		"high_scores": HighScores,
+		"display_mode": DisplayMode
 	}
 	
 	var file = FileAccess.open_encrypted_with_pass(_save_path, FileAccess.WRITE, "dragongelatohierarchy")
@@ -69,4 +80,8 @@ func alert(text: String) -> void:
 
 #  Load game settings on start-up
 func _ready() -> void:
-	LoadGameData()
+	if LoadGameData() == 0:
+		if DisplayMode == 0:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		if DisplayMode == 1:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

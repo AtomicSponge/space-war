@@ -37,7 +37,14 @@ func _on_reset_button_pressed() -> void:
 	var dialog = ConfirmationDialog.new()
 	dialog.title = "CONFIRM RESET"
 	dialog.dialog_text = "CONFIRM RESET SETTINGS"
-	dialog.confirmed.connect (_reset_dialog_confirmed)
+	dialog.confirmed.connect (func():
+		dialog.queue_free()
+		GameState.NumberLives = GameState.DEFAULT_LIVES
+		LivesScrollBar.value = GameState.DEFAULT_LIVES
+		GameState.NumberContinues = GameState.DEFAULT_CONTINUES
+		ContinueScrollBar.value = GameState.DEFAULT_CONTINUES
+		GameState.SaveGameData()
+	)
 	dialog.canceled.connect (dialog.queue_free)
 	dialog.add_theme_color_override("default_color", Color(1, 1, 0, 1))
 	add_child(dialog)
@@ -67,11 +74,3 @@ func _on_save_button_pressed() -> void:
 # Back button pressed, return to main menu
 func _on_back_button_pressed() -> void:
 	SceneManager.SwitchScene("MainMenu")
-
-# Reset dialog confirmed - reset values and save to disk
-func _reset_dialog_confirmed() -> void:
-	GameState.NumberLives = GameState.DEFAULT_LIVES
-	LivesScrollBar.value = GameState.DEFAULT_LIVES
-	GameState.NumberContinues = GameState.DEFAULT_CONTINUES
-	ContinueScrollBar.value = GameState.DEFAULT_CONTINUES
-	GameState.SaveGameData()

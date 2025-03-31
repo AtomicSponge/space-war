@@ -75,3 +75,8 @@ func _on_option_left_button_pressed() -> void:
 # Right option button pressed
 func _on_option_right_button_pressed() -> void:
 	_menu_right()
+
+# Restart credits timer on any input event
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey or InputEventJoypadButton or InputEventMouseButton or InputEventMouseMotion:
+		CreditsTimer.start()

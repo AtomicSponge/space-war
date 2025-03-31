@@ -1,6 +1,8 @@
 extends Node
 
 @onready var MainBtn: Button = $MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/Container/MainButton
+@onready var ScrollTimer: Timer = $ScrollTimer
+@onready var CreditsTimer: Timer = $CreditsTimer
 
 # Array of strings for the main button
 # This is manualy created
@@ -12,7 +14,8 @@ var CurrentOption: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$ScrollTimer.stop()
+	ScrollTimer.stop()
+	CreditsTimer.start()
 	MainBtn.text = MenuOptions[CurrentOption]
 
 # Move menu index left
@@ -51,12 +54,16 @@ func _menu_select() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("ui_left") and $ScrollTimer.is_stopped():
 		_menu_left()
-		$ScrollTimer.start()
+		ScrollTimer.start()
 	if Input.is_action_pressed("ui_right") and $ScrollTimer.is_stopped():
 		_menu_right()
-		$ScrollTimer.start()
+		ScrollTimer.start()
 	if Input.is_action_pressed("ui_accept") or Input.is_action_pressed("ui_select"):
 		_menu_select()
+		
+	# Credits timer ended, show credits scene
+	if CreditsTimer.is_stopped():
+		SceneManager.SwitchScene("Credits")
 
 # Called when the main menu button is activated
 func _on_main_button_pressed() -> void:

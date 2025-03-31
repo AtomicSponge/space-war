@@ -44,6 +44,7 @@ process_mode = 3
 layer = 2
 script = ExtResource("1_we8k5")
 Scenes = {
+&"Credits": &"res://scenes/credits.tscn",
 &"Game": &"res://scenes/game.tscn",
 &"HighScores": &"res://scenes/high_scores.tscn",
 &"MainMenu": &"res://scenes/main_menu.tscn",

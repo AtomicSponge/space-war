@@ -177,6 +177,10 @@ text = ">>"
 wait_time = 0.2
 one_shot = true
 
+[node name="CreditsTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/OptionLeftButton" to="." method="_on_option_left_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/Container/MainButton" to="." method="_on_main_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/OptionRightButton" to="." method="_on_option_right_button_pressed"]

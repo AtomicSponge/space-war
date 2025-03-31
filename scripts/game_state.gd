@@ -83,5 +83,5 @@ func _ready() -> void:
 	if LoadGameData() == 0:
 		if DisplayMode == 0:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		if DisplayMode == 1:
+		elif DisplayMode == 1:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

@@ -19,6 +19,9 @@ func _process(_delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not ContinueTimer.is_stopped():
 		if event is InputEventKey or InputEventJoypadButton or InputEventMouseButton:
-			ContinueSelected = true
-			ContinueTimer.stop()
-			hide()
+			if event is InputEventMouseMotion:
+				return
+			else:
+				ContinueSelected = true
+				ContinueTimer.stop()
+				hide()

@@ -6,10 +6,10 @@
 shader = ExtResource("1_rjel2")
 shader_parameter/bg_color = Vector4(0, 0, 0, 0)
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="Background" type="CanvasLayer"]
 layer = -1
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Starfield" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_tfgwx")
 anchors_preset = 15
 anchor_right = 1.0

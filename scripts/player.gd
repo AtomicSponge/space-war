@@ -15,9 +15,13 @@ func _process(delta: float) -> void:
 		var b = Bullet.instantiate()
 		owner.add_child(b)
 		b.position = ShotMarker.global_position
+		var testKey = Input.get_vector("keyboard_aim_left", "keyboard_aim_right", "keyboard_aim_up", "keyboard_aim_down", 0.0)
 		var testJoy = Input.get_vector("joystick_aim_left", "joystick_aim_right", "joystick_aim_up", "joystick_aim_down", 0.05)
+		# Test if using keyboard and assign rotation of attack
+		if testKey.x > 0 or testKey.x < 0 or testKey.y > 0 or testKey.y < 0:
+			b.rotation = testKey.angle()
 		# Test if using joystick and assign rotation of attack
-		if testJoy.x > 0 or testJoy.x < 0 or testJoy.y > 0 or testJoy.y < 0:
+		elif testJoy.x > 0 or testJoy.x < 0 or testJoy.y > 0 or testJoy.y < 0:
 			b.rotation = Vector2(Input.get_joy_axis(0, JOY_AXIS_RIGHT_X), Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)).angle()
 		# Otherwise use the mouse to get attack angle
 		else:

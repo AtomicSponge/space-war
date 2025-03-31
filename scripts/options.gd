@@ -4,6 +4,7 @@ extends Node
 @onready var ContinueScrollBar = $ContinueScrollBar
 @onready var NumLivesLabel = $NumLivesLabel
 @onready var NumContinuesLabel = $NumContinuesLabel
+@onready var DisplayList = $DisplayList
 @onready var BackButton = $BackButton
 
 # Called when the node enters the scene tree for the first time.
@@ -16,6 +17,10 @@ func _ready() -> void:
 	ContinueScrollBar.value = GameState.NumberContinues
 	NumLivesLabel.text = "%d" % LivesScrollBar.value
 	NumContinuesLabel.text = "%d" % ContinueScrollBar.value
+	if DisplayServer.window_get_mode(DisplayServer.WINDOW_MODE_WINDOWED):
+		DisplayList.select(0)
+	if DisplayServer.window_get_mode(DisplayServer.WINDOW_MODE_FULLSCREEN):
+		DisplayList.select(1)
 	BackButton.grab_focus()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,17 +44,15 @@ func _on_reset_button_pressed() -> void:
 func _on_save_button_pressed() -> void:
 	GameState.NumberLives = LivesScrollBar.value
 	GameState.NumberContinues = ContinueScrollBar.value
-
-	var dialog = AcceptDialog.new()
-	dialog.title = "SAVED"
-	dialog.dialog_text = "SETTINGS SAVED"
-	dialog.dialog_hide_on_ok = false # Disable default behaviour
-	dialog.connect('confirmed', dialog.queue_free) # Free node on OK
-	add_child(dialog)
-	dialog.popup_centered()
-	dialog.show()
-
-	GameState.SaveGameData()
+	if GameState.SaveGameData() != -1:
+		var dialog = AcceptDialog.new()
+		dialog.title = "SAVED"
+		dialog.dialog_text = "SETTINGS SAVED"
+		dialog.dialog_hide_on_ok = false # Disable default behaviour
+		dialog.connect('confirmed', dialog.queue_free) # Free node on OK
+		add_child(dialog)
+		dialog.popup_centered()
+		dialog.show()
 
 # Back button pressed, return to main menu
 func _on_back_button_pressed() -> void:

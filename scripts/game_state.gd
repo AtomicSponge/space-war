@@ -23,14 +23,14 @@ var HighScores: Array[int] = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
 const _save_path: String = "user://game.dat"
 
 # Load game settings - called during startup
-func LoadGameData() -> void:
+func LoadGameData() -> int:
 	if not FileAccess.file_exists(_save_path):
-		return
+		return 0
 
 	var file = FileAccess.open_encrypted_with_pass(_save_path, FileAccess.READ, "dragongelatohierarchy")
 	if file == null:
 		alert('Could not load game data!')
-		return
+		return -1
 	var save_data = file.get_var()
 	file.close()
 
@@ -38,9 +38,10 @@ func LoadGameData() -> void:
 	NumberLives = save_data["number_lives"]
 	NumberContinues = save_data["number_continues"]
 	HighScores = save_data["high_scores"]
+	return 0
 
 # Save game settings - called at game over
-func SaveGameData() -> void:
+func SaveGameData() -> int:
 	# Serialize game data
 	var save_data = {
 		"number_lives": NumberLives,
@@ -51,9 +52,10 @@ func SaveGameData() -> void:
 	var file = FileAccess.open_encrypted_with_pass(_save_path, FileAccess.WRITE, "dragongelatohierarchy")
 	if file == null:
 		alert('Could not save game data!')
-		return
+		return -1
 	file.store_var(save_data)
 	file.close()
+	return 0
 
 # Display an alert
 func alert(text: String) -> void:

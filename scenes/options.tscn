@@ -103,6 +103,23 @@ theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "0"
 
+[node name="DisplayList" type="ItemList" parent="."]
+offset_left = 512.0
+offset_top = 481.0
+offset_right = 1088.0
+offset_bottom = 513.0
+theme_override_colors/font_selected_color = Color(1, 0.494118, 0, 1)
+theme_override_colors/font_hovered_selected_color = Color(1, 0.494118, 0, 1)
+theme_override_colors/font_hovered_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+item_count = 2
+max_columns = 2
+fixed_column_width = 275
+item_0/text = "WINDOWED MODE"
+item_1/text = "FULL SCREEN"
+
 [node name="ResetButton" type="Button" parent="."]
 offset_left = 992.0
 offset_top = 648.0
@@ -145,23 +162,6 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 text = "BACK
 "
-
-[node name="ItemList" type="ItemList" parent="."]
-offset_left = 504.0
-offset_top = 481.0
-offset_right = 1088.0
-offset_bottom = 513.0
-theme_override_colors/font_selected_color = Color(1, 0.494118, 0, 1)
-theme_override_colors/font_hovered_selected_color = Color(1, 0.494118, 0, 1)
-theme_override_colors/font_hovered_color = Color(1, 1, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_font_sizes/font_size = 32
-text_overrun_behavior = 2
-item_count = 2
-max_columns = 2
-fixed_column_width = 275
-item_0/text = "FULL SCREEN"
-item_1/text = "WINDOWED MODE"
 
 [connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]

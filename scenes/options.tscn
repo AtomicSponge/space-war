@@ -1,26 +1,122 @@
-[gd_scene load_steps=3 format=3 uid="uid://g3c82pdl7a1c"]
+[gd_scene load_steps=9 format=3 uid="uid://g3c82pdl7a1c"]
 
 [ext_resource type="Script" uid="uid://bqxsscsbnkuq2" path="res://scripts/options.gd" id="1_c2u1v"]
 [ext_resource type="PackedScene" uid="uid://cksyp24oxgrtb" path="res://objects/background.tscn" id="2_yjkok"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yjkok"]
+color = Color(1, 1, 0, 1)
+thickness = 20
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_2iy26"]
+color = Color(1, 0.501961, 0, 1)
+thickness = 20
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_kv8mn"]
+color = Color(1, 0.501961, 0, 1)
+thickness = 20
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_1sggn"]
+color = Color(1, 1, 0, 1)
+thickness = 20
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_e6vpq"]
+color = Color(1, 0.494118, 0, 1)
+thickness = 20
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_o7i7e"]
+color = Color(1, 0.498039, 0, 1)
+thickness = 20
+vertical = true
 
 [node name="Options" type="Node"]
 script = ExtResource("1_c2u1v")
 
 [node name="Background" parent="." instance=ExtResource("2_yjkok")]
 
-[node name="Label" type="Label" parent="."]
+[node name="OptionsTitle" type="Label" parent="."]
 offset_left = 64.0
 offset_top = 64.0
-offset_right = 232.0
-offset_bottom = 125.0
+offset_right = 251.0
+offset_bottom = 98.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_font_sizes/font_size = 44
+theme_override_font_sizes/font_size = 64
 text = "OPTIONS"
 
-[node name="BackButton" type="Button" parent="."]
-offset_left = 1184.0
+[node name="LivesLabel" type="Label" parent="."]
+offset_left = 760.0
+offset_top = 248.0
+offset_right = 858.0
+offset_bottom = 272.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "LIVES"
+
+[node name="LivesScrollBar" type="HScrollBar" parent="."]
+offset_left = 904.0
+offset_top = 232.0
+offset_right = 1088.0
+offset_bottom = 280.0
+theme_override_styles/grabber = SubResource("StyleBoxLine_yjkok")
+theme_override_styles/grabber_highlight = SubResource("StyleBoxLine_2iy26")
+theme_override_styles/grabber_pressed = SubResource("StyleBoxLine_kv8mn")
+step = 1.0
+
+[node name="NumLivesLabel" type="Label" parent="."]
+offset_left = 1128.0
+offset_top = 248.0
+offset_right = 1168.0
+offset_bottom = 260.0
+text = "0"
+
+[node name="ContinueLabel" type="Label" parent="."]
+offset_left = 680.0
+offset_top = 376.0
+offset_right = 858.0
+offset_bottom = 400.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "CONTINUES"
+
+[node name="ContinueScrollBar" type="HScrollBar" parent="."]
+offset_left = 904.0
+offset_top = 360.0
+offset_right = 1088.0
+offset_bottom = 408.0
+theme_override_styles/grabber = SubResource("StyleBoxLine_1sggn")
+theme_override_styles/grabber_highlight = SubResource("StyleBoxLine_e6vpq")
+theme_override_styles/grabber_pressed = SubResource("StyleBoxLine_o7i7e")
+step = 1.0
+
+[node name="NumContinuesLabel" type="Label" parent="."]
+offset_left = 1136.0
+offset_top = 376.0
+offset_right = 1176.0
+offset_bottom = 388.0
+text = "0"
+
+[node name="ApplyButton" type="Button" parent="."]
+offset_left = 1088.0
 offset_top = 648.0
-offset_right = 1229.0
+offset_right = 1151.0
+offset_bottom = 679.0
+theme_override_colors/font_disabled_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+text = "SAVE"
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 1176.0
+offset_top = 648.0
+offset_right = 1240.0
 offset_bottom = 679.0
 theme_override_colors/font_disabled_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
@@ -31,5 +127,18 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 text = "BACK
 "
+
+[node name="ItemList" type="ItemList" parent="."]
+offset_left = 504.0
+offset_top = 481.0
+offset_right = 1088.0
+offset_bottom = 513.0
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+item_count = 2
+max_columns = 2
+fixed_column_width = 275
+item_0/text = "FULL SCREEN"
+item_1/text = "WINDOWED MODE"
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

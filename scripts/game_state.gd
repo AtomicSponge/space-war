@@ -1,8 +1,8 @@
 extends Node
 
 # Game Settings
-var NumberLives: int = 2
-var NumberContinues: int = 0
+static var NumberLives: int = 2
+static var NumberContinues: int = 0
 const MIN_LIVES: int = 0
 const MAX_LIVES: int = 5
 const MIN_CONTINUES: int = 0
@@ -12,21 +12,21 @@ const DEFAULT_CONTINUES: int = 0
 const DEATH_PENALTY: int = 100000
 
 # Player Data
-var PlayerLives: int = 2
-var PlayerContinues: int = 0
-var PlayerScore: int = 0
+static var PlayerLives: int = 2
+static var PlayerContinues: int = 0
+static var PlayerScore: int = 0
 
 # Scores
-var HighScores: Array[int] = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+static var HighScores: Array[int] = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
 
 # Display Settings
-var DisplayMode: int = 0
+static var DisplayMode: int = 0
 
 # Private variables
 const _save_path: String = "user://game.dat"
 
 # Load game settings - called during startup
-func LoadGameData() -> int:
+static func LoadGameData() -> int:
 	if not FileAccess.file_exists(_save_path):
 		return 1
 
@@ -46,7 +46,7 @@ func LoadGameData() -> int:
 	return 0
 
 # Save game settings - called at game over
-func SaveGameData() -> int:
+static func SaveGameData() -> int:
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
 		DisplayMode = 0
 	elif DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
@@ -69,7 +69,7 @@ func SaveGameData() -> int:
 	return 0
 
 # Display an alert
-func alert(text: String) -> void:
+static func alert(text: String) -> void:
 	var dialog = AcceptDialog.new()
 	dialog.dialog_text = text
 	dialog.dialog_hide_on_ok = false # Disable default behaviour

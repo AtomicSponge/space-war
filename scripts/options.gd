@@ -14,6 +14,8 @@ func _ready() -> void:
 	ContinueScrollBar.max_value = GameState.MAX_CONTINUES
 	ContinueScrollBar.min_value = GameState.MIN_CONTINUES
 	ContinueScrollBar.value = GameState.NumberContinues
+	NumLivesLabel.text = "%d" % LivesScrollBar.value
+	NumContinuesLabel.text = "%d" % ContinueScrollBar.value
 	BackButton.grab_focus()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,12 +39,23 @@ func _on_reset_button_pressed() -> void:
 func _on_save_button_pressed() -> void:
 	GameState.NumberLives = LivesScrollBar.value
 	GameState.NumberContinues = ContinueScrollBar.value
+
+	var dialog = AcceptDialog.new()
+	dialog.title = "SAVED"
+	dialog.dialog_text = "SETTINGS SAVED"
+	dialog.dialog_hide_on_ok = false # Disable default behaviour
+	dialog.connect('confirmed', dialog.queue_free) # Free node on OK
+	add_child(dialog)
+	dialog.popup_centered()
+	dialog.show()
+
 	GameState.SaveGameData()
 
 # Back button pressed, return to main menu
 func _on_back_button_pressed() -> void:
 	SceneManager.SwitchScene("MainMenu")
 
+# Reset dialog confirmed - reset values and save to disk
 func _reset_dialog_confirmed() -> void:
 	GameState.NumberLives = GameState.DEFAULT_LIVES
 	LivesScrollBar.value = GameState.DEFAULT_LIVES

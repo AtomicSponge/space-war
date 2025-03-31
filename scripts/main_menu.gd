@@ -5,7 +5,6 @@ extends Node
 @onready var CreditsTimer: Timer = $CreditsTimer
 
 # Array of strings for the main button
-# This is manualy created
 const MenuOptions: Array[String] = [ 
 	"NEW GAME", "HIGH SCORES", "OPTIONS", "QUIT"
 ]

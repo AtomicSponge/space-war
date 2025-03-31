@@ -51,10 +51,10 @@ func _menu_select() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if Input.is_action_pressed("ui_left") and $ScrollTimer.is_stopped():
+	if Input.is_action_pressed("ui_left") and ScrollTimer.is_stopped():
 		_menu_left()
 		ScrollTimer.start()
-	if Input.is_action_pressed("ui_right") and $ScrollTimer.is_stopped():
+	if Input.is_action_pressed("ui_right") and ScrollTimer.is_stopped():
 		_menu_right()
 		ScrollTimer.start()
 	if Input.is_action_pressed("ui_accept") or Input.is_action_pressed("ui_select"):

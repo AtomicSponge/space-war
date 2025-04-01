@@ -13,6 +13,7 @@ var CurrentContinues: int = 0
 
 signal save_complete
 
+# Save options to disk
 func do_options_save() -> void:
 	GameState.NumberLives = LivesScrollBar.value
 	GameState.NumberContinues = ContinueScrollBar.value

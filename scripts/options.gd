@@ -16,6 +16,8 @@ signal save_complete
 func do_options_save() -> void:
 	GameState.NumberLives = LivesScrollBar.value
 	GameState.NumberContinues = ContinueScrollBar.value
+	CurrentLives = GameState.NumberLives
+	CurrentContinues = GameState.NumberContinues
 	if DisplayList.is_selected(0) and CurrentDisplayMode == 1:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		CurrentDisplayMode = 0

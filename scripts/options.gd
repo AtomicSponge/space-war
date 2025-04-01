@@ -8,15 +8,19 @@ extends Node
 @onready var BackButton = $BackButton
 
 var CurrentDisplayMode: int = 0
+var CurrentLives: int = 0
+var CurrentContinues: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	LivesScrollBar.max_value = GameState.MAX_LIVES
 	LivesScrollBar.min_value = GameState.MIN_LIVES
 	LivesScrollBar.value = GameState.NumberLives
+	CurrentLives = GameState.NumberLives
 	ContinueScrollBar.max_value = GameState.MAX_CONTINUES
 	ContinueScrollBar.min_value = GameState.MIN_CONTINUES
 	ContinueScrollBar.value = GameState.NumberContinues
+	CurrentContinues = GameState.NumberContinues
 	NumLivesLabel.text = "%d" % LivesScrollBar.value
 	NumContinuesLabel.text = "%d" % ContinueScrollBar.value
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
@@ -46,7 +50,6 @@ func _on_reset_button_pressed() -> void:
 		GameState.SaveGameData()
 	)
 	dialog.canceled.connect (dialog.queue_free)
-	dialog.add_theme_color_override("default_color", Color(1, 1, 0, 1))
 	add_child(dialog)
 	dialog.popup_centered()
 	dialog.show()
@@ -73,4 +76,24 @@ func _on_save_button_pressed() -> void:
 
 # Back button pressed, return to main menu
 func _on_back_button_pressed() -> void:
+	var changedDialog = func():
+		var dialog = ConfirmationDialog.new()
+		dialog.title = "SETTINGS CHANGED"
+		dialog.dialog_text = "SETTINGS CHANGED DO YOU WANT TO SAVE?"
+		dialog.confirmed.connect (func():
+			dialog.queue_free()
+			GameState.SaveGameData()
+		)
+		dialog.canceled.connect (func():
+			dialog.queue_free()
+		)
+		add_child(dialog)
+		dialog.popup_centered()
+		dialog.show()
+	if LivesScrollBar.value != CurrentLives or ContinueScrollBar.value != CurrentContinues:
+		changedDialog.call()
+	elif DisplayList.is_selected(0) and CurrentDisplayMode == 1:
+		changedDialog.call()
+	elif DisplayList.is_selected(1) and CurrentDisplayMode == 0:
+		changedDialog.call()
 	SceneManager.SwitchScene("MainMenu")

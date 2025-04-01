@@ -26,7 +26,7 @@ static var DisplayMode: int = 0
 const _save_path: String = "user://game.dat"
 
 # Load game settings - called during startup
-static func LoadGameData() -> int:
+func LoadGameData() -> int:
 	if not FileAccess.file_exists(_save_path):
 		return 1
 
@@ -46,7 +46,7 @@ static func LoadGameData() -> int:
 	return 0
 
 # Save game settings - called at game over
-static func SaveGameData() -> int:
+func SaveGameData() -> int:
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
 		DisplayMode = 0
 	elif DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
@@ -69,7 +69,7 @@ static func SaveGameData() -> int:
 	return 0
 
 # Display an alert
-static func alert(text: String) -> void:
+func alert(text: String) -> void:
 	var dialog = AcceptDialog.new()
 	dialog.dialog_text = text
 	dialog.dialog_hide_on_ok = false # Disable default behaviour

@@ -92,7 +92,10 @@ func _on_back_button_pressed() -> void:
 			do_options_save()
 			dialog.queue_free()
 		)
-		dialog.canceled.connect (dialog.queue_free)
+		dialog.canceled.connect (func():
+			save_complete.emit()
+			dialog.queue_free()
+		)
 		add_child(dialog)
 		dialog.popup_centered()
 		dialog.show()
@@ -102,5 +105,7 @@ func _on_back_button_pressed() -> void:
 		changedDialog.call()
 	elif DisplayList.is_selected(1) and CurrentDisplayMode == 0:
 		changedDialog.call()
+	else:
+		SceneManager.SwitchScene("MainMenu")
 	await save_complete
 	SceneManager.SwitchScene("MainMenu")

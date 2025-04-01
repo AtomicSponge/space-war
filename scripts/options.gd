@@ -73,7 +73,7 @@ func _on_reset_button_pressed() -> void:
 		LivesScrollBar.value = GameState.DEFAULT_LIVES
 		GameState.NumberContinues = GameState.DEFAULT_CONTINUES
 		ContinueScrollBar.value = GameState.DEFAULT_CONTINUES
-		GameState.SaveGameData()
+		do_options_save()
 		dialog.queue_free()
 	)
 	dialog.canceled.connect (dialog.queue_free)

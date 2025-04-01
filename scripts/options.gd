@@ -11,6 +11,30 @@ var CurrentDisplayMode: int = 0
 var CurrentLives: int = 0
 var CurrentContinues: int = 0
 
+signal save_complete
+
+func do_options_save() -> void:
+	GameState.NumberLives = LivesScrollBar.value
+	GameState.NumberContinues = ContinueScrollBar.value
+	if DisplayList.is_selected(0) and CurrentDisplayMode == 1:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		CurrentDisplayMode = 0
+	elif DisplayList.is_selected(1) and CurrentDisplayMode == 0:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		CurrentDisplayMode = 1
+	if GameState.SaveGameData() != -1:
+		var dialog = AcceptDialog.new()
+		dialog.title = "SAVED"
+		dialog.dialog_text = "SETTINGS SAVED"
+		dialog.dialog_hide_on_ok = false # Disable default behaviour
+		dialog.connect('confirmed', func():
+			dialog.queue_free()
+			save_complete.emit()
+		) # Free node on OK
+		add_child(dialog)
+		dialog.popup_centered()
+		dialog.show()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	LivesScrollBar.max_value = GameState.MAX_LIVES
@@ -42,12 +66,12 @@ func _on_reset_button_pressed() -> void:
 	dialog.title = "CONFIRM RESET"
 	dialog.dialog_text = "CONFIRM RESET SETTINGS"
 	dialog.confirmed.connect (func():
-		dialog.queue_free()
 		GameState.NumberLives = GameState.DEFAULT_LIVES
 		LivesScrollBar.value = GameState.DEFAULT_LIVES
 		GameState.NumberContinues = GameState.DEFAULT_CONTINUES
 		ContinueScrollBar.value = GameState.DEFAULT_CONTINUES
 		GameState.SaveGameData()
+		dialog.queue_free()
 	)
 	dialog.canceled.connect (dialog.queue_free)
 	add_child(dialog)
@@ -56,23 +80,7 @@ func _on_reset_button_pressed() -> void:
 
 # Save button pressed, apply and save to disk
 func _on_save_button_pressed() -> void:
-	GameState.NumberLives = LivesScrollBar.value
-	GameState.NumberContinues = ContinueScrollBar.value
-	if DisplayList.is_selected(0) and CurrentDisplayMode == 1:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		CurrentDisplayMode = 0
-	elif DisplayList.is_selected(1) and CurrentDisplayMode == 0:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		CurrentDisplayMode = 1
-	if GameState.SaveGameData() != -1:
-		var dialog = AcceptDialog.new()
-		dialog.title = "SAVED"
-		dialog.dialog_text = "SETTINGS SAVED"
-		dialog.dialog_hide_on_ok = false # Disable default behaviour
-		dialog.connect('confirmed', dialog.queue_free) # Free node on OK
-		add_child(dialog)
-		dialog.popup_centered()
-		dialog.show()
+	do_options_save()
 
 # Back button pressed, return to main menu
 func _on_back_button_pressed() -> void:
@@ -81,12 +89,10 @@ func _on_back_button_pressed() -> void:
 		dialog.title = "SETTINGS CHANGED"
 		dialog.dialog_text = "SETTINGS CHANGED DO YOU WANT TO SAVE?"
 		dialog.confirmed.connect (func():
-			dialog.queue_free()
-			GameState.SaveGameData()
-		)
-		dialog.canceled.connect (func():
+			do_options_save()
 			dialog.queue_free()
 		)
+		dialog.canceled.connect (dialog.queue_free)
 		add_child(dialog)
 		dialog.popup_centered()
 		dialog.show()
@@ -96,4 +102,5 @@ func _on_back_button_pressed() -> void:
 		changedDialog.call()
 	elif DisplayList.is_selected(1) and CurrentDisplayMode == 0:
 		changedDialog.call()
+	await save_complete
 	SceneManager.SwitchScene("MainMenu")

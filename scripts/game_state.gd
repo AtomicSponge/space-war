@@ -3,12 +3,14 @@ extends Node
 # Game Settings
 static var NumberLives: int = 2
 static var NumberContinues: int = 0
+# Constants for setting options
 const MIN_LIVES: int = 0
 const MAX_LIVES: int = 5
 const MIN_CONTINUES: int = 0
 const MAX_CONTINUES: int = 3
 const DEFAULT_LIVES: int = 2
 const DEFAULT_CONTINUES: int = 0
+# Score penalty on death
 const DEATH_PENALTY: int = 100000
 
 # Player Data

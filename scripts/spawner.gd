@@ -4,6 +4,7 @@ var SpawnQueue:Array[Dictionary] = []
 
 const _queue_path: String = "res://spawner.dat"
 
+# Load the spawning script
 func LoadScript() -> int:
 	var file = FileAccess.open_encrypted_with_pass(_queue_path, FileAccess.READ, "dragongelatohierarchy")
 	if file == null:

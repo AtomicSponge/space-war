@@ -51,6 +51,5 @@ visible = false
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 300.0
-one_shot = true
 
 [connection signal="quit_game" from="PauseMenu" to="." method="_on_pause_menu_quit_game"]

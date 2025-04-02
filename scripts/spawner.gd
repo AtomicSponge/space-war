@@ -1,5 +1,6 @@
 extends Node
 
+# Array[{"time" (int), "type" (int), "location" (Vector2)}]
 var SpawnQueue:Array[Dictionary] = []
 
 const _queue_path: String = "res://spawner.dat"
@@ -12,4 +13,8 @@ func LoadScript() -> int:
 		return -1
 	SpawnQueue = file.get_var()
 	file.close()
+	
+	# Sort by decending time
+	SpawnQueue.sort_custom(func(a, b): return a["time"] > b["time"])
+	
 	return 0

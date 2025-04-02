@@ -1,20 +1,25 @@
 extends Node
 
 # Array[{"time" (int), "type" (int), "location" (Vector2)}]
-var SpawnQueue:Array[Dictionary] = []
+const SpawnQueue:Array[Dictionary] = [
+	{ "time": 0, "type": 0, "location": Vector2(0,0)}
+]
 
-const _queue_path: String = "res://spawner.dat"
+# Get all enemies for the current time
+func GetEnemies(currentTime: float) -> Array:
+	
+	return []
 
 # Load the spawning script
-func LoadScript() -> int:
-	var file = FileAccess.open_encrypted_with_pass(_queue_path, FileAccess.READ, "dragongelatohierarchy")
-	if file == null:
-		GameState.alert('Could not load spawner data!')
-		return -1
-	SpawnQueue = file.get_var()
-	file.close()
+#func LoadScript() -> int:
+#	var file = FileAccess.open_encrypted_with_pass(_queue_path, FileAccess.READ, "dragongelatohierarchy")
+#	if file == null:
+#		GameState.alert('Could not load spawner data!')
+#		return -1
+#	SpawnQueue = file.get_var()
+#	file.close()
 	
 	# Sort by decending time
-	SpawnQueue.sort_custom(func(a, b): return a["time"] > b["time"])
+#	SpawnQueue.sort_custom(func(a, b): return a["time"] > b["time"])
 	
-	return 0
+#	return 0

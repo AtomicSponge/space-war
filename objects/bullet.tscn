@@ -12,7 +12,7 @@ script = ExtResource("1_1hbe6")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_3ndsa")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BulletHitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3ndsa")
 
 [node name="LifeTimer" type="Timer" parent="."]

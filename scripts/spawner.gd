@@ -2,7 +2,10 @@ extends Node
 
 # Array[{"time" (float), "type" (int), "location" (Vector2)}]
 const SpawnQueue:Array[Dictionary] = [
-	{ "time": 300.0, "type": 0, "location": Vector2(0, 0) }
+	{ "time": 180.0, "type": 0, "location": Vector2(0, 0) },
+	{ "time": 180.0, "type": 0, "location": Vector2(0, 0) },
+	{ "time": 180.0, "type": 0, "location": Vector2(0, 0) },
+	{ "time": 180.0, "type": 0, "location": Vector2(0, 0) }
 ]
 
 # Get all enemies for the current time

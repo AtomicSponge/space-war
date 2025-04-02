@@ -50,6 +50,6 @@ visible = false
 visible = false
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 300.0
+wait_time = 180.0
 
 [connection signal="quit_game" from="PauseMenu" to="." method="_on_pause_menu_quit_game"]

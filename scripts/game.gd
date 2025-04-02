@@ -92,8 +92,16 @@ func _process(_delta: float) -> void:
 	
 	# Spawn enemies
 	var enemies = Spawner.GetEnemies(SpawnTimer.time_left)
-	if not enemies.is_empty():
-		pass
+	for enemy in enemies:
+		match enemy["type"]:
+			0:
+				pass
+			1:
+				pass
+			2:
+				pass
+			3:
+				pass
 
 # Called when selecting quit game from the pause menu
 func _on_pause_menu_quit_game() -> void:

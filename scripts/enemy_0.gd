@@ -4,9 +4,10 @@ extends Area2D
 
 @onready var EnemyHitbox: CollisionShape2D = $EnemyHitbox
 @onready var TowerSprite: Sprite2D = $TowerSprite
-@onready var CannonSprite: Sprite2D = $CannonSprite
 @onready var TowerAnimationPlayer: AnimationPlayer = $TowerSprite/TowerAnimationPlayer
+@onready var CannonSprite: Sprite2D = $CannonSprite
 @onready var CannonAnimationPlayer: AnimationPlayer = $CannonSprite/CannonAnimationPlayer
+@onready var ShotMarker: Marker2D = $ShotMarker
 
 var _is_ready: bool = false
 
@@ -24,3 +25,4 @@ func _process(_delta: float) -> void:
 	if not _is_ready:
 		return
 	CannonSprite.look_at(GameState.PlayerLocation)
+	ShotMarker.look_at(GameState.PlayerLocation)

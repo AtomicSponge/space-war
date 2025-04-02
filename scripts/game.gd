@@ -109,6 +109,8 @@ func _process(_delta: float) -> void:
 				pass
 			3:
 				pass
+			_:
+				pass
 
 # Called when selecting quit game from the pause menu
 func _on_pause_menu_quit_game() -> void:

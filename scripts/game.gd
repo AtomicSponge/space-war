@@ -5,6 +5,7 @@ extends Node
 @onready var PauseMenu = $PauseMenu
 @onready var StartPosition = $StartPosition
 @onready var Continue = $Continue
+@onready var SpawnTimer = $SpawnTimer
 
 # Flag to check if the game is in session
 var GameStarted: bool = false
@@ -23,6 +24,7 @@ func NewGame() -> void:
 	MessageLabel.hide()
 	Player.show()
 	get_tree().paused = false
+	SpawnTimer.start()
 	GameStarted = true
 
 # Called at the end of a game
@@ -54,7 +56,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	# Game not running, start it.
 	if not GameStarted:
 		NewGame()
 

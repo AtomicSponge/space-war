@@ -22,6 +22,7 @@ config/icon="res://game.ico"
 
 SceneManager="*res://scenes/scene_manager.tscn"
 GameState="*res://scripts/game_state.gd"
+Spawner="*res://scripts/spawner.gd"
 
 [display]
 

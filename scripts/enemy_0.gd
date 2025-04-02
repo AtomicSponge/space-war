@@ -8,6 +8,8 @@ extends Area2D
 @onready var TowerAnimationPlayer: AnimationPlayer = $TowerSprite/TowerAnimationPlayer
 @onready var CannonAnimationPlayer: AnimationPlayer = $CannonSprite/CannonAnimationPlayer
 
+var _is_ready: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EnemyHitbox.disabled = true
@@ -15,7 +17,10 @@ func _ready() -> void:
 	CannonAnimationPlayer.play("Fade")
 	await TowerAnimationPlayer.animation_finished
 	EnemyHitbox.disabled = false
+	_is_ready = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if not _is_ready:
+		return
+	CannonSprite.look_at(get_global_mouse_position())

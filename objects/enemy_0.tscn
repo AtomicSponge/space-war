@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1qbbvs5fes35"]
+
+[ext_resource type="Script" uid="uid://dmwp8eqju0x8l" path="res://scripts/enemy_0.gd" id="1_pkbdq"]
+
+[node name="Enemy0" type="Area2D"]
+script = ExtResource("1_pkbdq")
+
+[node name="Base" type="Sprite2D" parent="."]
+
+[node name="Gun" type="Sprite2D" parent="."]

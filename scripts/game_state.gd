@@ -27,6 +27,8 @@ static var DisplayMode: int = 0
 # Private variables
 const _save_path: String = "user://game.dat"
 
+static var PlayerLocation: Vector2 = Vector2(0, 0)
+
 # Load game settings - called during startup
 func LoadGameData() -> int:
 	if not FileAccess.file_exists(_save_path):

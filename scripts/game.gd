@@ -61,6 +61,9 @@ func _process(_delta: float) -> void:
 	if not GameStarted:
 		NewGame()
 
+	# Sample player location
+	GameState.PlayerLocation = Player.position
+
 	# Player lost, end game
 	if GameState.PlayerLives < 0:
 		# Player has continues, ask to resume

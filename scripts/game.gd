@@ -89,6 +89,11 @@ func _process(_delta: float) -> void:
 		get_tree().paused = true
 		PauseMenu.show()
 		PauseMenu.ResumeButton.grab_focus()
+	
+	# Spawn enemies
+	var enemies = Spawner.GetEnemies(SpawnTimer.time_left)
+	if not enemies.is_empty():
+		pass
 
 # Called when selecting quit game from the pause menu
 func _on_pause_menu_quit_game() -> void:

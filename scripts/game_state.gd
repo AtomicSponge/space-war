@@ -27,6 +27,7 @@ static var DisplayMode: int = 0
 # Private variables
 const _save_path: String = "user://game.dat"
 
+# Global location of player, updates in the main loop
 static var PlayerLocation: Vector2 = Vector2(0, 0)
 
 # Load game settings - called during startup

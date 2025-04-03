@@ -85,7 +85,6 @@ radius = 16.0
 [node name="Enemy0" type="Area2D"]
 script = ExtResource("1_pkbdq")
 Bullet = ExtResource("2_ougn6")
-metadata/_edit_group_ = true
 
 [node name="TowerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_ipcih")

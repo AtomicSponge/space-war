@@ -9,7 +9,6 @@
 [node name="Player" type="Area2D"]
 script = ExtResource("1_ykyjo")
 Bullet = ExtResource("2_uxov2")
-metadata/_edit_group_ = true
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_eqqp1")

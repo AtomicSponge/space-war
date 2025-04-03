@@ -26,11 +26,11 @@ func _process(_delta: float) -> void:
 	if not _is_ready:
 		return
 	CannonSprite.look_at(GameState.PlayerLocation)
-	ShotMarker.look_at(GameState.PlayerLocation)
 
 	# Fire at player
 	if ShotTimer.is_stopped():
 		var b = Bullet.instantiate()
-		add_child(b) 
-		b.position = ShotMarker.global_position
+		add_child(b)
+		b.position = ShotMarker.position
+		b.look_at(GameState.PlayerLocation)
 		ShotTimer.start()

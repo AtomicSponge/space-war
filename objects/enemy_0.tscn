@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dmwp8eqju0x8l" path="res://scripts/enemy_0.gd" id="1_pkbdq"]
 [ext_resource type="Texture2D" uid="uid://tcs1edo2lt7q" path="res://gfx/enemy0_tower.png" id="2_ipcih"]
-[ext_resource type="PackedScene" uid="uid://ch60k31b386id" path="res://objects/enemy_0_bullet.tscn" id="2_ougn6"]
+[ext_resource type="PackedScene" uid="uid://ch60k31b386id" path="res://objects/enemy_bullet.tscn" id="2_ougn6"]
 [ext_resource type="Texture2D" uid="uid://cvv7krj87h45y" path="res://gfx/enemy0_cannon.png" id="3_ougn6"]
 
 [sub_resource type="Animation" id="Animation_ipcih"]

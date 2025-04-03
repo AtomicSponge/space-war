@@ -14,6 +14,7 @@ var _is_ready: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_to_group("enemies", true)
 	EnemyHitbox.disabled = true
 	TowerAnimationPlayer.play("Fade")
 	CannonAnimationPlayer.play("Fade")

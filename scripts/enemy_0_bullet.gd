@@ -13,3 +13,9 @@ func _process(delta: float) -> void:
 	if LifeTimer.is_stopped():
 		queue_free()
 	position += transform.x * speed * delta
+
+#
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		body.queue_free()
+	queue_free()

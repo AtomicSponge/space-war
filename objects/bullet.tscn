@@ -19,4 +19,4 @@ shape = SubResource("CircleShape2D_3ndsa")
 wait_time = 3.0
 one_shot = true
 
-[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

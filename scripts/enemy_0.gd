@@ -8,6 +8,7 @@ extends Area2D
 @onready var CannonSprite: Sprite2D = $CannonSprite
 @onready var CannonAnimationPlayer: AnimationPlayer = $CannonSprite/CannonAnimationPlayer
 @onready var ShotMarker: Marker2D = $ShotMarker
+@onready var ShotTimer: Timer = $ShotTimer
 
 var _is_ready: bool = false
 
@@ -26,3 +27,10 @@ func _process(_delta: float) -> void:
 		return
 	CannonSprite.look_at(GameState.PlayerLocation)
 	ShotMarker.look_at(GameState.PlayerLocation)
+
+	# Fire at player
+	if ShotTimer.is_stopped():
+		var b = Bullet.instantiate()
+		add_child(b) 
+		b.position = ShotMarker.global_position
+		ShotTimer.start()

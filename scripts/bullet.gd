@@ -14,7 +14,8 @@ func _process(delta: float) -> void:
 		queue_free()
 	position += transform.x * speed * delta
 
-func _on_Bullet_body_entered(body: Node2D) -> void:
+#
+func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("mobs"):
 		body.queue_free()
 	queue_free()

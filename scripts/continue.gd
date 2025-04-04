@@ -23,7 +23,7 @@ func _input(event: InputEvent) -> void:
 			if event is InputEventMouseMotion:
 				return
 			else:
-				ContinueTimer.stop()
 				ContinueSelected = true
+				ContinueTimer.stop()
 				get_tree().paused = false
 				hide()

@@ -14,7 +14,7 @@ extends Area2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Use one shot so multiple hits do not cause extra deaths
-	Events.player_hit.connect(_take_damage, CONNECT_ONE_SHOT)
+	Events.player_hit.connect(_player_death, CONNECT_ONE_SHOT)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -62,7 +62,7 @@ func _process(delta: float) -> void:
 	position = position.clamp(Vector2.ZERO, ScreenSize)
 
 # Event for player taking damage
-func _take_damage():
+func _player_death():
 	PlayerHitbox.set_deferred("disabled", true)
 	hide()
 	get_tree().paused = true
@@ -73,7 +73,17 @@ func _take_damage():
 	get_tree().paused = false
 	# If extra lives, play respawn effect
 	if GameState.PlayerLives >= 0:
-		RespawnAnimationPlayer.play("Blink")
-		await RespawnAnimationPlayer.animation_finished
-	Events.player_hit.connect(_take_damage, CONNECT_ONE_SHOT)
+		_player_respawn()
+	elif GameState.PlayerContinues > 0:
+		# Signal to continue
+		pass
+	else:
+		# Signal to game over
+		pass
+	
+# Respawn player
+func _player_respawn():
+	RespawnAnimationPlayer.play("Blink")
+	await RespawnAnimationPlayer.animation_finished
+	Events.player_hit.connect(_player_death, CONNECT_ONE_SHOT)
 	PlayerHitbox.set_deferred("disabled", false)

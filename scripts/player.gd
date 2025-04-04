@@ -12,6 +12,7 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Use one shot so multiple hits do not cause extra deaths
 	Events.player_hit.connect(_take_damage, CONNECT_ONE_SHOT)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,9 +69,9 @@ func _take_damage():
 	# Change below to playing explosion effect
 	await get_tree().create_timer(2.0).timeout
 	show()
+	get_tree().paused = false
 	# If extra lives, play respawn effect
 	if GameState.PlayerLives >= 0:
 		pass
 	Events.player_hit.connect(_take_damage, CONNECT_ONE_SHOT)
-	get_tree().paused = false
 	PlayerHitbox.set_deferred("disabled", false)

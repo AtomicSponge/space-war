@@ -4,6 +4,7 @@ extends Area2D
 @export var Bullet: PackedScene
 
 @onready var Sprite: Sprite2D = $PlayerSprite
+@onready var RespawnAnimationPlayer: AnimationPlayer = $PlayerSprite/RespawnAnimationPlayer
 @onready var PlayerHitbox: CollisionShape2D = $PlayerHitbox
 @onready var ShotMarker: Marker2D = $ShotMarker
 @onready var ShotTimer: Timer = $ShotTimer

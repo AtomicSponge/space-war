@@ -14,6 +14,8 @@ Bullet = ExtResource("2_uxov2")
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_eqqp1")
 
+[node name="RespawnAnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
+
 [node name="PlayerHitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_eqqp1")
 

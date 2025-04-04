@@ -16,6 +16,4 @@ func _process(delta: float) -> void:
 
 # Test enemy bullet collision
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player"):
-		pass
 	queue_free()

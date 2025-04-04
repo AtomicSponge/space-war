@@ -4,9 +4,14 @@ extends Area2D
 @export var Bullet: PackedScene
 
 @onready var Sprite: Sprite2D = $PlayerSprite
-@onready var ScreenSize: Vector2 = get_viewport_rect().size
+@onready var PlayerHitbox: CollisionShape2D = $PlayerHitbox
 @onready var ShotMarker: Marker2D = $ShotMarker
 @onready var ShotTimer: Timer = $ShotTimer
+
+@onready var ScreenSize: Vector2 = get_viewport_rect().size
+
+func _ready() -> void:
+	Events.player_hit.connect(_take_damage)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -52,3 +57,8 @@ func _process(delta: float) -> void:
 	
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, ScreenSize)
+
+func _take_damage():
+	PlayerHitbox.set_deferred("disabled", true)
+	GameState.PlayerLives -= 1
+	PlayerHitbox.set_deferred("disabled", false)

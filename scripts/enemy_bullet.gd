@@ -16,4 +16,5 @@ func _process(delta: float) -> void:
 
 # Test enemy bullet collision
 func _on_area_entered(area: Area2D) -> void:
+	Events.player_hit.emit()
 	queue_free()

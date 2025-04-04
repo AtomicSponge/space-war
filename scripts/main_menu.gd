@@ -20,7 +20,7 @@ func _ready() -> void:
 # Move menu index left
 func _menu_left() -> void:
 	if CurrentOption > 0:
-		CurrentOption = CurrentOption - 1
+		CurrentOption -= 1
 	else:
 		CurrentOption = MenuOptions.size() - 1
 	MainBtn.text = MenuOptions[CurrentOption]
@@ -28,7 +28,7 @@ func _menu_left() -> void:
 # Move menu index right
 func _menu_right() -> void:
 	if CurrentOption < MenuOptions.size() - 1:
-		CurrentOption = CurrentOption + 1
+		CurrentOption += 1
 	else:
 		CurrentOption = 0
 	MainBtn.text = MenuOptions[CurrentOption]

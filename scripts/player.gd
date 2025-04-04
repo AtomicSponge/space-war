@@ -73,16 +73,17 @@ func _player_death():
 	get_tree().paused = false
 	# If extra lives, play respawn effect
 	if GameState.PlayerLives >= 0:
-		_player_respawn()
+		PlayerRespawn()
 	elif GameState.PlayerContinues > 0:
 		# Signal to continue
-		pass
+		Events.game_continue.emit()
 	else:
 		# Signal to game over
 		pass
 	
 # Respawn player
-func _player_respawn():
+func PlayerRespawn():
+	PlayerHitbox.set_deferred("disabled", true)
 	RespawnAnimationPlayer.play("Blink")
 	await RespawnAnimationPlayer.animation_finished
 	Events.player_hit.connect(_player_death, CONNECT_ONE_SHOT)

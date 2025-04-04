@@ -25,6 +25,10 @@ GameState="*res://scripts/game_state.gd"
 Events="*res://scripts/events.gd"
 Spawner="*res://scripts/spawner.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=1280

@@ -10,8 +10,9 @@ extends Area2D
 
 @onready var ScreenSize: Vector2 = get_viewport_rect().size
 
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Events.player_hit.connect(_take_damage)
+	Events.player_hit.connect(_take_damage, CONNECT_ONE_SHOT)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -58,7 +59,18 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, ScreenSize)
 
+# Event for player taking damage
 func _take_damage():
 	PlayerHitbox.set_deferred("disabled", true)
+	hide()
+	get_tree().paused = true
 	GameState.PlayerLives -= 1
+	# Change below to playing explosion effect
+	await get_tree().create_timer(2.0).timeout
+	show()
+	# If extra lives, play respawn effect
+	if GameState.PlayerLives >= 0:
+		pass
+	Events.player_hit.connect(_take_damage, CONNECT_ONE_SHOT)
+	get_tree().paused = false
 	PlayerHitbox.set_deferred("disabled", false)

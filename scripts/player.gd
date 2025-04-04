@@ -73,6 +73,7 @@ func _take_damage():
 	get_tree().paused = false
 	# If extra lives, play respawn effect
 	if GameState.PlayerLives >= 0:
-		pass
+		RespawnAnimationPlayer.play("Blink")
+		await RespawnAnimationPlayer.animation_finished
 	Events.player_hit.connect(_take_damage, CONNECT_ONE_SHOT)
 	PlayerHitbox.set_deferred("disabled", false)

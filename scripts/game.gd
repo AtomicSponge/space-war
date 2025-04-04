@@ -74,8 +74,6 @@ func _process(_delta: float) -> void:
 			Continue.show()
 			Continue.ContinueTimer.start()
 			await Continue.ContinueTimer.timeout
-			Continue.hide()
-			get_tree().paused = false
 			# Continue selected, resume gamed
 			if Continue.ContinueSelected:
 				Player.show()

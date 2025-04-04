@@ -13,6 +13,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not ContinueTimer.is_stopped():
 		CounterLabel.text = "%d" % snappedi(ContinueTimer.time_left, 1)
+	else:
+		hide()
 
 # Check if a button or key is pressed
 func _input(event: InputEvent) -> void:
@@ -23,3 +25,5 @@ func _input(event: InputEvent) -> void:
 			else:
 				ContinueTimer.stop()
 				ContinueSelected = true
+				get_tree().paused = false
+				hide()

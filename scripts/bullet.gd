@@ -14,8 +14,6 @@ func _process(delta: float) -> void:
 		queue_free()
 	position += transform.x * speed * delta
 
-#
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemies"):
-		body.queue_free()
-	queue_free()
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemies"):
+		pass

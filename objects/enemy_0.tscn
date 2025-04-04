@@ -83,6 +83,7 @@ _data = {
 radius = 16.0
 
 [node name="Enemy0" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_pkbdq")
 Bullet = ExtResource("2_ougn6")
 

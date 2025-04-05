@@ -101,5 +101,6 @@ func _process(_delta: float) -> void:
 func _on_pause_menu_quit_game() -> void:
 	GameOver()
 
+# Called when a contine is selected
 func _continue_selected() -> void:
 	Player.PlayerRespawn()

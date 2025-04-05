@@ -73,11 +73,11 @@ func _player_death():
 	if GameState.PlayerLives >= 1:
 		GameState.PlayerLives -= 1
 		PlayerRespawn()
+	# If extra continues, show continue screen
 	elif GameState.PlayerContinues > 0:
-		# Signal to continue
 		Events.game_continue.emit()
+	# Otherwise end game
 	else:
-		# Signal to game over
 		Events.game_over.emit()
 
 # Respawn player

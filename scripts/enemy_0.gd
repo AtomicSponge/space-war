@@ -41,3 +41,9 @@ func _process(_delta: float) -> void:
 func _take_damage(testName: StringName) -> void:
 	if name == testName:
 		queue_free()
+
+# Collided with player
+func _on_area_entered(area: Area2D) -> void:
+	if area.name == "Player":
+		Events.player_hit.emit()
+		queue_free()

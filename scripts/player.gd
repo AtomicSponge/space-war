@@ -13,6 +13,7 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	name = "Player"
 	# Use one shot so multiple hits do not cause extra deaths
 	Events.player_hit.connect(_player_death, CONNECT_ONE_SHOT)
 

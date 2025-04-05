@@ -35,6 +35,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				Events.game_continue_selected.emit()
 				hide()
 
+# Show the continue screen
 func _do_continue() -> void:
 	get_tree().paused = true
 	show()

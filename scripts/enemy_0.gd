@@ -14,6 +14,7 @@ var _is_ready: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Events.enemy_hit.connect(_take_damage)
 	EnemyHitbox.set_deferred("disabled", true)
 	TowerAnimationPlayer.play("Fade")
 	CannonAnimationPlayer.play("Fade")
@@ -35,3 +36,8 @@ func _process(_delta: float) -> void:
 		b.position = ShotMarker.position
 		b.look_at(GameState.PlayerLocation)
 		ShotTimer.start()
+
+# Enemy hit by player bullet, take damage
+func _take_damage(testName: StringName) -> void:
+	if name == testName:
+		queue_free()

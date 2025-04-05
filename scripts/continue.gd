@@ -12,13 +12,14 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not ContinueTimer.is_stopped():
 		CounterLabel.text = "%d" % snappedi(ContinueTimer.time_left - 1, 1)
+		# Timer expired, game over
 		if ContinueTimer.time_left < 1.0:
 			ContinueTimer.stop()
 			hide()
 			get_tree().paused = false
 			Events.game_over.emit()
 
-# Check if a button or key is pressed
+# Check if a button or key is pressed, if so resume game
 func _unhandled_input(event: InputEvent) -> void:
 	if not ContinueTimer.is_stopped():
 		if event is InputEventKey or InputEventJoypadButton or InputEventMouseButton:

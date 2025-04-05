@@ -28,11 +28,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			else:
 				ContinueTimer.stop()
 				get_tree().paused = false
-				GameState.PlayerContinues -= 1
-				GameState.PlayerLives = GameState.NumberLives
-				GameState.PlayerScore -= (GameState.DEATH_PENALTY * 10)
-				if GameState.PlayerScore < 0:
-					GameState.PlayerScore = 0
 				Events.game_continue_selected.emit()
 				hide()
 

@@ -51,14 +51,6 @@ func GameOver() -> void:
 	# No high score reached, switch to main menu
 	SceneManager.SwitchScene("MainMenu")
 
-# Resume game from a continue
-func ResumeGame() -> void:
-	GameState.PlayerLives = GameState.NumberLives
-	GameState.PlayerContinues -= 1
-	GameState.PlayerScore -= (GameState.DEATH_PENALTY * 10)
-	if GameState.PlayerScore < 0:
-		GameState.PlayerScore = 0
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Events.game_over.connect(GameOver)
@@ -97,10 +89,15 @@ func _process(_delta: float) -> void:
 			_:
 				pass
 
+# Called when a contine is selected
+func _continue_selected() -> void:
+	GameState.PlayerLives = GameState.NumberLives
+	GameState.PlayerContinues -= 1
+	GameState.PlayerScore -= (GameState.DEATH_PENALTY * 10)
+	if GameState.PlayerScore < 0:
+		GameState.PlayerScore = 0
+	Player.PlayerRespawn()
+
 # Called when selecting quit game from the pause menu
 func _on_pause_menu_quit_game() -> void:
 	GameOver()
-
-# Called when a contine is selected
-func _continue_selected() -> void:
-	Player.PlayerRespawn()

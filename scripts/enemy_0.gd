@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var Bullet: PackedScene
+@export var Health: int = 100
 
 @onready var EnemyHitbox: CollisionShape2D = $EnemyHitbox
 @onready var TowerSprite: Sprite2D = $TowerSprite
@@ -40,6 +41,8 @@ func _process(_delta: float) -> void:
 # Enemy hit by player bullet, take damage
 func _take_damage(testName: StringName) -> void:
 	if name == testName:
+		Health -= 20
+	if Health == 0:
 		queue_free()
 
 # Collided with player

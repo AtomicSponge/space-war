@@ -11,6 +11,8 @@ extends Node
 
 # Flag to check if the game is in session
 var GameStarted: bool = false
+# Used to regulate spawning to 1/10 sec ticks
+var LastTick: float = 0.0
 
 # Called when a new game starts
 func NewGame() -> void:
@@ -74,21 +76,23 @@ func _process(_delta: float) -> void:
 	
 	# Spawn enemies
 	print(snapped(SpawnTimer.time_left, 0.1))
-	var enemies = Spawner.GetEnemies(snapped(SpawnTimer.time_left, 0.1))
-	for enemy in enemies:
-		match enemy["type"]:
-			0:
-				var e = EnemyType0.instantiate()
-				add_child(e)
-				e.position = enemy["location"]
-			1:
-				pass
-			2:
-				pass
-			3:
-				pass
-			_:
-				pass
+	if LastTick != snapped(SpawnTimer.time_left, 0.1):
+		var enemies = Spawner.GetEnemies(snapped(SpawnTimer.time_left, 0.1))
+		for enemy in enemies:
+			match enemy["type"]:
+				0:
+					var e = EnemyType0.instantiate()
+					add_child(e)
+					e.position = enemy["location"]
+				1:
+					pass
+				2:
+					pass
+				3:
+					pass
+				_:
+					pass
+	LastTick = snapped(SpawnTimer.time_left, 0.1)
 
 # Called when a contine is selected
 func _continue_selected() -> void:

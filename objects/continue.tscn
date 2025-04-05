@@ -39,5 +39,5 @@ theme_override_font_sizes/font_size = 172
 text = "9"
 
 [node name="ContinueTimer" type="Timer" parent="."]
-wait_time = 9.0
+wait_time = 10.0
 one_shot = true

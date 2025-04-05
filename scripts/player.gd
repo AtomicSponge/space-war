@@ -66,23 +66,23 @@ func _player_death():
 	PlayerHitbox.set_deferred("disabled", true)
 	hide()
 	get_tree().paused = true
-	GameState.PlayerLives -= 1
 	# Change below to playing explosion effect
 	await get_tree().create_timer(2.0).timeout
-	show()
 	get_tree().paused = false
 	# If extra lives, play respawn effect
-	if GameState.PlayerLives >= 0:
+	if GameState.PlayerLives >= 1:
+		GameState.PlayerLives -= 1
 		PlayerRespawn()
 	elif GameState.PlayerContinues > 0:
 		# Signal to continue
 		Events.game_continue.emit()
 	else:
 		# Signal to game over
-		pass
-	
+		Events.game_over.emit()
+
 # Respawn player
 func PlayerRespawn():
+	show()
 	PlayerHitbox.set_deferred("disabled", true)
 	RespawnAnimationPlayer.play("Blink")
 	await RespawnAnimationPlayer.animation_finished

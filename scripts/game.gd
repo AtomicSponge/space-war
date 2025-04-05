@@ -51,8 +51,18 @@ func GameOver() -> void:
 	# No high score reached, switch to main menu
 	SceneManager.SwitchScene("MainMenu")
 
+# Resume game from a continue
+func ResumeGame() -> void:
+	GameState.PlayerLives = GameState.NumberLives
+	GameState.PlayerContinues -= 1
+	GameState.PlayerScore -= (GameState.DEATH_PENALTY * 10)
+	if GameState.PlayerScore < 0:
+		GameState.PlayerScore = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Events.game_over.connect(GameOver)
+	Events.game_continue_selected.connect(_continue_selected)
 	Player.set_position(StartPosition.position)
 	Player.hide()
 
@@ -63,31 +73,6 @@ func _process(_delta: float) -> void:
 
 	# Sample player location
 	GameState.PlayerLocation = Player.position
-
-	# Player lost, end game
-	if GameState.PlayerLives < 0:
-		# Player has continues, ask to resume
-		if GameState.PlayerContinues > 0:
-			get_tree().paused = true
-			Continue.ContinueSelected = false
-			Player.hide()
-			Continue.show()
-			Continue.ContinueTimer.start()
-			await Continue.ContinueTimer.timeout
-			# Continue selected, resume gamed
-			if Continue.ContinueSelected:
-				Player.show()
-				GameState.PlayerLives = GameState.NumberLives
-				GameState.PlayerContinues -= 1
-				GameState.PlayerScore -= (GameState.DEATH_PENALTY * 10)
-				if GameState.PlayerScore < 0:
-					GameState.PlayerScore = 0
-			# Continue not selected, end game
-			else:
-				GameOver()
-		# No continues, just end the game
-		else:
-			GameOver()
 
 	# Pause game - check GameStarted flag to prevent pop-up during game start/end events
 	if Input.is_action_pressed("pause_game") and GameStarted:
@@ -115,3 +100,6 @@ func _process(_delta: float) -> void:
 # Called when selecting quit game from the pause menu
 func _on_pause_menu_quit_game() -> void:
 	GameOver()
+
+func _continue_selected() -> void:
+	Player.PlayerRespawn()

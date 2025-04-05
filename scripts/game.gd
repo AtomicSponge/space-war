@@ -73,7 +73,8 @@ func _process(_delta: float) -> void:
 		PauseMenu.ResumeButton.grab_focus()
 	
 	# Spawn enemies
-	var enemies = Spawner.GetEnemies(SpawnTimer.time_left)
+	print(snapped(SpawnTimer.time_left, 0.1))
+	var enemies = Spawner.GetEnemies(snapped(SpawnTimer.time_left, 0.1))
 	for enemy in enemies:
 		match enemy["type"]:
 			0:

@@ -67,7 +67,7 @@ func _player_death():
 	hide()
 	get_tree().paused = true
 	# Change below to playing explosion effect
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	get_tree().paused = false
 	# If extra lives, play respawn effect
 	if GameState.PlayerLives >= 1:

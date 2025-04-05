@@ -78,6 +78,7 @@ func _process(_delta: float) -> void:
 		match enemy["type"]:
 			0:
 				var e = EnemyType0.instantiate()
+				e.name = "test"
 				add_child(e)
 				e.position = enemy["location"]
 			1:

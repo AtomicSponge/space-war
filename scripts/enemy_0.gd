@@ -31,7 +31,7 @@ func _process(_delta: float) -> void:
 		return
 
 	CannonSprite.look_at(GameState.PlayerLocation)
-
+	
 	# Fire at player
 	if ShotTimer.is_stopped():
 		var b = Bullet.instantiate()
@@ -48,6 +48,7 @@ func _take_damage(testName: StringName) -> void:
 		CannonAnimationPlayer.play("Flash")
 	if Health == 0:
 		_is_ready = false
+		EnemyHitbox.set_deferred("disabled", true)
 		GameState.PlayerScore += ScoreValue
 		TowerSprite.hide()
 		CannonSprite.hide()

@@ -2,6 +2,7 @@ extends Area2D
 
 @export var speed: int = 400
 @export var Bullet: PackedScene
+@export var Explosion: PackedScene
 
 @onready var Sprite: Sprite2D = $PlayerSprite
 @onready var RespawnAnimationPlayer: AnimationPlayer = $PlayerSprite/RespawnAnimationPlayer

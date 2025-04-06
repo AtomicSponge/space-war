@@ -78,6 +78,9 @@ func _player_death():
 	# If extra lives, play respawn effect
 	if GameState.PlayerLives >= 1:
 		GameState.PlayerLives -= 1
+		GameState.PlayerScore -= GameState.DEATH_PENALTY
+		if GameState.PlayerScore < 0:
+			GameState.PlayerScore = 0
 		PlayerRespawn()
 	# If extra continues, show continue screen
 	elif GameState.PlayerContinues > 0:

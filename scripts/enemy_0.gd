@@ -3,6 +3,7 @@ extends Area2D
 @export var Bullet: PackedScene
 @export var Explosion: PackedScene
 @export var Health: int = 100
+@export var ScoreValue: int = 500
 
 @onready var EnemyHitbox: CollisionShape2D = $EnemyHitbox
 @onready var TowerSprite: Sprite2D = $TowerSprite
@@ -47,6 +48,7 @@ func _take_damage(testName: StringName) -> void:
 		CannonAnimationPlayer.play("Flash")
 	if Health == 0:
 		_is_ready = false
+		GameState.PlayerScore += ScoreValue
 		TowerSprite.hide()
 		CannonSprite.hide()
 		var explosionEffect = Explosion.instantiate()

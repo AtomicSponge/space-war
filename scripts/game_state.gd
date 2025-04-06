@@ -11,7 +11,7 @@ const MAX_CONTINUES: int = 3
 const DEFAULT_LIVES: int = 2
 const DEFAULT_CONTINUES: int = 0
 # Score penalty on death
-const DEATH_PENALTY: int = 100000
+const DEATH_PENALTY: int = 1000
 
 # Player Data
 static var PlayerLives: int = 2

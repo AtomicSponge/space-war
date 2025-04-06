@@ -41,17 +41,22 @@ func GameOver() -> void:
 	await get_tree().create_timer(2.5).timeout
 	get_tree().paused = false
 	# Check if player reached a high score
+	var do_high_score = false
 	for idx in GameState.HighScores.size() - 1:
 		#  New high score reached
 		if GameState.PlayerScore > GameState.HighScores[idx]:
 			GameState.HighScores.insert(idx, GameState.PlayerScore)
-			GameState.HighScores = GameState.HighScores.slice(0, 9)
+			GameState.HighScores = GameState.HighScores.slice(0, 10)
 			GameState.HighScores.sort_custom(func(a, b): return a > b)
 			# Save gamestate to disk then switch to high scores
 			GameState.SaveGameData()
-			SceneManager.SwitchScene("HighScores")
-	# No high score reached, switch to main menu
-	SceneManager.SwitchScene("MainMenu")
+			do_high_score = true
+			break
+	GameState.PlayerScore = 0
+	if do_high_score:
+		SceneManager.SwitchScene("HighScores")
+	else:
+		SceneManager.SwitchScene("MainMenu")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

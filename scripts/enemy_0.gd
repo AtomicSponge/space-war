@@ -26,7 +26,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if not _is_ready or Health == 0:
+	if not _is_ready:
 		return
 
 	CannonSprite.look_at(GameState.PlayerLocation)
@@ -46,6 +46,7 @@ func _take_damage(testName: StringName) -> void:
 		TowerAnimationPlayer.play("Flash")
 		CannonAnimationPlayer.play("Flash")
 	if Health == 0:
+		_is_ready = false
 		TowerSprite.hide()
 		CannonSprite.hide()
 		var explosionEffect = Explosion.instantiate()

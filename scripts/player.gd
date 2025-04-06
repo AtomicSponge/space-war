@@ -68,7 +68,11 @@ func _player_death():
 	PlayerHitbox.set_deferred("disabled", true)
 	hide()
 	get_tree().paused = true
-	# Insert playing explosion
+	# Play explosion effect
+	var explosionEffect = Explosion.instantiate()
+	owner.add_child(explosionEffect)
+	explosionEffect.global_position = position
+	explosionEffect.emitting = true
 	await get_tree().create_timer(1.0).timeout
 	get_tree().paused = false
 	# If extra lives, play respawn effect

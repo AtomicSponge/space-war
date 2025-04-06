@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1qbbvs5fes35"]
+[gd_scene load_steps=15 format=3 uid="uid://c1qbbvs5fes35"]
 
 [ext_resource type="Script" uid="uid://dmwp8eqju0x8l" path="res://scripts/enemy_0.gd" id="1_pkbdq"]
 [ext_resource type="Texture2D" uid="uid://tcs1edo2lt7q" path="res://gfx/enemy0_tower.png" id="2_ipcih"]
@@ -37,9 +37,26 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_xb7d3"]
+resource_name = "Flash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ougn6"]
 _data = {
 &"Fade": SubResource("Animation_ipcih"),
+&"Flash": SubResource("Animation_xb7d3"),
 &"RESET": SubResource("Animation_ougn6")
 }
 
@@ -74,9 +91,26 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_lxwe7"]
+resource_name = "Flash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xb7d3"]
 _data = {
 &"Fade": SubResource("Animation_cg8gm"),
+&"Flash": SubResource("Animation_lxwe7"),
 &"RESET": SubResource("Animation_s32fa")
 }
 

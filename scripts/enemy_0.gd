@@ -43,6 +43,8 @@ func _process(_delta: float) -> void:
 func _take_damage(testName: StringName) -> void:
 	if name == testName:
 		Health -= 20
+		TowerAnimationPlayer.play("Flash")
+		CannonAnimationPlayer.play("Flash")
 	if Health == 0:
 		TowerSprite.hide()
 		CannonSprite.hide()

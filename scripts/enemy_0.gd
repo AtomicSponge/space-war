@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var Bullet: PackedScene
+@export var Explosion: PackedScene
 @export var Health: int = 100
 
 @onready var EnemyHitbox: CollisionShape2D = $EnemyHitbox
@@ -25,7 +26,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if not _is_ready:
+	if not _is_ready or Health == 0:
 		return
 
 	CannonSprite.look_at(GameState.PlayerLocation)
@@ -43,6 +44,13 @@ func _take_damage(testName: StringName) -> void:
 	if name == testName:
 		Health -= 20
 	if Health == 0:
+		TowerSprite.hide()
+		CannonSprite.hide()
+		var explosionEffect = Explosion.instantiate()
+		add_child(explosionEffect)
+		explosionEffect.global_position = position
+		explosionEffect.emitting = true
+		await get_tree().create_timer(1.0).timeout
 		queue_free()
 
 # Collided with player

@@ -29,7 +29,7 @@ color_ramp = SubResource("GradientTexture1D_nmc1l")
 [node name="Explosion" type="GPUParticles2D"]
 process_mode = 3
 emitting = false
-amount = 64
+amount = 128
 one_shot = true
 explosiveness = 1.0
 randomness = 0.5

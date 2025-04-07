@@ -43,7 +43,8 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_tntx6"]
 radius = 8.0
 
-[node name="Enemy1" type="Area2D"]
+[node name="Enemy1" type="RigidBody2D"]
+collision_layer = 2
 script = ExtResource("1_3ct15")
 
 [node name="ShipSprite" type="Sprite2D" parent="."]
@@ -58,4 +59,4 @@ libraries = {
 [node name="EnemyHitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tntx6")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

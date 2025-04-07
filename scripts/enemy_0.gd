@@ -17,12 +17,12 @@ var _is_ready: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Events.enemy_hit.connect(_take_damage)
 	EnemyHitbox.set_deferred("disabled", true)
 	TowerAnimationPlayer.play("Fade")
 	CannonAnimationPlayer.play("Fade")
 	await TowerAnimationPlayer.animation_finished
 	EnemyHitbox.set_deferred("disabled", false)
+	Events.enemy_hit.connect(_take_damage)
 	_is_ready = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

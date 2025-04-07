@@ -26,7 +26,7 @@ scale_max = 3.0
 scale_curve = SubResource("CurveTexture_3rerk")
 color_ramp = SubResource("GradientTexture1D_nmc1l")
 
-[node name="Explosion" type="GPUParticles2D"]
+[node name="ExplosionRed" type="GPUParticles2D"]
 process_mode = 3
 emitting = false
 amount = 128

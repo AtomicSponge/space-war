@@ -1,6 +1,8 @@
-extends RigidBody2D
+extends Area2D
 
+@export var Explosion: PackedScene
 @export var speed: int = 300
+@export var ScoreValue: int = 250
 
 @onready var ShipSprite: Sprite2D = $ShipSprite
 @onready var ShipAnimationPlayer: AnimationPlayer = $ShipSprite/ShipAnimationPlayer
@@ -27,17 +29,20 @@ func _process(delta: float) -> void:
 # Hit by player bullet
 func _take_damage(testName: StringName) -> void:
 	if name == testName:
+		_is_ready = false
+		EnemyHitbox.set_deferred("disabled", true)
+		GameState.PlayerScore += ScoreValue
+		ShipSprite.hide()
+		var explosionEffect = Explosion.instantiate()
+		add_child(explosionEffect)
+		explosionEffect.global_position = position
+		explosionEffect.emitting = true
+		await get_tree().create_timer(1.0).timeout
 		queue_free()
 
 # Collided
-#func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(area: Area2D) -> void:
 	# Collided with player
-	#if area.name == "Player":
-		#Events.player_hit.emit()
-		#queue_free()
-
-func _on_body_entered(body: Node) -> void:
-	# Collided with player
-	if body.name == "Player":
+	if area.name == "Player":
 		Events.player_hit.emit()
 		queue_free()

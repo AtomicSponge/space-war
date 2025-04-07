@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c17m4r81q74an"]
+[gd_scene load_steps=8 format=3 uid="uid://c17m4r81q74an"]
 
 [ext_resource type="Script" uid="uid://cvvr35vlnrwb5" path="res://scripts/enemy_1.gd" id="1_3ct15"]
 [ext_resource type="Texture2D" uid="uid://c00nuxjn3kvsy" path="res://gfx/enemy1.png" id="2_tntx6"]
+[ext_resource type="PackedScene" uid="uid://corrrsjfutk6n" path="res://objects/explosion_yellow.tscn" id="2_v8n5m"]
 
 [sub_resource type="Animation" id="Animation_tntx6"]
 resource_name = "Fade"
@@ -43,9 +44,10 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_tntx6"]
 radius = 8.0
 
-[node name="Enemy1" type="RigidBody2D"]
+[node name="Enemy1" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_3ct15")
+Explosion = ExtResource("2_v8n5m")
 
 [node name="ShipSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.75, 0.75)
@@ -59,4 +61,4 @@ libraries = {
 [node name="EnemyHitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tntx6")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

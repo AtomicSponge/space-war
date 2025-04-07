@@ -59,8 +59,8 @@ func _take_damage(testName: StringName) -> void:
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
 
-# Collided with player
 func _on_area_entered(area: Area2D) -> void:
+	# Collided with player
 	if area.name == "Player":
 		Events.player_hit.emit()
 		queue_free()

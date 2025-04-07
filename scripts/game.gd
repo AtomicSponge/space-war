@@ -1,6 +1,7 @@
 extends Node
 
 @export var EnemyType0: PackedScene
+@export var EnemyType1: PackedScene
 
 @onready var Player = $Player
 @onready var MessageLabel = $Overlay/MessageLabel
@@ -89,7 +90,9 @@ func _process(_delta: float) -> void:
 					add_child(e)
 					e.position = enemy["location"]
 				1:
-					pass
+					var e = EnemyType1.instantiate()
+					add_child(e)
+					e.position = enemy["location"]
 				2:
 					pass
 				3:

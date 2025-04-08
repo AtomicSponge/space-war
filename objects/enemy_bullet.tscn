@@ -19,3 +19,5 @@ shape = SubResource("CircleShape2D_7ov3v")
 [node name="LifeTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

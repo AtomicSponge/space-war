@@ -12,6 +12,12 @@ extends Area2D
 
 @onready var ScreenSize: Vector2 = get_viewport_rect().size
 
+signal player_hit
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	player_hit.connect(_player_hit, CONNECT_ONE_SHOT)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Handle attacking
@@ -64,6 +70,7 @@ func PlayerRespawn():
 	RespawnAnimationPlayer.play("Blink")
 	await RespawnAnimationPlayer.animation_finished
 	PlayerHitbox.set_deferred("disabled", false)
+	player_hit.connect(_player_hit, CONNECT_ONE_SHOT)
 
 # Player was hit, process loss
 func _player_hit() -> void:
@@ -93,8 +100,8 @@ func _player_hit() -> void:
 
 # Collision with enemies
 func _on_body_entered(body: Node2D) -> void:
-	_player_hit()
+	player_hit.emit()
 
 # Collision with bullets
 func _on_area_entered(area: Area2D) -> void:
-	_player_hit()
+	player_hit.emit()

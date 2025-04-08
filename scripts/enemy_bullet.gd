@@ -14,7 +14,6 @@ func _process(delta: float) -> void:
 		queue_free()
 	position += transform.x * speed * delta
 
-# Test enemy bullet collision
-#func _on_area_entered(_area: Area2D) -> void:
-	#Events.player_hit.emit()
-	#queue_free()
+# Remove if collided with anything
+func _on_area_entered(area: Area2D) -> void:
+	queue_free()

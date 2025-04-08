@@ -117,8 +117,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_ipcih"]
 radius = 16.0
 
-[node name="Enemy0" type="Area2D"]
+[node name="Enemy0" type="RigidBody2D"]
 collision_layer = 2
+gravity_scale = 0.0
 script = ExtResource("1_pkbdq")
 Bullet = ExtResource("2_ougn6")
 Explosion = ExtResource("3_cg8gm")
@@ -148,5 +149,3 @@ shape = SubResource("CircleShape2D_ipcih")
 
 [node name="ShotTimer" type="Timer" parent="."]
 one_shot = true
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]

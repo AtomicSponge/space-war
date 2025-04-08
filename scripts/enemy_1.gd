@@ -46,10 +46,3 @@ func _take_damage(testName: StringName) -> void:
 		explosionEffect.emitting = true
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
-
-func _on_body_entered(body: Node) -> void:
-	print("collide")
-	# Collided with player
-	if body.name == "Player":
-		Events.player_hit.emit()
-		queue_free()

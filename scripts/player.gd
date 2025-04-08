@@ -15,8 +15,6 @@ extends Area2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	name = "Player"
-	# Use one shot so multiple hits do not cause extra deaths
-	Events.player_hit.connect(_player_death, CONNECT_ONE_SHOT)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -63,13 +61,21 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, ScreenSize)
 
-# Event for player taking damage
-func _player_death():
+# Respawn player
+func PlayerRespawn():
+	PlayerHitbox.set_deferred("disabled", true)
+	show()
+	RespawnAnimationPlayer.play("Blink")
+	await RespawnAnimationPlayer.animation_finished
+	PlayerHitbox.set_deferred("disabled", false)
+
+# Player was hit, process loss
+func _on_body_entered(body: Node2D) -> void:
+	PlayerHitbox.set_deferred("disabled", true)
+	hide()
 	GameState.PlayerScore -= GameState.DEATH_PENALTY
 	if GameState.PlayerScore < 0:
 		GameState.PlayerScore = 0
-	PlayerHitbox.set_deferred("disabled", true)
-	hide()
 	get_tree().paused = true
 	# Play explosion effect
 	var explosionEffect = Explosion.instantiate()
@@ -88,12 +94,3 @@ func _player_death():
 	# Otherwise end game
 	else:
 		Events.game_over.emit()
-
-# Respawn player
-func PlayerRespawn():
-	show()
-	PlayerHitbox.set_deferred("disabled", true)
-	RespawnAnimationPlayer.play("Blink")
-	await RespawnAnimationPlayer.animation_finished
-	Events.player_hit.connect(_player_death, CONNECT_ONE_SHOT)
-	PlayerHitbox.set_deferred("disabled", false)

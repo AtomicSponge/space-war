@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 
 @export var Bullet: PackedScene
 @export var Explosion: PackedScene
@@ -57,10 +57,4 @@ func _take_damage(testName: StringName) -> void:
 		explosionEffect.global_position = position
 		explosionEffect.emitting = true
 		await get_tree().create_timer(1.0).timeout
-		queue_free()
-
-func _on_area_entered(area: Area2D) -> void:
-	# Collided with player
-	if area.name == "Player":
-		Events.player_hit.emit()
 		queue_free()

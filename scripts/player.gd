@@ -13,7 +13,7 @@ extends Area2D
 @onready var ScreenSize: Vector2 = get_viewport_rect().size
 
 # Used to limit player from getting hit multiple times
-# Reconnected in the PlayerRespawn() function
+# Reconnected in the _player_respawn() function
 signal player_hit
 
 # Called when the node enters the scene tree for the first time.
@@ -66,7 +66,7 @@ func _process(delta: float) -> void:
 	position = position.clamp(Vector2.ZERO, ScreenSize)
 
 # Respawn player
-func PlayerRespawn():
+func _player_respawn():
 	PlayerHitbox.set_deferred("disabled", true)
 	show()
 	RespawnAnimationPlayer.play("Blink")
@@ -92,7 +92,7 @@ func _player_hit() -> void:
 	# If extra lives, play respawn effect
 	if GameState.PlayerLives >= 1:
 		GameState.PlayerLives -= 1
-		PlayerRespawn()
+		_player_respawn()
 	# If extra continues, show continue screen
 	elif GameState.PlayerContinues > 0:
 		Events.game_continue.emit()

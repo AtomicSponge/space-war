@@ -100,9 +100,9 @@ func _player_hit() -> void:
 		Events.game_over.emit()
 
 # Collision with enemies
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	player_hit.emit()
 
 # Collision with bullets
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(_area: Area2D) -> void:
 	player_hit.emit()

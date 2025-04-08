@@ -19,12 +19,6 @@ func _ready() -> void:
 	Events.enemy_hit.connect(_take_damage)
 	_is_ready = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	#if not _is_ready:
-		#return
-	pass
-
 # Move the enemy
 func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 	look_at(GameState.PlayerLocation)
@@ -46,3 +40,6 @@ func _take_damage(testName: StringName) -> void:
 		explosionEffect.emitting = true
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
+
+func _on_body_entered(body: Node) -> void:
+	print("collide")

@@ -62,3 +62,5 @@ libraries = {
 
 [node name="EnemyHitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tntx6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

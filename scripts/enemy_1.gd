@@ -28,7 +28,7 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 	linear_velocity = speed * pos
 
 # Hit
-func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
+func _take_damage(testName: StringName, _amount: int, bulletFlag: bool) -> void:
 	if name == testName:
 		_is_ready = false
 		EnemyHitbox.set_deferred("disabled", true)

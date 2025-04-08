@@ -31,7 +31,7 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 		return
 	var pos = position.direction_to(GameState.PlayerLocation)
 	linear_velocity = speed * pos
- 
+
 # Hit by player bullet
 func _take_damage(testName: StringName) -> void:
 	if name == testName:

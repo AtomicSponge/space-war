@@ -1,7 +1,5 @@
 extends Node
 
-# Called when the player is hit by an object
-signal player_hit
 # Called when a player bullet hits an enemy
 signal enemy_hit(name: StringName)
 # Called to display the continue screen

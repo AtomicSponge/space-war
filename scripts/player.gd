@@ -12,10 +12,6 @@ extends Area2D
 
 @onready var ScreenSize: Vector2 = get_viewport_rect().size
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	name = "Player"
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Handle attacking
@@ -70,7 +66,7 @@ func PlayerRespawn():
 	PlayerHitbox.set_deferred("disabled", false)
 
 # Player was hit, process loss
-func _on_body_entered(body: Node2D) -> void:
+func _player_hit() -> void:
 	PlayerHitbox.set_deferred("disabled", true)
 	hide()
 	GameState.PlayerScore -= GameState.DEATH_PENALTY
@@ -94,3 +90,11 @@ func _on_body_entered(body: Node2D) -> void:
 	# Otherwise end game
 	else:
 		Events.game_over.emit()
+
+# Collision with enemies
+func _on_body_entered(body: Node2D) -> void:
+	_player_hit()
+
+# Collision with bullets
+func _on_area_entered(area: Area2D) -> void:
+	_player_hit()

@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 
 @export var Explosion: PackedScene
 @export var speed: int = 300
@@ -20,12 +20,18 @@ func _ready() -> void:
 	_is_ready = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	#if not _is_ready:
+		#return
+	pass
+
+func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 	look_at(GameState.PlayerLocation)
 	if not _is_ready:
 		return
-	position += transform.x * speed * delta
-
+	var pos = position.direction_to(GameState.PlayerLocation)
+	linear_velocity = speed * pos
+ 
 # Hit by player bullet
 func _take_damage(testName: StringName) -> void:
 	if name == testName:

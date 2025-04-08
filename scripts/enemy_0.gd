@@ -41,15 +41,16 @@ func _process(_delta: float) -> void:
 		ShotTimer.start()
 
 # Enemy hit by player bullet, take damage
-func _take_damage(testName: StringName) -> void:
+func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 	if name == testName:
-		Health -= 20
+		Health -= amount
 		TowerAnimationPlayer.play("Flash")
 		CannonAnimationPlayer.play("Flash")
 	if Health == 0:
 		_is_ready = false
 		EnemyHitbox.set_deferred("disabled", true)
-		GameState.PlayerScore += ScoreValue
+		if bulletFlag == true:
+			GameState.PlayerScore += ScoreValue
 		TowerSprite.hide()
 		CannonSprite.hide()
 		var explosionEffect = Explosion.instantiate()

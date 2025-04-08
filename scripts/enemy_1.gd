@@ -27,12 +27,13 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 	var pos = position.direction_to(GameState.PlayerLocation)
 	linear_velocity = speed * pos
 
-# Hit by player bullet
-func _take_damage(testName: StringName) -> void:
+# Hit
+func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 	if name == testName:
 		_is_ready = false
 		EnemyHitbox.set_deferred("disabled", true)
-		GameState.PlayerScore += ScoreValue
+		if bulletFlag == true:
+			GameState.PlayerScore += ScoreValue
 		ShipSprite.hide()
 		var explosionEffect = Explosion.instantiate()
 		add_child(explosionEffect)
@@ -40,6 +41,3 @@ func _take_damage(testName: StringName) -> void:
 		explosionEffect.emitting = true
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
-
-func _on_body_entered(body: Node) -> void:
-	print("collide")

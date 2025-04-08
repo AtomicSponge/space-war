@@ -13,6 +13,7 @@ extends Area2D
 @onready var ScreenSize: Vector2 = get_viewport_rect().size
 
 # Used to limit player from getting hit multiple times
+# Reconnected in the PlayerRespawn() function
 signal player_hit
 
 # Called when the node enters the scene tree for the first time.
@@ -100,9 +101,10 @@ func _player_hit() -> void:
 		Events.game_over.emit()
 
 # Collision with enemies
-func _on_body_entered(_body: Node2D) -> void:
+func _on_body_entered(body: Node2D) -> void:
+	Events.enemy_hit.emit(body.name, 50, false)
 	player_hit.emit()
 
 # Collision with bullets
-func _on_area_entered(_area: Area2D) -> void:
+func _on_area_entered(area: Area2D) -> void:
 	player_hit.emit()

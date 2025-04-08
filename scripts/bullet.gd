@@ -3,6 +3,7 @@ extends Area2D
 @onready var LifeTimer = $LifeTimer
 
 @export var speed = 750
+@export var amount = 25
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,5 +17,5 @@ func _process(delta: float) -> void:
 
 # Bullet hit enemy, emit hit event and pass node name
 func _on_body_entered(body: Node2D) -> void:
-	Events.enemy_hit.emit(body.name)
+	Events.enemy_hit.emit(body.name, amount, true)
 	queue_free()

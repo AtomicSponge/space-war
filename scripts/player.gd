@@ -12,6 +12,7 @@ extends Area2D
 
 @onready var ScreenSize: Vector2 = get_viewport_rect().size
 
+# Used to limit player from getting hit multiple times
 signal player_hit
 
 # Called when the node enters the scene tree for the first time.

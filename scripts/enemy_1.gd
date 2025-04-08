@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export var Explosion: PackedScene
-@export var speed: int = 300
+@export var speed: int = 350
 @export var ScoreValue: int = 250
 
 @onready var ShipSprite: Sprite2D = $ShipSprite
@@ -25,6 +25,7 @@ func _process(_delta: float) -> void:
 		#return
 	pass
 
+# Move the enemy
 func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 	look_at(GameState.PlayerLocation)
 	if not _is_ready:
@@ -46,9 +47,9 @@ func _take_damage(testName: StringName) -> void:
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
 
-# Collided
-func _on_area_entered(area: Area2D) -> void:
+func _on_body_entered(body: Node) -> void:
+	print("collide")
 	# Collided with player
-	if area.name == "Player":
+	if body.name == "Player":
 		Events.player_hit.emit()
 		queue_free()

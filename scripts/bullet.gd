@@ -18,3 +18,7 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	Events.enemy_hit.emit(area.name)
 	queue_free()
+
+func _on_body_entered(body: Node2D) -> void:
+	Events.enemy_hit.emit(body.name)
+	queue_free()

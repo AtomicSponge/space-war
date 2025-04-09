@@ -1,5 +1,5 @@
 - Starfield: <https://godotshaders.com/shader/stars-shader/>
-- Player Ship: <https://opengameart.org/content/spaceships-32x32>
+- Ships: <https://opengameart.org/content/spaceships-32x32>
 - Turret: <https://opengameart.org/content/tower-defence-basic-towers>
 - Bullets: <https://opengameart.org/content/bullet-collection-1-m484>
 - Font: <https://fontstruct.com/fontstructions/show/168674>

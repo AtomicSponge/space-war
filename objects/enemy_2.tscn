@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://b5pors64c1yn4" path="res://scripts/enemy_2.gd" id="1_jav2a"]
 [ext_resource type="Texture2D" uid="uid://e5yc6mcywv26" path="res://gfx/enemy2.png" id="2_ynert"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ynert"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ynert"]
 radius = 8.0
+height = 32.0
 
 [node name="Enemy2" type="RigidBody2D"]
 script = ExtResource("1_jav2a")
@@ -13,4 +14,5 @@ script = ExtResource("1_jav2a")
 texture = ExtResource("2_ynert")
 
 [node name="EnemyHitbox" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ynert")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ynert")

@@ -13,8 +13,8 @@ var _is_ready: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EnemyHitbox.set_deferred("disabled", true)
-	#ShipAnimationPlayer.play("Fade")
-	#await ShipAnimationPlayer.animation_finished
+	ShipAnimationPlayer.play("Fade")
+	await ShipAnimationPlayer.animation_finished
 	EnemyHitbox.set_deferred("disabled", false)
 	Events.enemy_hit.connect(_take_damage)
 	_is_ready = true
@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 	if name == testName:
 		Health -= amount
-		#ShipAnimationPlayer.play("Flash")
+		ShipAnimationPlayer.play("Flash")
 	if Health == 0:
 		_is_ready = false
 		EnemyHitbox.set_deferred("disabled", true)

@@ -1,14 +1,71 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfvdf4gjqh4dm"]
+[gd_scene load_steps=9 format=3 uid="uid://cfvdf4gjqh4dm"]
 
 [ext_resource type="Script" uid="uid://b5pors64c1yn4" path="res://scripts/enemy_2.gd" id="1_jav2a"]
 [ext_resource type="PackedScene" uid="uid://bbh65bnriijcd" path="res://objects/explosion_orange.tscn" id="2_plgxw"]
 [ext_resource type="Texture2D" uid="uid://e5yc6mcywv26" path="res://gfx/enemy2.png" id="2_ynert"]
+
+[sub_resource type="Animation" id="Animation_plgxw"]
+resource_name = "Fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fnmif"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_714le"]
+resource_name = "Flash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.266667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_714le"]
+_data = {
+&"Fade": SubResource("Animation_plgxw"),
+&"Flash": SubResource("Animation_714le"),
+&"RESET": SubResource("Animation_fnmif")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ynert"]
 radius = 8.0
 height = 32.0
 
 [node name="Enemy2" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 3
+gravity_scale = 0.0
 script = ExtResource("1_jav2a")
 Explosion = ExtResource("2_plgxw")
 
@@ -16,6 +73,9 @@ Explosion = ExtResource("2_plgxw")
 texture = ExtResource("2_ynert")
 
 [node name="ShipAnimationPlayer" type="AnimationPlayer" parent="ShipSprite"]
+libraries = {
+&"": SubResource("AnimationLibrary_714le")
+}
 
 [node name="EnemyHitbox" type="CollisionShape2D" parent="."]
 rotation = 1.5708

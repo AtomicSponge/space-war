@@ -2,7 +2,7 @@ extends RigidBody2D
 
 @export var Explosion: PackedScene
 @export var speed: int = 350
-@export var ScoreValue: int = 250
+@export var ScoreValue: int = 150
 
 @onready var ShipSprite: Sprite2D = $ShipSprite
 @onready var ShipAnimationPlayer: AnimationPlayer = $ShipSprite/ShipAnimationPlayer

@@ -1,13 +1,15 @@
-extends PathFollow2D
+extends RigidBody2D
 
 @export var Explosion: PackedScene
 @export var Health: int = 50
 @export var ScoreValue: int = 250
+@export var speed: float = 0.2
 
-@onready var ShipSprite: Sprite2D = $Ship/ShipSprite
-@onready var ShipAnimationPlayer: AnimationPlayer = $Ship/ShipSprite/ShipAnimationPlayer
-@onready var EnemyHitbox: CollisionShape2D = $Ship/EnemyHitbox
+@onready var ShipSprite: Sprite2D = $ShipSprite
+@onready var ShipAnimationPlayer: AnimationPlayer = $ShipSprite/ShipAnimationPlayer
+@onready var EnemyHitbox: CollisionShape2D = $EnemyHitbox
 
+var target_progress = 0.99
 var _is_ready: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -21,10 +23,22 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if not _is_ready:
+		return
+	if get_parent().progress_ratio < target_progress:
+		get_parent().progress_ratio += delta * speed
+		global_position = get_parent().global_position
+		ShipSprite.flip_h = false
+		target_progress = 0.99
+	if get_parent().progress_ratio > target_progress:
+		get_parent().progress_ratio += delta * (speed * -1)
+		global_position = get_parent().global_position
+		ShipSprite.flip_h = true
+		target_progress = 0.01
 
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
+	print(name)
 	if name == testName:
 		Health -= amount
 		ShipAnimationPlayer.play("Flash")
@@ -36,7 +50,7 @@ func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 		ShipSprite.hide()
 		var explosionEffect = Explosion.instantiate()
 		add_child(explosionEffect)
-		explosionEffect.global_position = position
+		explosionEffect.global_position = global_position
 		explosionEffect.emitting = true
 		await get_tree().create_timer(1.0).timeout
 		queue_free()

@@ -76,9 +76,8 @@ position = Vector2(160, 384)
 rotation = -1.47113
 loop = false
 
-[node name="ShipA" type="RigidBody2D" parent="EnemyPathA"]
+[node name="ShipA" type="Area2D" parent="EnemyPathA"]
 collision_layer = 2
-gravity_scale = 0.0
 script = ExtResource("1_jav2a")
 Explosion = ExtResource("2_plgxw")
 

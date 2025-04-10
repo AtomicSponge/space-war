@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Area2D
 
 @export var Explosion: PackedScene
 @export var Health: int = 50
@@ -27,12 +27,10 @@ func _process(delta: float) -> void:
 		return
 	if get_parent().progress_ratio < target_progress:
 		get_parent().progress_ratio += delta * speed
-		global_position = get_parent().global_position
 		ShipSprite.flip_h = false
 		target_progress = 0.99
 	if get_parent().progress_ratio > target_progress:
 		get_parent().progress_ratio += delta * (speed * -1)
-		global_position = get_parent().global_position
 		ShipSprite.flip_h = true
 		target_progress = 0.01
 

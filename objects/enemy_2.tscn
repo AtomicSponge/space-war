@@ -5,6 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://e5yc6mcywv26" path="res://gfx/enemy2.png" id="2_ynert"]
 
 [sub_resource type="Curve2D" id="Curve2D_plgxw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 160, 384, -1, 3, 1, -3, 192, 64, 0, 0, 0, 0, 256, 40, 0, 0, 0, 0, 296, 64, 0, 0, 0, 0, 320, 632, 0, 0, 0, 0, 504, 640, 0, 0, 0, 0, 520, 112)
+}
+point_count = 7
 
 [sub_resource type="Animation" id="Animation_plgxw"]
 resource_name = "Fade"
@@ -68,6 +72,8 @@ height = 32.0
 curve = SubResource("Curve2D_plgxw")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(160, 384)
+rotation = -1.47113
 
 [node name="Enemy2" type="RigidBody2D" parent="PathFollow2D"]
 collision_layer = 2

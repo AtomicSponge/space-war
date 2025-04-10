@@ -9,7 +9,7 @@ extends Area2D
 @onready var ShipAnimationPlayer: AnimationPlayer = $ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitbox: CollisionShape2D = $EnemyHitbox
 
-var _target_progress: bool = 0.99
+var _target_progress: float = 0.99
 var _is_ready: bool = false
 
 # Called when the node enters the scene tree for the first time.

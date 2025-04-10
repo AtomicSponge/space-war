@@ -1,12 +1,12 @@
-extends RigidBody2D
+extends PathFollow2D
 
 @export var Explosion: PackedScene
 @export var Health: int = 50
 @export var ScoreValue: int = 250
 
-@onready var ShipSprite: Sprite2D = $ShipSprite
-@onready var ShipAnimationPlayer: AnimationPlayer = $ShipSprite/ShipAnimationPlayer
-@onready var EnemyHitbox: CollisionShape2D = $EnemyHitbox
+@onready var ShipSprite: Sprite2D = $Ship/ShipSprite
+@onready var ShipAnimationPlayer: AnimationPlayer = $Ship/ShipSprite/ShipAnimationPlayer
+@onready var EnemyHitbox: CollisionShape2D = $Ship/EnemyHitbox
 
 var _is_ready: bool = false
 

@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfvdf4gjqh4dm"]
+[gd_scene load_steps=9 format=3 uid="uid://cfvdf4gjqh4dm"]
 
 [ext_resource type="Script" uid="uid://b5pors64c1yn4" path="res://scripts/enemy_2.gd" id="1_jav2a"]
-[ext_resource type="PackedScene" uid="uid://bbh65bnriijcd" path="res://objects/explosion_orange.tscn" id="2_plgxw"]
 [ext_resource type="Texture2D" uid="uid://e5yc6mcywv26" path="res://gfx/enemy2.png" id="2_ynert"]
 
 [sub_resource type="Curve2D" id="Curve2D_plgxw"]
@@ -68,28 +67,26 @@ _data = {
 radius = 8.0
 height = 32.0
 
-[node name="Path2D" type="Path2D"]
+[node name="Enemy2" type="Path2D"]
 curve = SubResource("Curve2D_plgxw")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2(160, 384)
 rotation = -1.47113
-
-[node name="Enemy2" type="RigidBody2D" parent="PathFollow2D"]
-collision_layer = 2
-collision_mask = 3
-gravity_scale = 0.0
 script = ExtResource("1_jav2a")
-Explosion = ExtResource("2_plgxw")
 
-[node name="ShipSprite" type="Sprite2D" parent="PathFollow2D/Enemy2"]
+[node name="Ship" type="RigidBody2D" parent="PathFollow2D"]
+collision_layer = 2
+gravity_scale = 0.0
+
+[node name="ShipSprite" type="Sprite2D" parent="PathFollow2D/Ship"]
 texture = ExtResource("2_ynert")
 
-[node name="ShipAnimationPlayer" type="AnimationPlayer" parent="PathFollow2D/Enemy2/ShipSprite"]
+[node name="ShipAnimationPlayer" type="AnimationPlayer" parent="PathFollow2D/Ship/ShipSprite"]
 libraries = {
 &"": SubResource("AnimationLibrary_714le")
 }
 
-[node name="EnemyHitbox" type="CollisionShape2D" parent="PathFollow2D/Enemy2"]
+[node name="EnemyHitbox" type="CollisionShape2D" parent="PathFollow2D/Ship"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ynert")

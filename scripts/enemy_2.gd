@@ -9,7 +9,7 @@ extends Area2D
 @onready var ShipAnimationPlayer: AnimationPlayer = $ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitbox: CollisionShape2D = $EnemyHitbox
 
-var target_progress = 0.99
+var _target_progress = 0.99
 var _is_ready: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -25,14 +25,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not _is_ready:
 		return
-	if get_parent().progress_ratio < target_progress:
+	if get_parent().progress_ratio < _target_progress:
 		get_parent().progress_ratio += delta * speed
 		ShipSprite.flip_h = false
-		target_progress = 0.99
-	if get_parent().progress_ratio > target_progress:
+		_target_progress = 0.99
+	if get_parent().progress_ratio > _target_progress:
 		get_parent().progress_ratio += delta * (speed * -1)
 		ShipSprite.flip_h = true
-		target_progress = 0.01
+		_target_progress = 0.01
 
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:

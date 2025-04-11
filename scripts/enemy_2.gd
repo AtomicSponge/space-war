@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 		ShipSprite.flip_h = false
 		_target_progress = MAX_PROGRESS
 	if get_parent().progress_ratio > _target_progress:
-		get_parent().progress_ratio += delta * (speed * -1)
+		get_parent().progress_ratio += delta * (speed * -1.0)
 		ShipSprite.flip_h = true
 		_target_progress = MIN_PROGRESS
 

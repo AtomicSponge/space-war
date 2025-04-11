@@ -6,9 +6,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_plgxw"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 160, 384, -1, 3, 1, -3, 192, 64, 0, 0, 0, 0, 256, 40, 0, 0, 0, 0, 296, 64, 0, 0, 0, 0, 320, 632, 0, 0, 0, 0, 504, 640, 0, 0, 0, 0, 520, 112)
+"points": PackedVector2Array(0, 0, 0, 0, 192, 384, -1, 3, 1, -3, 192, 128, 0, 0, 0, 0, 256, 64, 0, 0, 0, 0, 320, 128, 0, 0, 0, 0, 320, 577.73, 0, 0, 0, 0, 384, 640, 0, 0, 0, 0, 448, 577.73, 0, 0, 0, 0, 448, 126.27, 0, 0, 0, 0, 512, 64, 0, 0, 0, 0, 576, 126.27, 0, 0, 0, 0, 576, 577.73, 0, 0, 0, 0, 640, 640, 0, 0, 0, 0, 704, 577.73, 0, 0, 0, 0, 704, 126.27)
 }
-point_count = 7
+point_count = 14
 
 [sub_resource type="Animation" id="Animation_plgxw"]
 resource_name = "Fade"
@@ -69,11 +69,13 @@ radius = 8.0
 height = 32.0
 
 [node name="Enemy2" type="Path2D"]
+position = Vector2(-64, 0)
+scale = Vector2(1, 1.02469)
 curve = SubResource("Curve2D_plgxw")
 
 [node name="EnemyPathA" type="PathFollow2D" parent="."]
-position = Vector2(160, 384)
-rotation = -1.47113
+position = Vector2(192, 384)
+rotation = -1.5708
 loop = false
 
 [node name="ShipA" type="Area2D" parent="EnemyPathA"]

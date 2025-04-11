@@ -11,6 +11,8 @@ extends Area2D
 
 var _target_progress: float = 0.99
 var _is_ready: bool = false
+const MAX_PROGRESS: float = 0.99
+const MIN_PROGRESS: float = 0.01
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,6 +21,8 @@ func _ready() -> void:
 	await ShipAnimationPlayer.animation_finished
 	EnemyHitbox.set_deferred("disabled", false)
 	Events.enemy_hit.connect(_take_damage)
+	# works but maybe a better solution?
+	name = get_parent().get_parent().name
 	_is_ready = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,15 +32,14 @@ func _process(delta: float) -> void:
 	if get_parent().progress_ratio < _target_progress:
 		get_parent().progress_ratio += delta * speed
 		ShipSprite.flip_h = false
-		_target_progress = 0.99
+		_target_progress = MAX_PROGRESS
 	if get_parent().progress_ratio > _target_progress:
 		get_parent().progress_ratio += delta * (speed * -1)
 		ShipSprite.flip_h = true
-		_target_progress = 0.01
+		_target_progress = MIN_PROGRESS
 
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
-	print(name)
 	if name == testName:
 		Health -= amount
 		ShipAnimationPlayer.play("Flash")

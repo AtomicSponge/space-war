@@ -127,7 +127,9 @@ layout_mode = 2
 
 [node name="MainButton" type="Button" parent="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/Container"]
 layout_mode = 2
-offset_right = 320.0
+offset_left = 16.0
+offset_top = 5.0
+offset_right = 304.0
 offset_bottom = 117.0
 theme_override_colors/font_disabled_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)

@@ -9,7 +9,7 @@ const _SpawnQueue:Array[Dictionary] = [
 	#{ "time": 170.0, "type": 1, "location": Vector2(100, 100) },
 	#{ "time": 170.0, "type": 1, "location": Vector2(1180, 100) },
 	#{ "time": 170.0, "type": 1, "location": Vector2(100, 620) },
-	#{ "time": 170.0, "type": 1, "location": Vector2(1180, 620) }
+	#{ "time": 170.0, "type": 1, "location": Vector2(1180, 620) },
 	{ "time": 180.0, "type": 2, "location": Vector2(0, 0) },
 	{ "time": 178.0, "type": 2, "location": Vector2(0, 0) }
 ]

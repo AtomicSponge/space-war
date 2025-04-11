@@ -56,4 +56,3 @@ func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 		await get_tree().create_timer(1.0).timeout
 		# this needs to be better
 		get_parent().get_parent().queue_free()
-  

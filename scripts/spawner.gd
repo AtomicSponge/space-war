@@ -1,6 +1,6 @@
 extends Node
 
-const _SpawnQueue:Array[Dictionary] = [
+const _SpawnQueue: Array[Dictionary] = [
 	#{ "time": 180.0, "type": 0, "location": Vector2(50, 50), "rotation": 0.0 },
 	#{ "time": 180.0, "type": 0, "location": Vector2(1230, 50), "rotation": 0.0 },
 	#{ "time": 180.0, "type": 0, "location": Vector2(50, 670), "rotation": 0.0 },

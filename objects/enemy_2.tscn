@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfvdf4gjqh4dm"]
+[gd_scene load_steps=11 format=3 uid="uid://cfvdf4gjqh4dm"]
 
-[ext_resource type="Script" uid="uid://44rhaqmei5g6" path="res://scripts/enemy_2.gd" id="1_jav2a"]
+[ext_resource type="Script" uid="uid://44rhaqmei5g6" path="res://scripts/enemy_2_movement.gd" id="1_jav2a"]
+[ext_resource type="Script" uid="uid://nqps824dpk56" path="res://scripts/enemy_2_collision.gd" id="2_plgxw"]
 [ext_resource type="Texture2D" uid="uid://e5yc6mcywv26" path="res://gfx/enemy2.png" id="2_ynert"]
+[ext_resource type="PackedScene" uid="uid://bbh65bnriijcd" path="res://objects/explosion_orange.tscn" id="3_fnmif"]
 
 [sub_resource type="Curve2D" id="Curve2D_plgxw"]
 _data = {
@@ -79,6 +81,8 @@ loop = false
 
 [node name="ShipA" type="Area2D" parent="EnemyPathA"]
 collision_layer = 2
+script = ExtResource("2_plgxw")
+Explosion = ExtResource("3_fnmif")
 
 [node name="ShipSprite" type="Sprite2D" parent="EnemyPathA/ShipA"]
 texture = ExtResource("2_ynert")
@@ -150,7 +154,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ynert")
 
 [node name="EnemyPathE" type="PathFollow2D" parent="."]
-position = Vector2(127.768, 443.566)
+position = Vector2(127.768, 443.565)
 rotation = -1.57249
 progress = 118.557
 

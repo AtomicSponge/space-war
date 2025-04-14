@@ -1,8 +1,5 @@
 extends Path2D
 
-@export var Explosion: PackedScene
-@export var Health: int = 50
-@export var ScoreValue: int = 250
 @export var speed: float = 0.2
 
 @onready var EnemyPathA: PathFollow2D = $EnemyPathA
@@ -50,17 +47,17 @@ const MIN_PROGRESS: float = 0.01
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	EnemyHitboxA.set_deferred("disabled", true)
+	EnemyHitboxB.set_deferred("disabled", true)
+	EnemyHitboxC.set_deferred("disabled", true)
+	EnemyHitboxD.set_deferred("disabled", true)
+	EnemyHitboxE.set_deferred("disabled", true)
 	# Make sure the ships have unique names
 	ShipA.name = str(ShipA.get_path())
 	ShipB.name = str(ShipB.get_path())
 	ShipC.name = str(ShipC.get_path())
 	ShipD.name = str(ShipD.get_path())
 	ShipE.name = str(ShipE.get_path())
-	EnemyHitboxA.set_deferred("disabled", true)
-	EnemyHitboxB.set_deferred("disabled", true)
-	EnemyHitboxC.set_deferred("disabled", true)
-	EnemyHitboxD.set_deferred("disabled", true)
-	EnemyHitboxE.set_deferred("disabled", true)
 	ShipAnimationPlayerA.play("Fade")
 	ShipAnimationPlayerB.play("Fade")
 	ShipAnimationPlayerC.play("Fade")
@@ -94,34 +91,3 @@ func _process(delta: float) -> void:
 		# All enemies in group defeated, remove
 		if PathArray.is_empty():
 			queue_free()
-
-# Hit
-func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
-	print(testName)
-	if ShipA.name == testName:
-		#Health -= amount
-		ShipAnimationPlayerA.play("Flash")
-	if ShipB.name == testName:
-		#Health -= amount
-		ShipAnimationPlayerB.play("Flash")
-	if ShipC.name == testName:
-		#Health -= amount
-		ShipAnimationPlayerC.play("Flash")
-	if ShipD.name == testName:
-		#Health -= amount
-		ShipAnimationPlayerD.play("Flash")
-	if ShipE.name == testName:
-		#Health -= amount
-		ShipAnimationPlayerE.play("Flash")
-	if Health == 0:
-		_is_ready = false
-		EnemyHitboxA.set_deferred("disabled", true)
-		if bulletFlag == true:
-			GameState.PlayerScore += ScoreValue
-		ShipSpriteA.hide()
-		var explosionEffect = Explosion.instantiate()
-		add_child(explosionEffect)
-		explosionEffect.global_position = global_position
-		explosionEffect.emitting = true
-		await get_tree().create_timer(1.0).timeout
-		queue_free()

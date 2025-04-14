@@ -129,3 +129,41 @@ libraries = {
 [node name="EnemyHitbox" type="CollisionShape2D" parent="EnemyPathC/ShipC"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ynert")
+
+[node name="EnemyPathD" type="PathFollow2D" parent="."]
+position = Vector2(127.82, 473.21)
+rotation = -1.57262
+progress = 88.9176
+
+[node name="ShipD" type="Area2D" parent="EnemyPathD"]
+
+[node name="ShipSprite" type="Sprite2D" parent="EnemyPathD/ShipD"]
+texture = ExtResource("2_ynert")
+
+[node name="ShipAnimationPlayer" type="AnimationPlayer" parent="EnemyPathD/ShipD/ShipSprite"]
+libraries = {
+&"": SubResource("AnimationLibrary_714le")
+}
+
+[node name="EnemyHitbox" type="CollisionShape2D" parent="EnemyPathD/ShipD"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ynert")
+
+[node name="EnemyPathE" type="PathFollow2D" parent="."]
+position = Vector2(127.768, 443.566)
+rotation = -1.57249
+progress = 118.557
+
+[node name="ShipE" type="Area2D" parent="EnemyPathE"]
+
+[node name="ShipSprite" type="Sprite2D" parent="EnemyPathE/ShipE"]
+texture = ExtResource("2_ynert")
+
+[node name="ShipAnimationPlayer" type="AnimationPlayer" parent="EnemyPathE/ShipE/ShipSprite"]
+libraries = {
+&"": SubResource("AnimationLibrary_714le")
+}
+
+[node name="EnemyHitbox" type="CollisionShape2D" parent="EnemyPathE/ShipE"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ynert")

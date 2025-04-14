@@ -12,10 +12,6 @@ extends Area2D
 func _ready() -> void:
 	Events.enemy_hit.connect(_take_damage)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 	print(testName)

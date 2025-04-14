@@ -159,6 +159,8 @@ rotation = -1.57249
 progress = 118.557
 
 [node name="ShipE" type="Area2D" parent="EnemyPathE"]
+script = ExtResource("2_plgxw")
+Explosion = ExtResource("3_fnmif")
 
 [node name="ShipSprite" type="Sprite2D" parent="EnemyPathE/ShipE"]
 texture = ExtResource("2_ynert")

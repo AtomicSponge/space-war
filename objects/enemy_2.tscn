@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfvdf4gjqh4dm"]
+[gd_scene load_steps=9 format=3 uid="uid://cfvdf4gjqh4dm"]
 
 [ext_resource type="Script" uid="uid://44rhaqmei5g6" path="res://scripts/enemy_2.gd" id="1_jav2a"]
-[ext_resource type="PackedScene" uid="uid://bbh65bnriijcd" path="res://objects/explosion_orange.tscn" id="2_plgxw"]
 [ext_resource type="Texture2D" uid="uid://e5yc6mcywv26" path="res://gfx/enemy2.png" id="2_ynert"]
 
 [sub_resource type="Curve2D" id="Curve2D_plgxw"]
@@ -71,6 +70,7 @@ height = 32.0
 [node name="Enemy2" type="Path2D"]
 scale = Vector2(1, 1.02469)
 curve = SubResource("Curve2D_plgxw")
+script = ExtResource("1_jav2a")
 
 [node name="EnemyPathA" type="PathFollow2D" parent="."]
 position = Vector2(128, 382.554)
@@ -79,8 +79,6 @@ loop = false
 
 [node name="ShipA" type="Area2D" parent="EnemyPathA"]
 collision_layer = 2
-script = ExtResource("1_jav2a")
-Explosion = ExtResource("2_plgxw")
 
 [node name="ShipSprite" type="Sprite2D" parent="EnemyPathA/ShipA"]
 texture = ExtResource("2_ynert")

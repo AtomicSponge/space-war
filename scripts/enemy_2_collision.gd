@@ -6,7 +6,9 @@ extends Area2D
 
 @onready var ShipSprite = $ShipSprite
 @onready var ShipAnimationPlayer = $ShipSprite/ShipAnimationPlayer
-@onready var EnemyHitbox = $EnemyHitbox
+@onready var EnemyHitbox: CollisionShape2D = $EnemyHitbox
+
+var Defeated: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,7 +18,7 @@ func _ready() -> void:
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 	print(testName)
 	if name == testName:
-		#Health -= amount
+		Health -= amount
 		ShipAnimationPlayer.play("Flash")
 	if Health == 0:
 		EnemyHitbox.set_deferred("disabled", true)
@@ -28,4 +30,4 @@ func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 		explosionEffect.global_position = global_position
 		explosionEffect.emitting = true
 		await get_tree().create_timer(1.0).timeout
-		queue_free()
+		Defeated = true

@@ -36,6 +36,10 @@ extends Path2D
 	EnemyPathA, EnemyPathB, EnemyPathC, EnemyPathD, EnemyPathE
 ]
 
+@onready var ShipArray: Array[Area2D] = [
+	ShipA, ShipB, ShipC, ShipD, ShipE
+]
+
 @onready var SpriteArray: Array[Sprite2D] = [
 	ShipSpriteA, ShipSpriteB, ShipSpriteC, ShipSpriteD, ShipSpriteE
 ]
@@ -76,10 +80,6 @@ func _process(delta: float) -> void:
 	if not _is_ready:
 		return
 	for idx in PathArray.size():
-		if not is_instance_valid(PathArray[idx]):
-			PathArray.remove_at(idx)
-			SpriteArray.remove_at(idx)
-			_target_progress.remove_at(idx)
 		if PathArray[idx].progress_ratio < _target_progress[idx]:
 			PathArray[idx].progress_ratio += delta * speed
 			SpriteArray[idx].flip_h = false
@@ -88,6 +88,12 @@ func _process(delta: float) -> void:
 			PathArray[idx].progress_ratio += delta * (speed * -1.0)
 			SpriteArray[idx].flip_h = true
 			_target_progress[idx] = MIN_PROGRESS
+		# Check if defeated
+		if ShipArray[idx].Defeated:
+			ShipArray.remove_at(idx)
+			PathArray.remove_at(idx)
+			SpriteArray.remove_at(idx)
+			_target_progress.remove_at(idx)
 		# All enemies in group defeated, remove
 		if PathArray.is_empty():
 			queue_free()

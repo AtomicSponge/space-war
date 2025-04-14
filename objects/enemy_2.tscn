@@ -102,6 +102,9 @@ rotation = -1.57288
 progress = 29.6392
 
 [node name="ShipB" type="Area2D" parent="EnemyPathB"]
+collision_layer = 2
+script = ExtResource("2_plgxw")
+Explosion = ExtResource("3_fnmif")
 
 [node name="ShipSprite" type="Sprite2D" parent="EnemyPathB/ShipB"]
 texture = ExtResource("2_ynert")
@@ -121,6 +124,8 @@ rotation = -1.57275
 progress = 59.2784
 
 [node name="ShipC" type="Area2D" parent="EnemyPathC"]
+script = ExtResource("2_plgxw")
+Explosion = ExtResource("3_fnmif")
 
 [node name="ShipSprite" type="Sprite2D" parent="EnemyPathC/ShipC"]
 texture = ExtResource("2_ynert")
@@ -140,6 +145,8 @@ rotation = -1.57262
 progress = 88.9176
 
 [node name="ShipD" type="Area2D" parent="EnemyPathD"]
+script = ExtResource("2_plgxw")
+Explosion = ExtResource("3_fnmif")
 
 [node name="ShipSprite" type="Sprite2D" parent="EnemyPathD/ShipD"]
 texture = ExtResource("2_ynert")
@@ -159,6 +166,7 @@ rotation = -1.57249
 progress = 118.557
 
 [node name="ShipE" type="Area2D" parent="EnemyPathE"]
+collision_layer = 2
 script = ExtResource("2_plgxw")
 Explosion = ExtResource("3_fnmif")
 

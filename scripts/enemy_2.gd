@@ -29,24 +29,49 @@ extends Path2D
 @onready var ShipAnimationPlayerD: AnimationPlayer = $EnemyPathD/ShipD/ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitboxD: CollisionShape2D = $EnemyPathD/ShipD/EnemyHitbox
 
-@onready var EnemyPathE: PathFollow2D = $EnemyPathA
-@onready var ShipE: Area2D = $EnemyPathA/ShipA
-@onready var ShipSpriteE: Sprite2D = $EnemyPathA/ShipA/ShipSprite
-@onready var ShipAnimationPlayerE: AnimationPlayer = $EnemyPathA/ShipA/ShipSprite/ShipAnimationPlayer
-@onready var EnemyHitboxE: CollisionShape2D = $EnemyPathA/ShipA/EnemyHitbox
+@onready var EnemyPathE: PathFollow2D = $EnemyPathE
+@onready var ShipE: Area2D = $EnemyPathE/ShipE
+@onready var ShipSpriteE: Sprite2D = $EnemyPathE/ShipE/ShipSprite
+@onready var ShipAnimationPlayerE: AnimationPlayer = $EnemyPathE/ShipE/ShipSprite/ShipAnimationPlayer
+@onready var EnemyHitboxE: CollisionShape2D = $EnemyPathE/ShipE/EnemyHitbox
 
-var _target_progress: float = 0.99
+@onready var PathArray: Array[PathFollow2D] = [
+	EnemyPathA, EnemyPathB, EnemyPathC, EnemyPathD, EnemyPathE
+]
+
+@onready var SpriteArray: Array[Sprite2D] = [
+	ShipSpriteA, ShipSpriteB, ShipSpriteC, ShipSpriteD, ShipSpriteE
+]
+
+var _target_progress: Array[float] = [ 0.99, 0.99, 0.99, 0.99, 0.99 ]
 var _is_ready: bool = false
 const MAX_PROGRESS: float = 0.99
 const MIN_PROGRESS: float = 0.01
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Make sure the ships have unique names
 	ShipA.name = str(ShipA.get_path())
+	ShipB.name = str(ShipB.get_path())
+	ShipC.name = str(ShipC.get_path())
+	ShipD.name = str(ShipD.get_path())
+	ShipE.name = str(ShipE.get_path())
 	EnemyHitboxA.set_deferred("disabled", true)
+	EnemyHitboxB.set_deferred("disabled", true)
+	EnemyHitboxC.set_deferred("disabled", true)
+	EnemyHitboxD.set_deferred("disabled", true)
+	EnemyHitboxE.set_deferred("disabled", true)
 	ShipAnimationPlayerA.play("Fade")
+	ShipAnimationPlayerB.play("Fade")
+	ShipAnimationPlayerC.play("Fade")
+	ShipAnimationPlayerD.play("Fade")
+	ShipAnimationPlayerE.play("Fade")
 	await ShipAnimationPlayerA.animation_finished
 	EnemyHitboxA.set_deferred("disabled", false)
+	EnemyHitboxB.set_deferred("disabled", false)
+	EnemyHitboxC.set_deferred("disabled", false)
+	EnemyHitboxD.set_deferred("disabled", false)
+	EnemyHitboxE.set_deferred("disabled", false)
 	Events.enemy_hit.connect(_take_damage)
 	_is_ready = true
 
@@ -54,14 +79,25 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not _is_ready:
 		return
-	if EnemyPathA.progress_ratio < _target_progress:
-		EnemyPathA.progress_ratio += delta * speed
-		ShipSpriteA.flip_h = false
-		_target_progress = MAX_PROGRESS
-	if EnemyPathA.progress_ratio > _target_progress:
-		EnemyPathA.progress_ratio += delta * (speed * -1.0)
-		ShipSpriteA.flip_h = true
-		_target_progress = MIN_PROGRESS
+	#if EnemyPathA.progress_ratio < _target_progress:
+		#EnemyPathA.progress_ratio += delta * speed
+		#ShipSpriteA.flip_h = false
+		#_target_progress = MAX_PROGRESS
+	#if EnemyPathA.progress_ratio > _target_progress:
+		#EnemyPathA.progress_ratio += delta * (speed * -1.0)
+		#ShipSpriteA.flip_h = true
+		#_target_progress = MIN_PROGRESS
+	
+	for idx in PathArray.size():
+		if PathArray[idx].progress_ratio < _target_progress[idx]:
+			PathArray[idx].progress_ratio += delta * speed
+			SpriteArray[idx].flip_h = false
+			_target_progress[idx] = MAX_PROGRESS
+		if PathArray[idx].progress_ratio > _target_progress[idx]:
+			PathArray[idx].progress_ratio += delta * (speed * -1.0)
+			SpriteArray[idx].flip_h = true
+			_target_progress[idx] = MIN_PROGRESS
+	
 
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:

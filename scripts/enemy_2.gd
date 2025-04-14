@@ -6,6 +6,7 @@ extends Path2D
 @export var speed: float = 0.2
 
 @onready var EnemyPathA: PathFollow2D = $EnemyPathA
+@onready var ShipA: Area2D = $EnemyPathA/ShipA
 @onready var ShipSprite: Sprite2D = $EnemyPathA/ShipA/ShipSprite
 @onready var ShipAnimationPlayer: AnimationPlayer = $EnemyPathA/ShipA/ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitbox: CollisionShape2D = $EnemyPathA/ShipA/EnemyHitbox
@@ -17,6 +18,7 @@ const MIN_PROGRESS: float = 0.01
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	ShipA.name = str(ShipA.get_path())
 	EnemyHitbox.set_deferred("disabled", true)
 	ShipAnimationPlayer.play("Fade")
 	await ShipAnimationPlayer.animation_finished

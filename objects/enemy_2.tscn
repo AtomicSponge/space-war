@@ -124,6 +124,7 @@ rotation = -1.57275
 progress = 59.2784
 
 [node name="ShipC" type="Area2D" parent="EnemyPathC"]
+collision_layer = 2
 script = ExtResource("2_plgxw")
 Explosion = ExtResource("3_fnmif")
 
@@ -145,6 +146,7 @@ rotation = -1.57262
 progress = 88.9176
 
 [node name="ShipD" type="Area2D" parent="EnemyPathD"]
+collision_layer = 2
 script = ExtResource("2_plgxw")
 Explosion = ExtResource("3_fnmif")
 

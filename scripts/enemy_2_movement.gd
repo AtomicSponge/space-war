@@ -45,6 +45,7 @@ extends Path2D
 ]
 
 var _target_progress: Array[float] = [ 0.99, 0.99, 0.99, 0.99, 0.99 ]
+var _defeated: Array[bool] = [ false, false, false, false, false ]
 var _is_ready: bool = false
 const MAX_PROGRESS: float = 0.99
 const MIN_PROGRESS: float = 0.01
@@ -80,6 +81,10 @@ func _process(delta: float) -> void:
 	if not _is_ready:
 		return
 	for idx in PathArray.size():
+		# Check if defeated
+		if ShipArray[idx].Defeated:
+			_defeated[idx] = true
+			continue
 		if PathArray[idx].progress_ratio < _target_progress[idx]:
 			PathArray[idx].progress_ratio += delta * speed
 			SpriteArray[idx].flip_h = false
@@ -88,12 +93,6 @@ func _process(delta: float) -> void:
 			PathArray[idx].progress_ratio += delta * (speed * -1.0)
 			SpriteArray[idx].flip_h = true
 			_target_progress[idx] = MIN_PROGRESS
-		# Check if defeated
-		if ShipArray[idx].Defeated:
-			ShipArray.remove_at(idx)
-			PathArray.remove_at(idx)
-			SpriteArray.remove_at(idx)
-			_target_progress.remove_at(idx)
-		# All enemies in group defeated, remove
-		if PathArray.is_empty():
-			queue_free()
+	# All enemies in group defeated, remove
+	if _defeated.all(func(val): return val):
+		queue_free()

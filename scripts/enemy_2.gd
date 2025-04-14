@@ -79,15 +79,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not _is_ready:
 		return
-	#if EnemyPathA.progress_ratio < _target_progress:
-		#EnemyPathA.progress_ratio += delta * speed
-		#ShipSpriteA.flip_h = false
-		#_target_progress = MAX_PROGRESS
-	#if EnemyPathA.progress_ratio > _target_progress:
-		#EnemyPathA.progress_ratio += delta * (speed * -1.0)
-		#ShipSpriteA.flip_h = true
-		#_target_progress = MIN_PROGRESS
-	
 	for idx in PathArray.size():
 		if PathArray[idx].progress_ratio < _target_progress[idx]:
 			PathArray[idx].progress_ratio += delta * speed
@@ -97,14 +88,25 @@ func _process(delta: float) -> void:
 			PathArray[idx].progress_ratio += delta * (speed * -1.0)
 			SpriteArray[idx].flip_h = true
 			_target_progress[idx] = MIN_PROGRESS
-	
 
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 	print(testName)
-	if name == testName:
-		Health -= amount
+	if ShipA.name == testName:
+		#Health -= amount
 		ShipAnimationPlayerA.play("Flash")
+	if ShipB.name == testName:
+		#Health -= amount
+		ShipAnimationPlayerB.play("Flash")
+	if ShipC.name == testName:
+		#Health -= amount
+		ShipAnimationPlayerC.play("Flash")
+	if ShipD.name == testName:
+		#Health -= amount
+		ShipAnimationPlayerD.play("Flash")
+	if ShipE.name == testName:
+		#Health -= amount
+		ShipAnimationPlayerE.play("Flash")
 	if Health == 0:
 		_is_ready = false
 		EnemyHitboxA.set_deferred("disabled", true)

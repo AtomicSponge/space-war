@@ -72,7 +72,6 @@ func _ready() -> void:
 	EnemyHitboxC.set_deferred("disabled", false)
 	EnemyHitboxD.set_deferred("disabled", false)
 	EnemyHitboxE.set_deferred("disabled", false)
-	Events.enemy_hit.connect(_take_damage)
 	_is_ready = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -80,6 +79,10 @@ func _process(delta: float) -> void:
 	if not _is_ready:
 		return
 	for idx in PathArray.size():
+		if not is_instance_valid(PathArray[idx]):
+			PathArray.remove_at(idx)
+			SpriteArray.remove_at(idx)
+			_target_progress.remove_at(idx)
 		if PathArray[idx].progress_ratio < _target_progress[idx]:
 			PathArray[idx].progress_ratio += delta * speed
 			SpriteArray[idx].flip_h = false
@@ -88,6 +91,9 @@ func _process(delta: float) -> void:
 			PathArray[idx].progress_ratio += delta * (speed * -1.0)
 			SpriteArray[idx].flip_h = true
 			_target_progress[idx] = MIN_PROGRESS
+		# All enemies in group defeated, remove
+		if PathArray.is_empty():
+			queue_free()
 
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:

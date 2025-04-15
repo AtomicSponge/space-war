@@ -79,8 +79,8 @@ func _ready() -> void:
 	ShipC.name = str(ShipC.get_path())
 	ShipD.name = str(ShipD.get_path())
 	ShipE.name = str(ShipE.get_path())
-	for ShipAnimationPlayer in ShipAnimationPlayerArray:
-		ShipAnimationPlayer.play("Fade")
+	for shipAnimationPlayer in ShipAnimationPlayerArray:
+		shipAnimationPlayer.play("Fade")
 	await ShipAnimationPlayerA.animation_finished
 	for hitbox in EnemyHitboxArray:
 		hitbox.set_deferred("disabled", false)

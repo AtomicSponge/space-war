@@ -17,7 +17,7 @@ extends Path2D
 @onready var ShipAnimationPlayerB: AnimationPlayer = $EnemyPathB/ShipB/ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitboxB: CollisionShape2D = $EnemyPathB/ShipB/EnemyHitbox
 @onready var ExplosionEffectB: GPUParticles2D = $EnemyPathB/ShipB/ExplosionOrange
-@onready var TweenB: Tween = create_tween().set_trans(Tween.TRANS_SINE)
+@onready var TweenB: Tween
 
 @onready var EnemyPathC: PathFollow2D = $EnemyPathC
 @onready var ShipC: Area2D = $EnemyPathC/ShipC
@@ -25,7 +25,7 @@ extends Path2D
 @onready var ShipAnimationPlayerC: AnimationPlayer = $EnemyPathC/ShipC/ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitboxC: CollisionShape2D = $EnemyPathC/ShipC/EnemyHitbox
 @onready var ExplosionEffectC: GPUParticles2D = $EnemyPathC/ShipC/ExplosionOrange
-@onready var TweenC: Tween = create_tween().set_trans(Tween.TRANS_SINE)
+@onready var TweenC: Tween
 
 @onready var EnemyPathD: PathFollow2D = $EnemyPathD
 @onready var ShipD: Area2D = $EnemyPathD/ShipD
@@ -33,7 +33,7 @@ extends Path2D
 @onready var ShipAnimationPlayerD: AnimationPlayer = $EnemyPathD/ShipD/ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitboxD: CollisionShape2D = $EnemyPathD/ShipD/EnemyHitbox
 @onready var ExplosionEffectD: GPUParticles2D = $EnemyPathD/ShipD/ExplosionOrange
-@onready var TweenD: Tween = create_tween().set_trans(Tween.TRANS_SINE)
+@onready var TweenD: Tween
 
 @onready var EnemyPathE: PathFollow2D = $EnemyPathE
 @onready var ShipE: Area2D = $EnemyPathE/ShipE
@@ -41,7 +41,7 @@ extends Path2D
 @onready var ShipAnimationPlayerE: AnimationPlayer = $EnemyPathE/ShipE/ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitboxE: CollisionShape2D = $EnemyPathE/ShipE/EnemyHitbox
 @onready var ExplosionEffectE: GPUParticles2D = $EnemyPathE/ShipE/ExplosionOrange
-@onready var TweenE: Tween = create_tween().set_trans(Tween.TRANS_SINE)
+@onready var TweenE: Tween
 
 @onready var EnemyPathArray: Array[PathFollow2D] = [
 	EnemyPathA, EnemyPathB, EnemyPathC, EnemyPathD, EnemyPathE
@@ -67,8 +67,14 @@ extends Path2D
 	ExplosionEffectA, ExplosionEffectB, ExplosionEffectC, ExplosionEffectD, ExplosionEffectE
 ]
 
+@onready var TweenArray: Array[Tween] = [ 
+	TweenA, TweenB, TweenC, TweenD, TweenE
+]
+
 var _target_progress: Array[float] = [ 0.99, 0.99, 0.99, 0.99, 0.99 ]
 var _health: Array[int] = [ 50, 50, 50, 50, 50 ]
+var _foward_direction: Array[bool] = [ true, true, true, true, true ]
+var _running: Array[bool] = [ false, false, false, false, false ]
 var _defeated: Array[bool] = [ false, false, false, false, false ]
 var _is_ready: bool = false
 const MAX_PROGRESS: float = 0.99
@@ -88,12 +94,12 @@ func _ready() -> void:
 		hitbox.set_deferred("disabled", false)
 	Events.enemy_hit.connect(_take_damage)
 	_is_ready = true
-	TweenA = create_tween().set_trans(Tween.TRANS_SINE)
+	# TweenA = create_tween().set_trans(Tween.TRANS_SINE)
 	#var TweenB: Tween = create_tween().set_trans(Tween.TRANS_SINE)
 	#var TweenC: Tween = create_tween().set_trans(Tween.TRANS_SINE)
 	#var TweenD: Tween = create_tween().set_trans(Tween.TRANS_SINE)
 	#var TweenE: Tween = create_tween().set_trans(Tween.TRANS_SINE)
-	TweenA.tween_property(EnemyPathA, "progress_ratio", 0.96, 5.0)
+	#TweenA.tween_property(EnemyPathA, "progress_ratio", 0.96, 5.0)
 	#TweenB.tween_property(EnemyPathB, "progress_ratio", 0.97, 5.0)
 	#TweenC.tween_property(EnemyPathC, "progress_ratio", 0.98, 5.0)
 	#TweenD.tween_property(EnemyPathD, "progress_ratio", 0.99, 5.0)
@@ -103,6 +109,24 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not _is_ready:
 		return
+	
+	if _defeated[0]:
+		return # continue
+	if _foward_direction[0] and not _running[0]:
+		TweenArray[0] = create_tween().set_trans(Tween.TRANS_SINE)
+		TweenArray[0].tween_property(EnemyPathA, "progress_ratio", 0.96, 5.0)
+		ShipSpriteArray[0].flip_h = false
+		_foward_direction[0] = false
+		_running[0] = true
+	if not _foward_direction[0] and not _running[0]:
+		TweenArray[0] = create_tween().set_trans(Tween.TRANS_SINE)
+		TweenArray[0].tween_property(EnemyPathA, "progress_ratio", 0.00, 5.0)
+		ShipSpriteArray[0].flip_h = true
+		_foward_direction[0] = true
+		_running[0] = true
+	if not TweenA.is_running():
+		_running[0] = false
+	
 	return
 	for idx in EnemyPathArray.size():
 		# Check if defeated

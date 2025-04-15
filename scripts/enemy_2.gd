@@ -71,28 +71,19 @@ const MIN_PROGRESS: float = 0.01
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	EnemyHitboxA.set_deferred("disabled", true)
-	EnemyHitboxB.set_deferred("disabled", true)
-	EnemyHitboxC.set_deferred("disabled", true)
-	EnemyHitboxD.set_deferred("disabled", true)
-	EnemyHitboxE.set_deferred("disabled", true)
+	for hitbox in EnemyHitboxArray:
+		hitbox.set_deferred("disabled", true)
 	# Make sure the ships have unique names
 	ShipA.name = str(ShipA.get_path())
 	ShipB.name = str(ShipB.get_path())
 	ShipC.name = str(ShipC.get_path())
 	ShipD.name = str(ShipD.get_path())
 	ShipE.name = str(ShipE.get_path())
-	ShipAnimationPlayerA.play("Fade")
-	ShipAnimationPlayerB.play("Fade")
-	ShipAnimationPlayerC.play("Fade")
-	ShipAnimationPlayerD.play("Fade")
-	ShipAnimationPlayerE.play("Fade")
+	for ShipAnimationPlayer in ShipAnimationPlayerArray:
+		ShipAnimationPlayer.play("Fade")
 	await ShipAnimationPlayerA.animation_finished
-	EnemyHitboxA.set_deferred("disabled", false)
-	EnemyHitboxB.set_deferred("disabled", false)
-	EnemyHitboxC.set_deferred("disabled", false)
-	EnemyHitboxD.set_deferred("disabled", false)
-	EnemyHitboxE.set_deferred("disabled", false)
+	for hitbox in EnemyHitboxArray:
+		hitbox.set_deferred("disabled", false)
 	Events.enemy_hit.connect(_take_damage)
 	_is_ready = true
 
@@ -116,12 +107,10 @@ func _process(delta: float) -> void:
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 	for idx in ShipArray.size():
-		if _defeated[idx]:
-			break
 		if ShipArray[idx].name == testName:
 			_health[idx] -= amount
 			ShipAnimationPlayerArray[idx].play("Flash")
-		if _health[idx] <= 0:
+		if ShipArray[idx].name == testName and _health[idx] <= 0:
 			EnemyHitboxArray[idx].set_deferred("disabled", true)
 			if bulletFlag == true:
 				GameState.PlayerScore += ScoreValue
@@ -131,5 +120,6 @@ func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 			_defeated[idx] = true
 	# All enemies in group defeated, remove
 	if _defeated.all(func(val): return val):
+		# Make sure final explosion is played
 		await get_tree().create_timer(1.0).timeout
 		queue_free()

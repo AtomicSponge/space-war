@@ -110,22 +110,23 @@ func _process(delta: float) -> void:
 	if not _is_ready:
 		return
 	
-	if _defeated[0]:
-		return # continue
-	if _foward_direction[0] and not _running[0]:
-		TweenArray[0] = create_tween().set_trans(Tween.TRANS_SINE)
-		TweenArray[0].tween_property(EnemyPathArray[0], "progress_ratio", 0.96, 5.0)
-		ShipSpriteArray[0].flip_h = false
-		_foward_direction[0] = false
-		_running[0] = true
-	if not _foward_direction[0] and not _running[0]:
-		TweenArray[0] = create_tween().set_trans(Tween.TRANS_SINE)
-		TweenArray[0].tween_property(EnemyPathArray[0], "progress_ratio", 0.00, 5.0)
-		ShipSpriteArray[0].flip_h = true
-		_foward_direction[0] = true
-		_running[0] = true
-	if not TweenArray[0].is_running():
-		_running[0] = false
+	for idx in EnemyPathArray.size():
+		if _defeated[idx]:
+			continue
+		if _foward_direction[idx] and not _running[idx]:
+			TweenArray[idx] = create_tween().set_trans(Tween.TRANS_SINE)
+			TweenArray[idx].tween_property(EnemyPathArray[idx], "progress_ratio", 0.96, 5.0)
+			ShipSpriteArray[idx].flip_h = false
+			_foward_direction[idx] = false
+			_running[idx] = true
+		if not _foward_direction[idx] and not _running[idx]:
+			TweenArray[idx] = create_tween().set_trans(Tween.TRANS_SINE)
+			TweenArray[idx].tween_property(EnemyPathArray[idx], "progress_ratio", 0.00, 5.0)
+			ShipSpriteArray[idx].flip_h = true
+			_foward_direction[idx] = true
+			_running[idx] = true
+		if not TweenArray[idx].is_running():
+			_running[idx] = false
 	
 	return
 	for idx in EnemyPathArray.size():

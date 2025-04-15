@@ -93,7 +93,7 @@ func _ready() -> void:
 	_is_ready = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not _is_ready:
 		return
 	for idx in EnemyPathArray.size():

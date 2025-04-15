@@ -1,6 +1,7 @@
 extends Path2D
 
 @export var speed: float = 0.2
+@export var Explosion: PackedScene
 
 @onready var EnemyPathA: PathFollow2D = $EnemyPathA
 @onready var ShipA: Area2D = $EnemyPathA/ShipA

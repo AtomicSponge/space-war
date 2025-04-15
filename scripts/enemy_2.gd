@@ -96,7 +96,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not _is_ready:
 		return
-	
 	for idx in EnemyPathArray.size():
 		if _defeated[idx]:
 			continue

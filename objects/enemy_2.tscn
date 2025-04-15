@@ -72,7 +72,6 @@ height = 32.0
 scale = Vector2(1, 1.02469)
 curve = SubResource("Curve2D_plgxw")
 script = ExtResource("1_jav2a")
-Explosion = ExtResource("3_fnmif")
 
 [node name="EnemyPathA" type="PathFollow2D" parent="."]
 position = Vector2(128, 562.121)
@@ -173,3 +172,5 @@ libraries = {
 [node name="EnemyHitbox" type="CollisionShape2D" parent="EnemyPathE/ShipE"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ynert")
+
+[node name="ExplosionOrange" parent="." instance=ExtResource("3_fnmif")]

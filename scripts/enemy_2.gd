@@ -2,7 +2,6 @@ extends Path2D
 
 @export var speed: float = 0.2
 @export var ScoreValue: int = 250
-@export var Explosion: PackedScene
 
 @onready var EnemyPathA: PathFollow2D = $EnemyPathA
 @onready var ShipA: Area2D = $EnemyPathA/ShipA
@@ -33,6 +32,8 @@ extends Path2D
 @onready var ShipSpriteE: Sprite2D = $EnemyPathE/ShipE/ShipSprite
 @onready var ShipAnimationPlayerE: AnimationPlayer = $EnemyPathE/ShipE/ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitboxE: CollisionShape2D = $EnemyPathE/ShipE/EnemyHitbox
+
+@onready var ExplosionEffect: GPUParticles2D = $ExplosionOrange
 
 @onready var PathArray: Array[PathFollow2D] = [
 	EnemyPathA, EnemyPathB, EnemyPathC, EnemyPathD, EnemyPathE
@@ -120,10 +121,6 @@ func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 			if bulletFlag == true:
 				GameState.PlayerScore += ScoreValue
 			ShipSpriteArray[idx].hide()
-			var explosionEffect = Explosion.instantiate()
-			add_child(explosionEffect)
-			explosionEffect.global_position = ShipArray[idx].global_position
-			explosionEffect.emitting = true
-			await get_tree().create_timer(1.0).timeout
-			explosionEffect.queue_free()
+			ExplosionEffect.global_position = ShipArray[idx].global_position
+			ExplosionEffect.emitting = true
 			_defeated[idx] = true

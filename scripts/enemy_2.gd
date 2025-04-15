@@ -1,6 +1,6 @@
 extends Path2D
 
-@export var speed: float = 4.5
+@export var speed: float = 5.0
 @export var ScoreValue: int = 250
 
 @onready var EnemyPathA: PathFollow2D = $EnemyPathA
@@ -71,14 +71,11 @@ extends Path2D
 	TweenA, TweenB, TweenC, TweenD, TweenE
 ]
 
-var _target_progress: Array[float] = [ 0.99, 0.99, 0.99, 0.99, 0.99 ]
 var _health: Array[int] = [ 50, 50, 50, 50, 50 ]
 var _foward_direction: Array[bool] = [ true, true, true, true, true ]
 var _running: Array[bool] = [ false, false, false, false, false ]
 var _defeated: Array[bool] = [ false, false, false, false, false ]
 var _is_ready: bool = false
-#const MAX_PROGRESS: float = 0.99
-#const MIN_PROGRESS: float = 0.01
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

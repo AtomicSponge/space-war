@@ -111,11 +111,11 @@ func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 	for idx in ShipArray.size():
 		if _defeated[idx]:
 			print(testName)
-			continue
+			break
 		if ShipArray[idx].name == testName:
 			_health[idx] -= amount
 			ShipAnimationPlayerArray[idx].play("Flash")
-		if _health[idx] == 0:
+		if _health[idx] <= 0:
 			EnemyHitboxArray[idx].set_deferred("disabled", true)
 			if bulletFlag == true:
 				GameState.PlayerScore += ScoreValue

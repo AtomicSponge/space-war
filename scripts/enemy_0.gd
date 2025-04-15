@@ -46,7 +46,7 @@ func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 		Health -= amount
 		TowerAnimationPlayer.play("Flash")
 		CannonAnimationPlayer.play("Flash")
-	if Health == 0:
+	if Health <= 0:
 		_is_ready = false
 		EnemyHitbox.set_deferred("disabled", true)
 		if bulletFlag == true:

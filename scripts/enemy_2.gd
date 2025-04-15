@@ -8,32 +8,35 @@ extends Path2D
 @onready var ShipSpriteA: Sprite2D = $EnemyPathA/ShipA/ShipSprite
 @onready var ShipAnimationPlayerA: AnimationPlayer = $EnemyPathA/ShipA/ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitboxA: CollisionShape2D = $EnemyPathA/ShipA/EnemyHitbox
+@onready var ExplosionEffectA: GPUParticles2D = $EnemyPathA/ShipA/ExplosionOrange
 
 @onready var EnemyPathB: PathFollow2D = $EnemyPathB
 @onready var ShipB: Area2D = $EnemyPathB/ShipB
 @onready var ShipSpriteB: Sprite2D = $EnemyPathB/ShipB/ShipSprite
 @onready var ShipAnimationPlayerB: AnimationPlayer = $EnemyPathB/ShipB/ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitboxB: CollisionShape2D = $EnemyPathB/ShipB/EnemyHitbox
+@onready var ExplosionEffectB: GPUParticles2D = $EnemyPathB/ShipB/ExplosionOrange
 
 @onready var EnemyPathC: PathFollow2D = $EnemyPathC
 @onready var ShipC: Area2D = $EnemyPathC/ShipC
 @onready var ShipSpriteC: Sprite2D = $EnemyPathC/ShipC/ShipSprite
 @onready var ShipAnimationPlayerC: AnimationPlayer = $EnemyPathC/ShipC/ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitboxC: CollisionShape2D = $EnemyPathC/ShipC/EnemyHitbox
+@onready var ExplosionEffectC: GPUParticles2D = $EnemyPathC/ShipC/ExplosionOrange
 
 @onready var EnemyPathD: PathFollow2D = $EnemyPathD
 @onready var ShipD: Area2D = $EnemyPathD/ShipD
 @onready var ShipSpriteD: Sprite2D = $EnemyPathD/ShipD/ShipSprite
 @onready var ShipAnimationPlayerD: AnimationPlayer = $EnemyPathD/ShipD/ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitboxD: CollisionShape2D = $EnemyPathD/ShipD/EnemyHitbox
+@onready var ExplosionEffectD: GPUParticles2D = $EnemyPathD/ShipD/ExplosionOrange
 
 @onready var EnemyPathE: PathFollow2D = $EnemyPathE
 @onready var ShipE: Area2D = $EnemyPathE/ShipE
 @onready var ShipSpriteE: Sprite2D = $EnemyPathE/ShipE/ShipSprite
 @onready var ShipAnimationPlayerE: AnimationPlayer = $EnemyPathE/ShipE/ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitboxE: CollisionShape2D = $EnemyPathE/ShipE/EnemyHitbox
-
-@onready var ExplosionEffect: GPUParticles2D = $ExplosionOrange
+@onready var ExplosionEffectE: GPUParticles2D = $EnemyPathE/ShipE/ExplosionOrange
 
 @onready var PathArray: Array[PathFollow2D] = [
 	EnemyPathA, EnemyPathB, EnemyPathC, EnemyPathD, EnemyPathE
@@ -53,6 +56,10 @@ extends Path2D
 
 @onready var EnemyHitboxArray: Array[CollisionShape2D] = [
 	EnemyHitboxA, EnemyHitboxB, EnemyHitboxC, EnemyHitboxD, EnemyHitboxE
+]
+
+@onready var ExplosionEffectArray: Array[GPUParticles2D] = [
+	ExplosionEffectA, ExplosionEffectB, ExplosionEffectC, ExplosionEffectD, ExplosionEffectE
 ]
 
 var _target_progress: Array[float] = [ 0.99, 0.99, 0.99, 0.99, 0.99 ]
@@ -110,7 +117,6 @@ func _process(delta: float) -> void:
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 	for idx in ShipArray.size():
 		if _defeated[idx]:
-			print(testName)
 			break
 		if ShipArray[idx].name == testName:
 			_health[idx] -= amount
@@ -120,10 +126,10 @@ func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 			if bulletFlag == true:
 				GameState.PlayerScore += ScoreValue
 			ShipSpriteArray[idx].hide()
-			ExplosionEffect.global_position = ShipArray[idx].global_position
-			ExplosionEffect.restart()
-			await get_tree().create_timer(1.0).timeout
+			ExplosionEffectArray[idx].global_position = ShipArray[idx].global_position
+			ExplosionEffectArray[idx].emitting = true
 			_defeated[idx] = true
 	# All enemies in group defeated, remove
 	if _defeated.all(func(val): return val):
+		await get_tree().create_timer(1.0).timeout
 		queue_free()

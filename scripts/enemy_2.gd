@@ -105,14 +105,13 @@ func _process(delta: float) -> void:
 			PathArray[idx].progress_ratio += delta * (speed * -1.0)
 			ShipSpriteArray[idx].flip_h = true
 			_target_progress[idx] = MIN_PROGRESS
-	# All enemies in group defeated, remove
-	if _defeated.all(func(val): return val):
-		queue_free()
 
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 	print(testName)
 	for idx in ShipArray.size():
+		if _defeated[idx]:
+			continue
 		if ShipArray[idx].name == testName:
 			_health[idx] -= amount
 			ShipAnimationPlayerArray[idx].play("Flash")
@@ -122,5 +121,9 @@ func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 				GameState.PlayerScore += ScoreValue
 			ShipSpriteArray[idx].hide()
 			ExplosionEffect.global_position = ShipArray[idx].global_position
-			ExplosionEffect.emitting = true
+			ExplosionEffect.restart()
+			await get_tree().create_timer(1.0).timeout
 			_defeated[idx] = true
+	# All enemies in group defeated, remove
+	if _defeated.all(func(val): return val):
+		queue_free()

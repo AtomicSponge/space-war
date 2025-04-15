@@ -9,6 +9,7 @@ extends Path2D
 @onready var ShipAnimationPlayerA: AnimationPlayer = $EnemyPathA/ShipA/ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitboxA: CollisionShape2D = $EnemyPathA/ShipA/EnemyHitbox
 @onready var ExplosionEffectA: GPUParticles2D = $EnemyPathA/ShipA/ExplosionOrange
+#@onready var TweenA: Tween = create_tween().set_trans(Tween.TRANS_SINE)
 
 @onready var EnemyPathB: PathFollow2D = $EnemyPathB
 @onready var ShipB: Area2D = $EnemyPathB/ShipB
@@ -16,6 +17,7 @@ extends Path2D
 @onready var ShipAnimationPlayerB: AnimationPlayer = $EnemyPathB/ShipB/ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitboxB: CollisionShape2D = $EnemyPathB/ShipB/EnemyHitbox
 @onready var ExplosionEffectB: GPUParticles2D = $EnemyPathB/ShipB/ExplosionOrange
+#@onready var TweenB: Tween = create_tween().set_trans(Tween.TRANS_SINE)
 
 @onready var EnemyPathC: PathFollow2D = $EnemyPathC
 @onready var ShipC: Area2D = $EnemyPathC/ShipC
@@ -23,6 +25,7 @@ extends Path2D
 @onready var ShipAnimationPlayerC: AnimationPlayer = $EnemyPathC/ShipC/ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitboxC: CollisionShape2D = $EnemyPathC/ShipC/EnemyHitbox
 @onready var ExplosionEffectC: GPUParticles2D = $EnemyPathC/ShipC/ExplosionOrange
+#@onready var TweenC: Tween = create_tween().set_trans(Tween.TRANS_SINE)
 
 @onready var EnemyPathD: PathFollow2D = $EnemyPathD
 @onready var ShipD: Area2D = $EnemyPathD/ShipD
@@ -30,6 +33,7 @@ extends Path2D
 @onready var ShipAnimationPlayerD: AnimationPlayer = $EnemyPathD/ShipD/ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitboxD: CollisionShape2D = $EnemyPathD/ShipD/EnemyHitbox
 @onready var ExplosionEffectD: GPUParticles2D = $EnemyPathD/ShipD/ExplosionOrange
+#@onready var TweenD: Tween = create_tween().set_trans(Tween.TRANS_SINE)
 
 @onready var EnemyPathE: PathFollow2D = $EnemyPathE
 @onready var ShipE: Area2D = $EnemyPathE/ShipE
@@ -37,6 +41,7 @@ extends Path2D
 @onready var ShipAnimationPlayerE: AnimationPlayer = $EnemyPathE/ShipE/ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitboxE: CollisionShape2D = $EnemyPathE/ShipE/EnemyHitbox
 @onready var ExplosionEffectE: GPUParticles2D = $EnemyPathE/ShipE/ExplosionOrange
+#@onready var TweenE: Tween = create_tween().set_trans(Tween.TRANS_SINE)
 
 @onready var EnemyPathArray: Array[PathFollow2D] = [
 	EnemyPathA, EnemyPathB, EnemyPathC, EnemyPathD, EnemyPathE
@@ -83,11 +88,22 @@ func _ready() -> void:
 		hitbox.set_deferred("disabled", false)
 	Events.enemy_hit.connect(_take_damage)
 	_is_ready = true
+	var TweenA: Tween = create_tween().set_trans(Tween.TRANS_SINE)
+	var TweenB: Tween = create_tween().set_trans(Tween.TRANS_SINE)
+	var TweenC: Tween = create_tween().set_trans(Tween.TRANS_SINE)
+	var TweenD: Tween = create_tween().set_trans(Tween.TRANS_SINE)
+	var TweenE: Tween = create_tween().set_trans(Tween.TRANS_SINE)
+	TweenA.tween_property(EnemyPathA, "progress_ratio", 0.96, 5.0)
+	TweenB.tween_property(EnemyPathB, "progress_ratio", 0.97, 5.0)
+	TweenC.tween_property(EnemyPathC, "progress_ratio", 0.98, 5.0)
+	TweenD.tween_property(EnemyPathD, "progress_ratio", 0.99, 5.0)
+	TweenE.tween_property(EnemyPathE, "progress_ratio", 1.0, 5.0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not _is_ready:
 		return
+	return
 	for idx in EnemyPathArray.size():
 		# Check if defeated
 		if _defeated[idx]:

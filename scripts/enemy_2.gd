@@ -1,6 +1,7 @@
 extends Path2D
 
 @export var speed: float = 0.2
+@export var ScoreValue: int = 250
 @export var Explosion: PackedScene
 
 @onready var EnemyPathA: PathFollow2D = $EnemyPathA
@@ -41,11 +42,20 @@ extends Path2D
 	ShipA, ShipB, ShipC, ShipD, ShipE
 ]
 
-@onready var SpriteArray: Array[Sprite2D] = [
+@onready var ShipSpriteArray: Array[Sprite2D] = [
 	ShipSpriteA, ShipSpriteB, ShipSpriteC, ShipSpriteD, ShipSpriteE
 ]
 
+@onready var ShipAnimationPlayerArray: Array[AnimationPlayer] = [
+	ShipAnimationPlayerA, ShipAnimationPlayerB, ShipAnimationPlayerC, ShipAnimationPlayerD, ShipAnimationPlayerE
+]
+
+@onready var EnemyHitboxArray: Array[CollisionShape2D] = [
+	EnemyHitboxA, EnemyHitboxB, EnemyHitboxC, EnemyHitboxD, EnemyHitboxE
+]
+
 var _target_progress: Array[float] = [ 0.99, 0.99, 0.99, 0.99, 0.99 ]
+var _health: Array[int] = [ 50, 50, 50, 50, 50 ]
 var _defeated: Array[bool] = [ false, false, false, false, false ]
 var _is_ready: bool = false
 const MAX_PROGRESS: float = 0.99
@@ -88,11 +98,11 @@ func _process(delta: float) -> void:
 			continue
 		if PathArray[idx].progress_ratio < _target_progress[idx]:
 			PathArray[idx].progress_ratio += delta * speed
-			SpriteArray[idx].flip_h = false
+			ShipSpriteArray[idx].flip_h = false
 			_target_progress[idx] = MAX_PROGRESS
 		if PathArray[idx].progress_ratio > _target_progress[idx]:
 			PathArray[idx].progress_ratio += delta * (speed * -1.0)
-			SpriteArray[idx].flip_h = true
+			ShipSpriteArray[idx].flip_h = true
 			_target_progress[idx] = MIN_PROGRESS
 	# All enemies in group defeated, remove
 	if _defeated.all(func(val): return val):
@@ -101,3 +111,19 @@ func _process(delta: float) -> void:
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 	print(testName)
+	for idx in ShipArray.size():
+		if ShipArray[idx].name == testName:
+			_health[idx] -= amount
+			ShipAnimationPlayerArray[idx].play("Flash")
+		if _health[idx] == 0:
+			EnemyHitboxArray[idx].set_deferred("disabled", true)
+			if bulletFlag == true:
+				GameState.PlayerScore += ScoreValue
+			ShipSpriteArray[idx].hide()
+			var explosionEffect = Explosion.instantiate()
+			add_child(explosionEffect)
+			explosionEffect.global_position = ShipArray[idx].global_position
+			explosionEffect.emitting = true
+			await get_tree().create_timer(1.0).timeout
+			explosionEffect.queue_free()
+			_defeated[idx] = true

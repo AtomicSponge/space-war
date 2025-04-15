@@ -38,7 +38,7 @@ extends Path2D
 @onready var EnemyHitboxE: CollisionShape2D = $EnemyPathE/ShipE/EnemyHitbox
 @onready var ExplosionEffectE: GPUParticles2D = $EnemyPathE/ShipE/ExplosionOrange
 
-@onready var PathArray: Array[PathFollow2D] = [
+@onready var EnemyPathArray: Array[PathFollow2D] = [
 	EnemyPathA, EnemyPathB, EnemyPathC, EnemyPathD, EnemyPathE
 ]
 
@@ -88,16 +88,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not _is_ready:
 		return
-	for idx in PathArray.size():
+	for idx in EnemyPathArray.size():
 		# Check if defeated
 		if _defeated[idx]:
 			continue
-		if PathArray[idx].progress_ratio < _target_progress[idx]:
-			PathArray[idx].progress_ratio += delta * speed
+		if EnemyPathArray[idx].progress_ratio < _target_progress[idx]:
+			EnemyPathArray[idx].progress_ratio += delta * speed
 			ShipSpriteArray[idx].flip_h = false
 			_target_progress[idx] = MAX_PROGRESS
-		if PathArray[idx].progress_ratio > _target_progress[idx]:
-			PathArray[idx].progress_ratio += delta * (speed * -1.0)
+		if EnemyPathArray[idx].progress_ratio > _target_progress[idx]:
+			EnemyPathArray[idx].progress_ratio += delta * (speed * -1.0)
 			ShipSpriteArray[idx].flip_h = true
 			_target_progress[idx] = MIN_PROGRESS
 

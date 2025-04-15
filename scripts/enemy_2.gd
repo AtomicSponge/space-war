@@ -1,6 +1,6 @@
 extends Path2D
 
-@export var speed: float = 0.2
+@export var speed: float = 4.5
 @export var ScoreValue: int = 250
 
 @onready var EnemyPathA: PathFollow2D = $EnemyPathA
@@ -77,8 +77,8 @@ var _foward_direction: Array[bool] = [ true, true, true, true, true ]
 var _running: Array[bool] = [ false, false, false, false, false ]
 var _defeated: Array[bool] = [ false, false, false, false, false ]
 var _is_ready: bool = false
-const MAX_PROGRESS: float = 0.99
-const MIN_PROGRESS: float = 0.01
+#const MAX_PROGRESS: float = 0.99
+#const MIN_PROGRESS: float = 0.01
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -94,16 +94,6 @@ func _ready() -> void:
 		hitbox.set_deferred("disabled", false)
 	Events.enemy_hit.connect(_take_damage)
 	_is_ready = true
-	# TweenA = create_tween().set_trans(Tween.TRANS_SINE)
-	#var TweenB: Tween = create_tween().set_trans(Tween.TRANS_SINE)
-	#var TweenC: Tween = create_tween().set_trans(Tween.TRANS_SINE)
-	#var TweenD: Tween = create_tween().set_trans(Tween.TRANS_SINE)
-	#var TweenE: Tween = create_tween().set_trans(Tween.TRANS_SINE)
-	#TweenA.tween_property(EnemyPathA, "progress_ratio", 0.96, 5.0)
-	#TweenB.tween_property(EnemyPathB, "progress_ratio", 0.97, 5.0)
-	#TweenC.tween_property(EnemyPathC, "progress_ratio", 0.98, 5.0)
-	#TweenD.tween_property(EnemyPathD, "progress_ratio", 0.99, 5.0)
-	#TweenE.tween_property(EnemyPathE, "progress_ratio", 1.0, 5.0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -115,32 +105,18 @@ func _process(delta: float) -> void:
 			continue
 		if _foward_direction[idx] and not _running[idx]:
 			TweenArray[idx] = create_tween().set_trans(Tween.TRANS_SINE)
-			TweenArray[idx].tween_property(EnemyPathArray[idx], "progress_ratio", 0.96, 5.0)
+			TweenArray[idx].tween_property(EnemyPathArray[idx], "progress_ratio", 0.96 + (idx * 0.01), speed)
 			ShipSpriteArray[idx].flip_h = false
 			_foward_direction[idx] = false
 			_running[idx] = true
 		if not _foward_direction[idx] and not _running[idx]:
 			TweenArray[idx] = create_tween().set_trans(Tween.TRANS_SINE)
-			TweenArray[idx].tween_property(EnemyPathArray[idx], "progress_ratio", 0.00, 5.0)
+			TweenArray[idx].tween_property(EnemyPathArray[idx], "progress_ratio", 0.00 + (idx * 0.01), speed)
 			ShipSpriteArray[idx].flip_h = true
 			_foward_direction[idx] = true
 			_running[idx] = true
 		if not TweenArray[idx].is_running():
 			_running[idx] = false
-	
-	return
-	for idx in EnemyPathArray.size():
-		# Check if defeated
-		if _defeated[idx]:
-			continue
-		if EnemyPathArray[idx].progress_ratio < _target_progress[idx]:
-			EnemyPathArray[idx].progress_ratio += delta * speed
-			ShipSpriteArray[idx].flip_h = false
-			_target_progress[idx] = MAX_PROGRESS
-		if EnemyPathArray[idx].progress_ratio > _target_progress[idx]:
-			EnemyPathArray[idx].progress_ratio += delta * (speed * -1.0)
-			ShipSpriteArray[idx].flip_h = true
-			_target_progress[idx] = MIN_PROGRESS
 
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:

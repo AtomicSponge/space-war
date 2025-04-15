@@ -11,11 +11,12 @@ extends Area2D
 var Defeated: bool = false
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	Events.enemy_hit.connect(_take_damage)
+#func _ready() -> void:
+	#Events.enemy_hit.connect(_take_damage)
 
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
+	print(testName)
 	if name == testName:
 		Health -= amount
 		ShipAnimationPlayer.play("Flash")
@@ -28,4 +29,5 @@ func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 		add_child(explosionEffect)
 		explosionEffect.global_position = global_position
 		explosionEffect.emitting = true
+		await get_tree().create_timer(1.0).timeout
 		Defeated = true

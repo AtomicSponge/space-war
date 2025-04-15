@@ -74,6 +74,7 @@ func _ready() -> void:
 	EnemyHitboxC.set_deferred("disabled", false)
 	EnemyHitboxD.set_deferred("disabled", false)
 	EnemyHitboxE.set_deferred("disabled", false)
+	Events.enemy_hit.connect(_take_damage)
 	_is_ready = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -82,8 +83,7 @@ func _process(delta: float) -> void:
 		return
 	for idx in PathArray.size():
 		# Check if defeated
-		if ShipArray[idx].Defeated:
-			_defeated[idx] = true
+		if _defeated[idx]:
 			continue
 		if PathArray[idx].progress_ratio < _target_progress[idx]:
 			PathArray[idx].progress_ratio += delta * speed
@@ -96,3 +96,7 @@ func _process(delta: float) -> void:
 	# All enemies in group defeated, remove
 	if _defeated.all(func(val): return val):
 		queue_free()
+
+# Hit
+func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
+	print(testName)

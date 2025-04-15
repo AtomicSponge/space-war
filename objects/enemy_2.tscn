@@ -1,9 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfvdf4gjqh4dm"]
+[gd_scene load_steps=9 format=3 uid="uid://cfvdf4gjqh4dm"]
 
-[ext_resource type="Script" uid="uid://44rhaqmei5g6" path="res://scripts/enemy_2_movement.gd" id="1_jav2a"]
-[ext_resource type="Script" uid="uid://nqps824dpk56" path="res://scripts/enemy_2_collision.gd" id="2_plgxw"]
+[ext_resource type="Script" uid="uid://44rhaqmei5g6" path="res://scripts/enemy_2.gd" id="1_jav2a"]
 [ext_resource type="Texture2D" uid="uid://e5yc6mcywv26" path="res://gfx/enemy2.png" id="2_ynert"]
-[ext_resource type="PackedScene" uid="uid://bbh65bnriijcd" path="res://objects/explosion_orange.tscn" id="3_fnmif"]
 
 [sub_resource type="Curve2D" id="Curve2D_plgxw"]
 _data = {
@@ -81,8 +79,6 @@ loop = false
 
 [node name="ShipA" type="Area2D" parent="EnemyPathA"]
 collision_layer = 2
-script = ExtResource("2_plgxw")
-Explosion = ExtResource("3_fnmif")
 
 [node name="ShipSprite" type="Sprite2D" parent="EnemyPathA/ShipA"]
 texture = ExtResource("2_ynert")
@@ -103,8 +99,6 @@ progress = 29.6392
 
 [node name="ShipB" type="Area2D" parent="EnemyPathB"]
 collision_layer = 2
-script = ExtResource("2_plgxw")
-Explosion = ExtResource("3_fnmif")
 
 [node name="ShipSprite" type="Sprite2D" parent="EnemyPathB/ShipB"]
 texture = ExtResource("2_ynert")
@@ -125,8 +119,6 @@ progress = 59.2784
 
 [node name="ShipC" type="Area2D" parent="EnemyPathC"]
 collision_layer = 2
-script = ExtResource("2_plgxw")
-Explosion = ExtResource("3_fnmif")
 
 [node name="ShipSprite" type="Sprite2D" parent="EnemyPathC/ShipC"]
 texture = ExtResource("2_ynert")
@@ -147,8 +139,6 @@ progress = 88.9176
 
 [node name="ShipD" type="Area2D" parent="EnemyPathD"]
 collision_layer = 2
-script = ExtResource("2_plgxw")
-Explosion = ExtResource("3_fnmif")
 
 [node name="ShipSprite" type="Sprite2D" parent="EnemyPathD/ShipD"]
 texture = ExtResource("2_ynert")
@@ -169,8 +159,6 @@ progress = 118.557
 
 [node name="ShipE" type="Area2D" parent="EnemyPathE"]
 collision_layer = 2
-script = ExtResource("2_plgxw")
-Explosion = ExtResource("3_fnmif")
 
 [node name="ShipSprite" type="Sprite2D" parent="EnemyPathE/ShipE"]
 texture = ExtResource("2_ynert")

@@ -74,11 +74,8 @@ func _ready() -> void:
 	for hitbox in EnemyHitboxArray:
 		hitbox.set_deferred("disabled", true)
 	# Make sure the ships have unique names
-	ShipA.name = str(ShipA.get_path())
-	ShipB.name = str(ShipB.get_path())
-	ShipC.name = str(ShipC.get_path())
-	ShipD.name = str(ShipD.get_path())
-	ShipE.name = str(ShipE.get_path())
+	for ship in ShipArray:
+		ship.name = str(ship.get_path())
 	for shipAnimationPlayer in ShipAnimationPlayerArray:
 		shipAnimationPlayer.play("Fade")
 	await ShipAnimationPlayerA.animation_finished

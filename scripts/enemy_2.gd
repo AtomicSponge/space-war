@@ -108,9 +108,9 @@ func _process(delta: float) -> void:
 
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
-	print(testName)
 	for idx in ShipArray.size():
 		if _defeated[idx]:
+			print(testName)
 			continue
 		if ShipArray[idx].name == testName:
 			_health[idx] -= amount

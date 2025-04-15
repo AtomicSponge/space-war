@@ -96,7 +96,6 @@ shape = SubResource("CapsuleShape2D_ynert")
 [node name="ExplosionOrange" parent="EnemyPathA/ShipA" instance=ExtResource("3_fnmif")]
 position = Vector2(443.782, -127.014)
 rotation = 1.57249
-scale = Vector2(1, 1)
 
 [node name="EnemyPathB" type="PathFollow2D" parent="."]
 position = Vector2(127.936, 532.495)
@@ -121,7 +120,6 @@ shape = SubResource("CapsuleShape2D_ynert")
 [node name="ExplosionOrange" parent="EnemyPathB/ShipB" instance=ExtResource("3_fnmif")]
 position = Vector2(443.782, -127.014)
 rotation = 1.57249
-scale = Vector2(1, 1)
 
 [node name="EnemyPathC" type="PathFollow2D" parent="."]
 position = Vector2(127.876, 502.852)
@@ -146,7 +144,6 @@ shape = SubResource("CapsuleShape2D_ynert")
 [node name="ExplosionOrange" parent="EnemyPathC/ShipC" instance=ExtResource("3_fnmif")]
 position = Vector2(443.782, -127.014)
 rotation = 1.57249
-scale = Vector2(1, 1)
 
 [node name="EnemyPathD" type="PathFollow2D" parent="."]
 position = Vector2(127.82, 473.21)
@@ -171,7 +168,6 @@ shape = SubResource("CapsuleShape2D_ynert")
 [node name="ExplosionOrange" parent="EnemyPathD/ShipD" instance=ExtResource("3_fnmif")]
 position = Vector2(443.782, -127.014)
 rotation = 1.57249
-scale = Vector2(1, 1)
 
 [node name="EnemyPathE" type="PathFollow2D" parent="."]
 position = Vector2(127.768, 443.565)
@@ -196,4 +192,3 @@ shape = SubResource("CapsuleShape2D_ynert")
 [node name="ExplosionOrange" parent="EnemyPathE/ShipE" instance=ExtResource("3_fnmif")]
 position = Vector2(443.782, -127.014)
 rotation = 1.57249
-scale = Vector2(1, 1)

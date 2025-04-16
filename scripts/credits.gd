@@ -1,13 +1,14 @@
 extends Node
 
-const scroll_time: float = 20.0
-const scroll_stop: int = 1511
+@export var scroll_time: float
+@export var scroll_stop: int
 
 @onready var CreditsScrollContainer: ScrollContainer = $CreditsScrollContainer
 @onready var ScrollTween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	CreditsScrollContainer.scroll_vertical = 0
 	ScrollTween = create_tween()
 	ScrollTween.tween_property(CreditsScrollContainer, "scroll_vertical", scroll_stop, scroll_time)
 

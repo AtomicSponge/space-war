@@ -22,7 +22,6 @@ offset_left = 240.0
 offset_top = 128.0
 offset_right = 1032.0
 offset_bottom = 720.0
-scroll_vertical = 575
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
@@ -84,5 +83,28 @@ OTHER TEXT HERE
 DESIGN & DEVELOPMENT
 Matthew Evans
 
-Thanks for playing!"
+Thanks for playing!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"
 horizontal_alignment = 1

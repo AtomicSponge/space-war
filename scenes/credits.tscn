@@ -16,3 +16,46 @@ offset_bottom = 88.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 64
 text = "CREDITS"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 1152.0
+offset_bottom = 989.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "STARFIELD BACKGROUND
+https://godotshaders.com/shader/stars-shader/
+
+SPACE SHIP SPRITES
+https://opengameart.org/content/spaceships-32x32
+
+ENEMY TURRET
+https://opengameart.org/content/tower-defence-basic-towers
+
+BULLET SPRITE SHEET
+https://opengameart.org/content/bullet-collection-1-m484
+
+GAME FONT
+https://fontstruct.com/fontstructions/show/168674
+The FontStruction “silvergun”
+(https://fontstruct.com/fontstructions/show/168674) by “canPoni” is licensed
+under a Creative Commons Attribution Share Alike license
+(http://creativecommons.org/licenses/by-sa/3.0/)
+
+OTHER TEXT HERE
+OTHER TEXT HERE
+OTHER TEXT HERE
+OTHER TEXT HERE
+
+OTHER TEXT HERE
+OTHER TEXT HERE
+
+OTHER TEXT HERE
+OTHER TEXT HERE
+
+DESIGN & DEVELOPMENT
+Matthew Evans
+
+Thanks for playing!"
+horizontal_alignment = 1

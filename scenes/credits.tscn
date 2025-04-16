@@ -8,7 +8,7 @@ script = ExtResource("1_2ckv8")
 
 [node name="Background" parent="." instance=ExtResource("1_0bpdh")]
 
-[node name="Label" type="Label" parent="."]
+[node name="TitleLabel" type="Label" parent="."]
 offset_left = 504.0
 offset_top = 40.0
 offset_right = 780.0

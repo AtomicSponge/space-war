@@ -73,7 +73,7 @@ extends Path2D
 
 var _health: Array[int] = [ 50, 50, 50, 50, 50 ]
 var _foward_direction: Array[bool] = [ true, true, true, true, true ]
-var _running: Array[bool] = [ false, false, false, false, false ]
+var _moving: Array[bool] = [ false, false, false, false, false ]
 var _defeated: Array[bool] = [ false, false, false, false, false ]
 var _is_ready: bool = false
 
@@ -99,20 +99,20 @@ func _process(_delta: float) -> void:
 	for idx in EnemyPathArray.size():
 		if _defeated[idx]:
 			continue
-		if _foward_direction[idx] and not _running[idx]:
+		if _foward_direction[idx] and not _moving[idx]:
 			TweenArray[idx] = create_tween().set_trans(Tween.TRANS_SINE)
 			TweenArray[idx].tween_property(EnemyPathArray[idx], "progress_ratio", 0.96 + (idx * 0.01), speed)
 			ShipSpriteArray[idx].flip_h = false
 			_foward_direction[idx] = false
-			_running[idx] = true
-		if not _foward_direction[idx] and not _running[idx]:
+			_moving[idx] = true
+		if not _foward_direction[idx] and not _moving[idx]:
 			TweenArray[idx] = create_tween().set_trans(Tween.TRANS_SINE)
 			TweenArray[idx].tween_property(EnemyPathArray[idx], "progress_ratio", 0.00 + (idx * 0.01), speed)
 			ShipSpriteArray[idx].flip_h = true
 			_foward_direction[idx] = true
-			_running[idx] = true
+			_moving[idx] = true
 		if not TweenArray[idx].is_running():
-			_running[idx] = false
+			_moving[idx] = false
 
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:

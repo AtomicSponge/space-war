@@ -129,7 +129,7 @@ func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 				ExplosionEffectArray[idx].emitting = true
 				_defeated[idx] = true
 	# All enemies in group defeated, remove
-	if _defeated.all(func(val): return val):
+	if _defeated.all(func(val: bool): return val):
 		# Make sure final explosion is played
 		await get_tree().create_timer(1.0).timeout
 		queue_free()

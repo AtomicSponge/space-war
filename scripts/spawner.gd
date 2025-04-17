@@ -15,4 +15,4 @@ const _SpawnQueue: Array[Dictionary] = [
 
 # Get all enemies for the current time
 func GetEnemies(currentTime: float) -> Array[Dictionary]:
-	return _SpawnQueue.filter(func(item): return item["time"] == currentTime)
+	return _SpawnQueue.filter(func(item: Dictionary): return item["time"] == currentTime)

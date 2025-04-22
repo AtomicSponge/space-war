@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3u7t8sexr68s"]
+
+[ext_resource type="Texture2D" uid="uid://uge13ohbyjmu" path="res://gfx/enemy3.png" id="1_ptwkw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ptwkw"]
+radius = 24.0
+
+[node name="Enemy3" type="RigidBody2D"]
+
+[node name="BladeSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ptwkw")
+
+[node name="BladeAnimationPlayer" type="AnimationPlayer" parent="BladeSprite"]
+
+[node name="EnemyHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ptwkw")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://qglbfyyc2nsi"]
+[gd_scene load_steps=12 format=3 uid="uid://qglbfyyc2nsi"]
 
 [ext_resource type="PackedScene" uid="uid://cksyp24oxgrtb" path="res://objects/background.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://ke6x76fjl6n2" path="res://scripts/game.gd" id="1_yqjtg"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bbgaa5urassvw" path="res://objects/overlay.tscn" id="4_iywne"]
 [ext_resource type="PackedScene" uid="uid://b3k217ppba02k" path="res://objects/pause_menu.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bc7jv2og75d4i" path="res://objects/continue.tscn" id="5_p57ef"]
+[ext_resource type="PackedScene" uid="uid://c3u7t8sexr68s" path="res://objects/enemy_3.tscn" id="5_vtaks"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -28,6 +29,7 @@ script = ExtResource("1_yqjtg")
 EnemyType0 = ExtResource("2_u5sy4")
 EnemyType1 = ExtResource("3_gee14")
 EnemyType2 = ExtResource("4_0tnpc")
+EnemyType3 = ExtResource("5_vtaks")
 
 [node name="Background" parent="." instance=ExtResource("1_uwrxv")]
 

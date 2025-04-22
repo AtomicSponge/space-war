@@ -2,6 +2,7 @@ extends RigidBody2D
 
 @export var Explosion: PackedScene
 @export var speed: int = 350
+@export var Health: int = 100
 @export var ScoreValue: int = 100
 
 @onready var BladeSprite: Sprite2D = $BladeSprite
@@ -24,17 +25,20 @@ func _process(delta: float) -> void:
 	if not _is_ready:
 		return
 
-# Hit - update with health
-func _take_damage(testName: StringName, _amount: int, bulletFlag: bool) -> void:
+# Hit
+func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 	if name == testName:
-		_is_ready = false
-		EnemyHitbox.set_deferred("disabled", true)
 		if bulletFlag == true:
+			Health -= amount
+			BladeAnimationPlayer.play("Flash")
+		if Health <= 0:
+			_is_ready = false
+			EnemyHitbox.set_deferred("disabled", true)
 			GameState.PlayerScore += ScoreValue
-		BladeSprite.hide()
-		var explosionEffect = Explosion.instantiate()
-		add_child(explosionEffect)
-		explosionEffect.global_position = position
-		explosionEffect.emitting = true
-		await get_tree().create_timer(1.0).timeout
-		queue_free()
+			BladeSprite.hide()
+			var explosionEffect = Explosion.instantiate()
+			add_child(explosionEffect)
+			explosionEffect.global_position = position
+			explosionEffect.emitting = true
+			await get_tree().create_timer(1.0).timeout
+			queue_free()

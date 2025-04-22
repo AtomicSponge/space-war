@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3u7t8sexr68s"]
+[gd_scene load_steps=9 format=3 uid="uid://c3u7t8sexr68s"]
 
 [ext_resource type="Script" uid="uid://c1dsl8hd001mu" path="res://scripts/enemy_3.gd" id="1_25dg8"]
 [ext_resource type="Texture2D" uid="uid://uge13ohbyjmu" path="res://gfx/enemy3.png" id="1_ptwkw"]
@@ -35,9 +35,26 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_c86rc"]
+resource_name = "Flash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c86rc"]
 _data = {
 &"Fade": SubResource("Animation_25dg8"),
+&"Flash": SubResource("Animation_c86rc"),
 &"RESET": SubResource("Animation_xcdj1")
 }
 

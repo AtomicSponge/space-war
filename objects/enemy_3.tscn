@@ -62,6 +62,8 @@ _data = {
 radius = 24.0
 
 [node name="Enemy3" type="RigidBody2D"]
+collision_layer = 2
+gravity_scale = 0.0
 script = ExtResource("1_25dg8")
 Explosion = ExtResource("2_xcdj1")
 

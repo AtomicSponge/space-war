@@ -66,7 +66,7 @@ func _process(delta: float) -> void:
 	position = position.clamp(Vector2.ZERO, ScreenSize)
 
 # Respawn player
-func _player_respawn():
+func PlayerRespawn():
 	PlayerHitbox.set_deferred("disabled", true)
 	show()
 	RespawnAnimationPlayer.play("Blink")
@@ -92,7 +92,7 @@ func _player_hit() -> void:
 	# If extra lives, play respawn effect
 	if GameState.PlayerLives >= 1:
 		GameState.PlayerLives -= 1
-		_player_respawn()
+		PlayerRespawn()
 	# If extra continues, show continue screen
 	elif GameState.PlayerContinues > 0:
 		Events.game_continue.emit()

@@ -104,6 +104,7 @@ func _process(_delta: float) -> void:
 					var e = EnemyType3.instantiate()
 					add_child(e)
 					e.position = enemy["location"]
+					e.rotation = deg_to_rad(enemy["rotation"])
 				4:
 					pass
 				_:

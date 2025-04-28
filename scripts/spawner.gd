@@ -11,7 +11,7 @@ const _SpawnQueue: Array[Dictionary] = [
 	#{ "time": 170.0, "type": 1, "location": Vector2(1180, 620), "rotation": 0.0 },
 	#{ "time": 180.0, "type": 2, "location": Vector2(-16, 0), "rotation": 0.0 },
 	#{ "time": 180.0, "type": 2, "location": Vector2(1296, 720), "rotation": 180.0 }
-	{ "time": 180.0, "type": 3, "location": Vector2(25, 250), "rotation": 45.0 }
+	{ "time": 180.0, "type": 3, "location": Vector2(15, 375), "rotation": 315.0 }
 ]
 
 # Get all enemies for the current time

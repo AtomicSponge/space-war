@@ -8,7 +8,9 @@ extends RigidBody2D
 @onready var BladeSprite: Sprite2D = $BladeSprite
 @onready var BladeAnimationPlayer: AnimationPlayer = $BladeSprite/BladeAnimationPlayer
 @onready var EnemyHitbox: CollisionShape2D = $EnemyHitbox
+@onready var rotateTween: Tween
 
+var _rotating: bool = false
 var _is_ready: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -21,9 +23,16 @@ func _ready() -> void:
 	_is_ready = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not _is_ready:
 		return
+	if not _rotating:
+		rotateTween = create_tween()
+		rotateTween.tween_property(BladeSprite, "rotation_degrees", 360.0, 0.1)
+		_rotating = true
+	if not rotateTween.is_running():
+		BladeSprite.rotation_degrees = 0
+		_rotating = false
 
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:

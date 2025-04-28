@@ -51,7 +51,6 @@ func _process(_delta: float) -> void:
 		_moving = true
 	if not movementTween.is_running():
 		_moving = false
-	print(EnemyPath.progress_ratio)
 
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:

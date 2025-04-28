@@ -5,6 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://c2w4qx65pxb7o" path="res://objects/explosion_red.tscn" id="2_xcdj1"]
 
 [sub_resource type="Curve2D" id="Curve2D_25dg8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 256, 0)
+}
+point_count = 2
 
 [sub_resource type="Animation" id="Animation_25dg8"]
 resource_name = "Fade"

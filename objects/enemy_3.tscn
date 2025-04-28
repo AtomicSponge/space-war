@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3u7t8sexr68s"]
+[gd_scene load_steps=10 format=3 uid="uid://c3u7t8sexr68s"]
 
 [ext_resource type="Script" uid="uid://c1dsl8hd001mu" path="res://scripts/enemy_3.gd" id="1_25dg8"]
 [ext_resource type="Texture2D" uid="uid://uge13ohbyjmu" path="res://gfx/enemy3.png" id="1_ptwkw"]
 [ext_resource type="PackedScene" uid="uid://c2w4qx65pxb7o" path="res://objects/explosion_red.tscn" id="2_xcdj1"]
+
+[sub_resource type="Curve2D" id="Curve2D_25dg8"]
 
 [sub_resource type="Animation" id="Animation_25dg8"]
 resource_name = "Fade"
@@ -61,20 +63,24 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_ptwkw"]
 radius = 24.0
 
-[node name="Enemy3" type="RigidBody2D"]
-collision_layer = 2
-gravity_scale = 0.0
+[node name="Enemy3" type="Path2D"]
+curve = SubResource("Curve2D_25dg8")
 script = ExtResource("1_25dg8")
 Explosion = ExtResource("2_xcdj1")
 
-[node name="BladeSprite" type="Sprite2D" parent="."]
+[node name="EnemyPath" type="PathFollow2D" parent="."]
+
+[node name="Saw" type="Area2D" parent="EnemyPath"]
+collision_layer = 2
+
+[node name="BladeSprite" type="Sprite2D" parent="EnemyPath/Saw"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_ptwkw")
 
-[node name="BladeAnimationPlayer" type="AnimationPlayer" parent="BladeSprite"]
+[node name="BladeAnimationPlayer" type="AnimationPlayer" parent="EnemyPath/Saw/BladeSprite"]
 libraries = {
 &"": SubResource("AnimationLibrary_c86rc")
 }
 
-[node name="EnemyHitbox" type="CollisionShape2D" parent="."]
+[node name="EnemyHitbox" type="CollisionShape2D" parent="EnemyPath/Saw"]
 shape = SubResource("CircleShape2D_ptwkw")

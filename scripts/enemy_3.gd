@@ -1,13 +1,14 @@
-extends RigidBody2D
+extends Path2D
 
 @export var Explosion: PackedScene
 @export var speed: int = 350
 @export var Health: int = 100
 @export var ScoreValue: int = 100
 
-@onready var BladeSprite: Sprite2D = $BladeSprite
-@onready var BladeAnimationPlayer: AnimationPlayer = $BladeSprite/BladeAnimationPlayer
-@onready var EnemyHitbox: CollisionShape2D = $EnemyHitbox
+@onready var Saw: Area2D = $EnemyPath/Saw
+@onready var BladeSprite: Sprite2D = $EnemyPath/Saw/BladeSprite
+@onready var BladeAnimationPlayer: AnimationPlayer = $EnemyPath/Saw/BladeSprite/BladeAnimationPlayer
+@onready var EnemyHitbox: CollisionShape2D = $EnemyPath/Saw/EnemyHitbox
 @onready var rotateTween: Tween
 
 var _rotating: bool = false
@@ -36,7 +37,7 @@ func _process(_delta: float) -> void:
 
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
-	if name == testName:
+	if Saw.name == testName:
 		if bulletFlag == true:
 			Health -= amount
 			BladeAnimationPlayer.play("Flash")

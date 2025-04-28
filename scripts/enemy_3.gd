@@ -1,7 +1,7 @@
 extends Path2D
 
 @export var Explosion: PackedScene
-@export var speed: int = 350
+@export var speed: float = 1.0
 @export var Health: int = 100
 @export var ScoreValue: int = 100
 
@@ -51,6 +51,7 @@ func _process(_delta: float) -> void:
 		_moving = true
 	if not movementTween.is_running():
 		_moving = false
+	print(EnemyPath.progress_ratio)
 
 # Hit
 func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
@@ -65,7 +66,7 @@ func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 			BladeSprite.hide()
 			var explosionEffect = Explosion.instantiate()
 			add_child(explosionEffect)
-			explosionEffect.global_position = position
+			explosionEffect.global_position = Saw.global_position
 			explosionEffect.emitting = true
 			await get_tree().create_timer(1.0).timeout
 			queue_free()

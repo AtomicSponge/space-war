@@ -17,6 +17,7 @@ var _is_ready: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EnemyHitbox.set_deferred("disabled", true)
+	Saw.name = str(Saw.get_path())
 	BladeAnimationPlayer.play("Fade")
 	await BladeAnimationPlayer.animation_finished
 	EnemyHitbox.set_deferred("disabled", false)

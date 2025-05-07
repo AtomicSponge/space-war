@@ -49,7 +49,7 @@ Scenes = {
 &"MainMenu": &"res://scenes/main_menu.tscn",
 &"Options": &"res://scenes/options.tscn"
 }
-BGMuisc = [NodePath("BGMusicMenu"), NodePath("BGMusicGame")]
+BGMuisc = [NodePath("BGMAudioMenu"), NodePath("BGMAudioGame")]
 
 [node name="Fader" type="ColorRect" parent="."]
 modulate = Color(0, 0, 0, 0)
@@ -68,6 +68,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_65mdo")
 }
 
-[node name="BGMusicMenu" type="AudioStreamPlayer" parent="."]
+[node name="BGMAudioMenu" type="AudioStreamPlayer" parent="."]
 
-[node name="BGMusicGame" type="AudioStreamPlayer" parent="."]
+[node name="BGMAudioGame" type="AudioStreamPlayer" parent="."]

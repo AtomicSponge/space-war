@@ -1,5 +1,9 @@
 extends Node
 
+enum EnemyTypes {
+	Type0, Type1, Type2, Type3
+}
+
 @export var EnemyType0: PackedScene
 @export var EnemyType1: PackedScene
 @export var EnemyType2: PackedScene
@@ -87,20 +91,20 @@ func _process(_delta: float) -> void:
 		var enemies = Spawner.GetEnemies(snapped(SpawnTimer.time_left, 0.1))
 		for enemy in enemies:
 			match enemy["type"]:
-				0:
+				EnemyTypes.Type0:
 					var e = EnemyType0.instantiate()
 					add_child(e)
 					e.position = enemy["location"]
-				1:
+				EnemyTypes.Type1:
 					var e = EnemyType1.instantiate()
 					add_child(e)
 					e.position = enemy["location"]
-				2:
+				EnemyTypes.Type2:
 					var e = EnemyType2.instantiate()
 					add_child(e)
 					e.position = enemy["location"]
 					e.rotation = deg_to_rad(enemy["rotation"])
-				3:
+				EnemyTypes.Type3:
 					var e = EnemyType3.instantiate()
 					add_child(e)
 					e.position = enemy["location"]

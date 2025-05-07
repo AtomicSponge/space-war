@@ -15,7 +15,7 @@ enum Audio {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	SceneManager.BGMuisc[Audio.Menu].play()
+	BGMuisc[Audio.Menu].play()
 
 # Switch to the requested scene based on its alias
 # Parameter sceneAlias: The scene alias of the scene to switch to

@@ -39,9 +39,8 @@ _data = {
 &"RESET": SubResource("Animation_65mdo")
 }
 
-[node name="SceneManager" type="CanvasLayer" node_paths=PackedStringArray("BGMuisc")]
+[node name="SceneManager" type="Node" node_paths=PackedStringArray("BGMuisc")]
 process_mode = 3
-layer = 2
 script = ExtResource("1_we8k5")
 Scenes = {
 &"Credits": &"res://scenes/credits.tscn",

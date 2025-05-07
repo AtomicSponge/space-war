@@ -3,6 +3,8 @@ extends Node
 @onready var MainBtn: Button = $MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/Container/MainButton
 @onready var ScrollTimer: Timer = $ScrollTimer
 @onready var CreditsTimer: Timer = $CreditsTimer
+@onready var AudioClick: AudioStreamPlayer = $AudioClick
+@onready var AudioConfirm: AudioStreamPlayer = $AudioConfirm
 
 enum Menu {
 	NewGame, HighScores, Options
@@ -23,6 +25,7 @@ func _ready() -> void:
 
 # Move menu index left
 func _menu_left() -> void:
+	AudioClick.play()
 	if CurrentOption > 0:
 		CurrentOption -= 1
 	else:
@@ -31,6 +34,7 @@ func _menu_left() -> void:
 
 # Move menu index right
 func _menu_right() -> void:
+	AudioClick.play()
 	if CurrentOption < MenuOptions.size() - 1:
 		CurrentOption += 1
 	else:
@@ -39,6 +43,7 @@ func _menu_right() -> void:
 
 # Select a menu option
 func _menu_select() -> void:
+	AudioConfirm.play()
 	match CurrentOption:
 		# New Game
 		Menu.NewGame:

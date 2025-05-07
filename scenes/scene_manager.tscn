@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bnv5xkgs6x38f"]
 
 [ext_resource type="Script" uid="uid://dtx4weh57pqw8" path="res://scripts/scene_manager.gd" id="1_we8k5"]
-[ext_resource type="AudioStream" uid="uid://dqydrn0mngeip" path="res://audio/BGMAudioMenu.wav" id="2_65mdo"]
+[ext_resource type="AudioStream" uid="uid://dsfix0rjnqc54" path="res://audio/BGMAudioMenu.ogg" id="2_65mdo"]
 
 [sub_resource type="Animation" id="Animation_we8k5"]
 resource_name = "Fade"

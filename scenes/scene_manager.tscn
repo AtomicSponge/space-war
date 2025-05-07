@@ -39,7 +39,7 @@ _data = {
 &"RESET": SubResource("Animation_65mdo")
 }
 
-[node name="SceneManager" type="CanvasLayer"]
+[node name="SceneManager" type="CanvasLayer" node_paths=PackedStringArray("BGMuisc")]
 process_mode = 3
 layer = 2
 script = ExtResource("1_we8k5")
@@ -50,6 +50,7 @@ Scenes = {
 &"MainMenu": &"res://scenes/main_menu.tscn",
 &"Options": &"res://scenes/options.tscn"
 }
+BGMuisc = [NodePath("BGMusicA"), NodePath("BGMusicB")]
 
 [node name="Fader" type="ColorRect" parent="."]
 modulate = Color(0, 0, 0, 0)
@@ -68,4 +69,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_65mdo")
 }
 
-[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+[node name="BGMusicA" type="AudioStreamPlayer" parent="."]
+
+[node name="BGMusicB" type="AudioStreamPlayer" parent="."]

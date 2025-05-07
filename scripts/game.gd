@@ -16,8 +16,6 @@ enum EnemyTypes {
 @onready var Continue = $Continue
 @onready var SpawnTimer = $SpawnTimer
 
-# Flag to check if the game is in session
-var GameStarted: bool = false
 # Used to regulate spawning to 1/10 sec ticks
 var LastTick: float = 0.0
 
@@ -36,11 +34,11 @@ func NewGame() -> void:
 	Player.show()
 	get_tree().paused = false
 	SpawnTimer.start()
-	GameStarted = true
+	GameState.GameStarted = true
 
 # Called at the end of a game
 func GameOver() -> void:
-	GameStarted = false
+	GameState.GameStarted = false
 	get_tree().paused = true
 	Player.hide()
 	MessageLabel.text = "GAME OVER"
@@ -74,14 +72,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if not GameStarted:
+	if not GameState.GameStarted:
 		NewGame()
 
 	# Sample player location
 	GameState.PlayerLocation = Player.position
 
 	# Pause game - check GameStarted flag to prevent pop-up during game start/end events
-	if Input.is_action_pressed("pause_game") and GameStarted:
+	if Input.is_action_pressed("pause_game") and GameState.GameStarted:
 		get_tree().paused = true
 		PauseMenu.show()
 		PauseMenu.ResumeButton.grab_focus()

@@ -67,3 +67,5 @@ process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_65mdo")
 }
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]

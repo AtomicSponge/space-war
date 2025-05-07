@@ -1,7 +1,7 @@
 extends Node
 
 enum EnemyTypes {
-	Type0, Type1, Type2, Type3
+	Type0, Type1, Type2, Type3, Type4
 }
 
 @export var EnemyType0: PackedScene
@@ -109,7 +109,7 @@ func _process(_delta: float) -> void:
 					add_child(e)
 					e.position = enemy["location"]
 					e.rotation = deg_to_rad(enemy["rotation"])
-				4:
+				EnemyTypes.Type4:
 					pass
 				_:
 					pass

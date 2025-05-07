@@ -4,6 +4,10 @@ extends Node
 @onready var ScrollTimer: Timer = $ScrollTimer
 @onready var CreditsTimer: Timer = $CreditsTimer
 
+enum Menu {
+	NewGame, HighScores, Options
+}
+
 # Array of strings for the main button
 const MenuOptions: Array[String] = [ 
 	"NEW GAME", "HIGH SCORES", "OPTIONS", "QUIT"
@@ -37,13 +41,13 @@ func _menu_right() -> void:
 func _menu_select() -> void:
 	match CurrentOption:
 		# New Game
-		0:
+		Menu.NewGame:
 			SceneManager.SwitchScene("Game")
 		# High Scores
-		1:
+		Menu.HighScores:
 			SceneManager.SwitchScene("HighScores")
 		# Options
-		2:
+		Menu.Options:
 			SceneManager.SwitchScene("Options")
 		# Quit
 		_:

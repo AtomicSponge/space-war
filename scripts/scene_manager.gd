@@ -1,15 +1,21 @@
 extends Node
 class_name NSceneManager
 
+# Identifiers for the audio streams
+enum Audio {
+	Menu, Game
+}
+
 # A collection of scenes in the game. Scenes are added through the Inspector panel
 @export var Scenes: Dictionary = {}
+# List of background music files
 @export var BGMuisc: Array[AudioStreamPlayer]
 
 @onready var AniPlayer = $Fader/AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	SceneManager.BGMuisc[0].play()
+	SceneManager.BGMuisc[Audio.Menu].play()
 
 # Switch to the requested scene based on its alias
 # Parameter sceneAlias: The scene alias of the scene to switch to

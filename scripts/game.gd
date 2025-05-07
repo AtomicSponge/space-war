@@ -21,7 +21,7 @@ var LastTick: float = 0.0
 
 # Called when a new game starts
 func NewGame() -> void:
-	SceneManager.BGMuisc[0].stop()
+	SceneManager.BGMuisc[SceneManager.Audio.Menu].stop()
 	get_tree().paused = true
 	Player.set_position(StartPosition.position)
 	Player.hide()
@@ -36,11 +36,11 @@ func NewGame() -> void:
 	get_tree().paused = false
 	SpawnTimer.start()
 	GameState.GameStarted = true
-	SceneManager.BGMuisc[1].play()
+	SceneManager.BGMuisc[SceneManager.Audio.Game].play()
 
 # Called at the end of a game
 func GameOver() -> void:
-	SceneManager.BGMuisc[1].stop()
+	SceneManager.BGMuisc[SceneManager.Audio.Game].stop()
 	GameState.GameStarted = false
 	get_tree().paused = true
 	Player.hide()
@@ -61,7 +61,7 @@ func GameOver() -> void:
 			do_high_score = true
 			break
 	GameState.PlayerScore = 0
-	SceneManager.BGMuisc[0].play()
+	SceneManager.BGMuisc[SceneManager.Audio.Menu].play()
 	if do_high_score:
 		SceneManager.SwitchScene("HighScores")
 	else:

@@ -11,7 +11,7 @@ enum Audio {
 # List of background music files
 @export var BGMuisc: Array[AudioStreamPlayer]
 
-@onready var AniPlayer = $Fader/AnimationPlayer
+@onready var Fader = $Fader/AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,21 +21,21 @@ func _ready() -> void:
 # Parameter sceneAlias: The scene alias of the scene to switch to
 func SwitchScene(sceneAlias: String) -> void:
 	get_tree().paused = true
-	AniPlayer.play("Fade")
-	await AniPlayer.animation_finished
+	Fader.play("Fade")
+	await Fader.animation_finished
 	get_tree().change_scene_to_file(Scenes[sceneAlias])
-	AniPlayer.play_backwards("Fade")
-	await AniPlayer.animation_finished
+	Fader.play_backwards("Fade")
+	await Fader.animation_finished
 	get_tree().paused = false
 
 # Restart the current scene
 func RestartScene() -> void:
 	get_tree().paused = true
-	AniPlayer.play("Fade")
-	await AniPlayer.animation_finished
+	Fader.play("Fade")
+	await Fader.animation_finished
 	get_tree().reload_current_scene()
-	AniPlayer.play_backwards("Fade")
-	await AniPlayer.animation_finished
+	Fader.play_backwards("Fade")
+	await Fader.animation_finished
 	get_tree().paused = false
 
 # Quit the game

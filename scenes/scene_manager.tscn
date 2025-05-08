@@ -72,6 +72,8 @@ libraries = {
 
 [node name="BGMAudioMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_65mdo")
+bus = &"Music"
 
 [node name="BGMAudioGame" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_b81s6")
+bus = &"Music"

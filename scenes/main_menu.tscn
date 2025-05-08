@@ -183,10 +183,6 @@ one_shot = true
 wait_time = 15.0
 one_shot = true
 
-[node name="AudioClick" type="AudioStreamPlayer" parent="."]
-
-[node name="AudioConfirm" type="AudioStreamPlayer" parent="."]
-
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/OptionLeftButton" to="." method="_on_option_left_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/Container/MainButton" to="." method="_on_main_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainerBottom/HBoxContainer/OptionRightButton" to="." method="_on_option_right_button_pressed"]

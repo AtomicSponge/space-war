@@ -17,3 +17,9 @@ under a Creative Commons Attribution Share Alike license
 ```
 Distorted soundtrack sci fi by numerocuatro -- https://freesound.org/s/797828/ -- License: Creative Commons 0
 ```
+
+- Game BGM: <https://freesound.org/people/bone666138/sounds/466998/>
+
+```
+8 Bit Video Game Fight Music by bone666138 -- https://freesound.org/s/466998/ -- License: Creative Commons 0
+```

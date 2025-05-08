@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnv5xkgs6x38f"]
+[gd_scene load_steps=7 format=3 uid="uid://bnv5xkgs6x38f"]
 
 [ext_resource type="Script" uid="uid://dtx4weh57pqw8" path="res://scripts/scene_manager.gd" id="1_we8k5"]
 [ext_resource type="AudioStream" uid="uid://dsfix0rjnqc54" path="res://audio/BGMAudioMenu.ogg" id="2_65mdo"]
+[ext_resource type="AudioStream" uid="uid://bmvhha56ss5a3" path="res://audio/BGMAudioGame.ogg" id="3_b81s6"]
 
 [sub_resource type="Animation" id="Animation_we8k5"]
 resource_name = "Fade"
@@ -73,3 +74,4 @@ libraries = {
 stream = ExtResource("2_65mdo")
 
 [node name="BGMAudioGame" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_b81s6")

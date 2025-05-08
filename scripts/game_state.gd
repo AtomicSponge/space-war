@@ -31,7 +31,7 @@ const _save_path: String = "user://game.dat"
 static var PlayerLocation: Vector2 = Vector2(0, 0)
 
 # Globals for volume.  Used for saving settings
-static var MainVolume: float = 0.0
+static var MainVolume: float = 0.80
 static var MusicVolume: float = 0.0
 static var EffectsVolume: float = 0.0
 

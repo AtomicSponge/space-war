@@ -47,20 +47,65 @@ theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 64
 text = "OPTIONS"
 
-[node name="LivesLabel" type="Label" parent="."]
-offset_left = 512.0
-offset_top = 248.0
+[node name="AudioLabel" type="Label" parent="."]
+offset_left = 516.0
+offset_top = 176.0
 offset_right = 610.0
-offset_bottom = 272.0
+offset_bottom = 200.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "AUDIO"
+
+[node name="AudioScrollBar" type="HSlider" parent="."]
+offset_left = 792.0
+offset_top = 181.0
+offset_right = 1084.0
+offset_bottom = 197.0
+
+[node name="MusicLabel" type="Label" parent="."]
+offset_left = 516.0
+offset_top = 240.0
+offset_right = 610.0
+offset_bottom = 264.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "MUSIC"
+
+[node name="MusicScrollBar" type="HSlider" parent="."]
+offset_left = 792.0
+offset_top = 244.0
+offset_right = 1084.0
+offset_bottom = 260.0
+
+[node name="EffectsLabel" type="Label" parent="."]
+offset_left = 517.0
+offset_top = 304.0
+offset_right = 671.0
+offset_bottom = 328.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "EFFECTS"
+
+[node name="EffectsScrollBar" type="HSlider" parent="."]
+offset_left = 792.0
+offset_top = 312.0
+offset_right = 1084.0
+offset_bottom = 328.0
+
+[node name="LivesLabel" type="Label" parent="."]
+offset_left = 519.0
+offset_top = 414.0
+offset_right = 617.0
+offset_bottom = 438.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "LIVES"
 
 [node name="LivesScrollBar" type="HScrollBar" parent="."]
 offset_left = 792.0
-offset_top = 232.0
+offset_top = 398.0
 offset_right = 1024.0
-offset_bottom = 280.0
+offset_bottom = 446.0
 focus_neighbor_bottom = NodePath("../ContinueScrollBar")
 focus_mode = 2
 theme_override_styles/grabber = SubResource("StyleBoxLine_yjkok")
@@ -70,27 +115,27 @@ step = 1.0
 
 [node name="NumLivesLabel" type="Label" parent="."]
 offset_left = 1064.0
-offset_top = 248.0
+offset_top = 414.0
 offset_right = 1104.0
-offset_bottom = 272.0
+offset_bottom = 438.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "0"
 
 [node name="ContinueLabel" type="Label" parent="."]
-offset_left = 512.0
-offset_top = 376.0
-offset_right = 690.0
-offset_bottom = 400.0
+offset_left = 518.0
+offset_top = 493.0
+offset_right = 696.0
+offset_bottom = 517.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "CONTINUES"
 
 [node name="ContinueScrollBar" type="HScrollBar" parent="."]
 offset_left = 792.0
-offset_top = 360.0
+offset_top = 477.0
 offset_right = 1024.0
-offset_bottom = 408.0
+offset_bottom = 525.0
 focus_neighbor_top = NodePath("../LivesScrollBar")
 focus_neighbor_bottom = NodePath("../DisplayList")
 focus_mode = 2
@@ -101,18 +146,18 @@ step = 1.0
 
 [node name="NumContinuesLabel" type="Label" parent="."]
 offset_left = 1064.0
-offset_top = 376.0
+offset_top = 493.0
 offset_right = 1104.0
-offset_bottom = 400.0
+offset_bottom = 517.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "0"
 
 [node name="DisplayList" type="ItemList" parent="."]
 offset_left = 512.0
-offset_top = 481.0
+offset_top = 579.0
 offset_right = 1088.0
-offset_bottom = 513.0
+offset_bottom = 611.0
 focus_neighbor_top = NodePath("../ContinueScrollBar")
 focus_neighbor_bottom = NodePath("../BackButton")
 theme_override_colors/font_selected_color = Color(1, 0.494118, 0, 1)

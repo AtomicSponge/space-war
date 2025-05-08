@@ -1,11 +1,14 @@
 extends Node
 
-@onready var LivesScrollBar = $LivesScrollBar
-@onready var ContinueScrollBar = $ContinueScrollBar
-@onready var NumLivesLabel = $NumLivesLabel
-@onready var NumContinuesLabel = $NumContinuesLabel
-@onready var DisplayList = $DisplayList
-@onready var BackButton = $BackButton
+@onready var AudioScrollBar: HSlider = $AudioScrollBar
+@onready var MusicScrollBar: HSlider = $MusicScrollBar
+@onready var EffectsScrollBar: HSlider = $EffectsScrollBar
+@onready var LivesScrollBar: HScrollBar = $LivesScrollBar
+@onready var ContinueScrollBar: HScrollBar = $ContinueScrollBar
+@onready var NumLivesLabel: Label = $NumLivesLabel
+@onready var NumContinuesLabel: Label = $NumContinuesLabel
+@onready var DisplayList: ItemList = $DisplayList
+@onready var BackButton: Button = $BackButton
 
 var CurrentDisplayMode: int = 0
 var CurrentLives: int = 0

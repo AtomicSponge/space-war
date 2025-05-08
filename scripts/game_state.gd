@@ -32,8 +32,8 @@ static var PlayerLocation: Vector2 = Vector2(0, 0)
 
 # Globals for volume.  Used for saving settings
 static var MainVolume: float = 0.80
-static var MusicVolume: float = 0.0
-static var EffectsVolume: float = 0.0
+static var MusicVolume: float = 1.0
+static var EffectsVolume: float = 1.0
 
 # Load game settings - called during startup
 func LoadGameData() -> int:
@@ -48,10 +48,20 @@ func LoadGameData() -> int:
 	file.close()
 
 	# De-seralize game data
+	MainVolume = save_data["main_volume"]
+	MusicVolume = save_data["music_volume"]
+	EffectsVolume = save_data["effects_volume"]
 	NumberLives = save_data["number_lives"]
 	NumberContinues = save_data["number_continues"]
 	HighScores = save_data["high_scores"]
 	DisplayMode = save_data["display_mode"]
+	
+	var MainBus: int = AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_volume_db(MainBus, linear_to_db(MainVolume))
+	var MusicBus: int = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(MusicBus, linear_to_db(MusicVolume))
+	var EffectsBus: int = AudioServer.get_bus_index("SFX")
+	AudioServer.set_bus_volume_db(EffectsBus, linear_to_db(EffectsVolume))
 
 	return 0
 
@@ -64,6 +74,9 @@ func SaveGameData() -> int:
 
 	# Serialize game data
 	var save_data = {
+		"main_volume": MainVolume,
+		"music_volume": MusicVolume,
+		"effects_volume": EffectsVolume,
 		"number_lives": NumberLives,
 		"number_continues": NumberContinues,
 		"high_scores": HighScores,

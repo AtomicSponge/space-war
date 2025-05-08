@@ -18,8 +18,8 @@ signal save_complete
 
 # Save options to disk
 func do_options_save() -> void:
-	GameState.NumberLives = LivesScrollBar.value
-	GameState.NumberContinues = ContinueScrollBar.value
+	GameState.NumberLives = int(LivesScrollBar.value)
+	GameState.NumberContinues = int(ContinueScrollBar.value)
 	CurrentLives = GameState.NumberLives
 	CurrentContinues = GameState.NumberContinues
 	if DisplayList.is_selected(0) and CurrentDisplayMode == 1:

@@ -10,6 +10,10 @@ extends Node
 @onready var DisplayList: ItemList = $DisplayList
 @onready var BackButton: Button = $BackButton
 
+@onready var MasterBus: int = AudioServer.get_bus_index("Master")
+@onready var MusicBus: int = AudioServer.get_bus_index("Music")
+@onready var EffectsBus: int = AudioServer.get_bus_index("SFX")
+
 var CurrentDisplayMode: int = 0
 var CurrentLives: int = 0
 var CurrentContinues: int = 0
@@ -18,6 +22,9 @@ signal save_complete
 
 # Save options to disk
 func do_options_save() -> void:
+	GameState.MainVolume = db_to_linear(AudioServer.get_bus_volume_db(MasterBus))
+	GameState.MusicVolume = db_to_linear(AudioServer.get_bus_volume_db(MusicBus))
+	GameState.EffectsVolume = db_to_linear(AudioServer.get_bus_volume_db(EffectsBus))
 	GameState.NumberLives = int(LivesScrollBar.value)
 	GameState.NumberContinues = int(ContinueScrollBar.value)
 	CurrentLives = GameState.NumberLives
@@ -43,6 +50,9 @@ func do_options_save() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	AudioScrollBar.value = db_to_linear(AudioServer.get_bus_volume_db(MasterBus))
+	MusicScrollBar.value = db_to_linear(AudioServer.get_bus_volume_db(MusicBus))
+	EffectsScrollBar.value = db_to_linear(AudioServer.get_bus_volume_db(EffectsBus))
 	LivesScrollBar.max_value = GameState.MAX_LIVES
 	LivesScrollBar.min_value = GameState.MIN_LIVES
 	LivesScrollBar.value = GameState.NumberLives
@@ -72,6 +82,9 @@ func _on_reset_button_pressed() -> void:
 	dialog.title = "CONFIRM RESET"
 	dialog.dialog_text = "CONFIRM RESET SETTINGS"
 	dialog.confirmed.connect (func():
+		AudioScrollBar.value = db_to_linear(AudioServer.get_bus_volume_db(MasterBus))
+		MusicScrollBar.value = db_to_linear(AudioServer.get_bus_volume_db(MusicBus))
+		EffectsScrollBar.value = db_to_linear(AudioServer.get_bus_volume_db(EffectsBus))
 		GameState.NumberLives = GameState.DEFAULT_LIVES
 		LivesScrollBar.value = GameState.DEFAULT_LIVES
 		GameState.NumberContinues = GameState.DEFAULT_CONTINUES
@@ -115,3 +128,15 @@ func _on_back_button_pressed() -> void:
 		SceneManager.SwitchScene("MainMenu")
 	await save_complete
 	SceneManager.SwitchScene("MainMenu")
+
+# Called when the AudioScrollBar value changes
+func _on_audio_scroll_bar_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(MasterBus, linear_to_db(value))
+
+# Called when the MusicScrollBar value changes
+func _on_music_scroll_bar_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(MusicBus, linear_to_db(value))
+
+# Called when the EffectsScrollBar value changes
+func _on_effects_scroll_bar_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(EffectsBus, linear_to_db(value))

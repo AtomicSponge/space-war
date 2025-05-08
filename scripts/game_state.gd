@@ -30,6 +30,11 @@ const _save_path: String = "user://game.dat"
 # Global location of player, updates in the main loop
 static var PlayerLocation: Vector2 = Vector2(0, 0)
 
+# Globals for volume.  Used for saving settings
+static var MainVolume: float = 0.0
+static var MusicVolume: float = 0.0
+static var EffectsVolume: float = 0.0
+
 # Load game settings - called during startup
 func LoadGameData() -> int:
 	if not FileAccess.file_exists(_save_path):

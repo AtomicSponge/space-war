@@ -12,7 +12,7 @@ extends Node
 
 @onready var MasterBus: int = AudioServer.get_bus_index("Master")
 @onready var MusicBus: int = AudioServer.get_bus_index("Music")
-@onready var EffectsBus: int = AudioServer.get_bus_index("SFX")
+@onready var EffectsBus: int = AudioServer.get_bus_index("Effects")
 
 var CurrentDisplayMode: int = 0
 var CurrentLives: int = 0

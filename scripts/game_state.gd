@@ -60,7 +60,7 @@ func LoadGameData() -> int:
 	AudioServer.set_bus_volume_db(MainBus, linear_to_db(MainVolume))
 	var MusicBus: int = AudioServer.get_bus_index("Music")
 	AudioServer.set_bus_volume_db(MusicBus, linear_to_db(MusicVolume))
-	var EffectsBus: int = AudioServer.get_bus_index("SFX")
+	var EffectsBus: int = AudioServer.get_bus_index("Effects")
 	AudioServer.set_bus_volume_db(EffectsBus, linear_to_db(EffectsVolume))
 
 	return 0

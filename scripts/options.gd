@@ -82,9 +82,6 @@ func _on_reset_button_pressed() -> void:
 	dialog.title = "CONFIRM RESET"
 	dialog.dialog_text = "CONFIRM RESET SETTINGS"
 	dialog.confirmed.connect (func():
-		AudioScrollBar.value = db_to_linear(AudioServer.get_bus_volume_db(MasterBus))
-		MusicScrollBar.value = db_to_linear(AudioServer.get_bus_volume_db(MusicBus))
-		EffectsScrollBar.value = db_to_linear(AudioServer.get_bus_volume_db(EffectsBus))
 		GameState.NumberLives = GameState.DEFAULT_LIVES
 		LivesScrollBar.value = GameState.DEFAULT_LIVES
 		GameState.NumberContinues = GameState.DEFAULT_CONTINUES

@@ -1,8 +1,5 @@
 extends Node
 
-# Flag to check if the game is in session
-static var GameStarted: bool = false
-
 # Game Settings
 static var NumberLives: int = 2
 static var NumberContinues: int = 0

@@ -16,12 +16,16 @@ enum EnemyTypes {
 @onready var Continue = $Continue
 @onready var SpawnTimer = $SpawnTimer
 
+# Flag to check if the game is in session
+var GameStarted: bool = false
+
 # Used to regulate spawning to 1/10 sec ticks
 var LastTick: float = 0.0
 
 # Called when a new game starts
 func NewGame() -> void:
 	SceneManager.BGMuisc[SceneManager.Audio.Menu].stop()
+	SceneManager.BGMuisc[SceneManager.Audio.Game].play()
 	get_tree().paused = true
 	Player.set_position(StartPosition.position)
 	Player.hide()
@@ -35,13 +39,12 @@ func NewGame() -> void:
 	Player.show()
 	get_tree().paused = false
 	SpawnTimer.start()
-	GameState.GameStarted = true
-	SceneManager.BGMuisc[SceneManager.Audio.Game].play()
+	GameStarted = true
 
 # Called at the end of a game
 func GameOver() -> void:
 	SceneManager.BGMuisc[SceneManager.Audio.Game].stop()
-	GameState.GameStarted = false
+	GameStarted = false
 	get_tree().paused = true
 	Player.hide()
 	MessageLabel.text = "GAME OVER"
@@ -76,14 +79,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if not GameState.GameStarted:
+	if not GameStarted:
 		NewGame()
 
 	# Sample player location
 	GameState.PlayerLocation = Player.position
 
 	# Pause game - check GameStarted flag to prevent pop-up during game start/end events
-	if Input.is_action_pressed("pause_game") and GameState.GameStarted:
+	if Input.is_action_pressed("pause_game") and GameStarted:
 		get_tree().paused = true
 		PauseMenu.show()
 		PauseMenu.ResumeButton.grab_focus()

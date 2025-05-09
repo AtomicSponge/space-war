@@ -12,7 +12,7 @@ The FontStruction “silvergun”
 under a Creative Commons Attribution Share Alike license
 (http://creativecommons.org/licenses/by-sa/3.0/).
 ```
-- Main BGM: <https://freesound.org/people/numerocuatro/sounds/797828/>
+- Title BGM: <https://freesound.org/people/numerocuatro/sounds/797828/>
 
 ```
 Distorted soundtrack sci fi by numerocuatro -- https://freesound.org/s/797828/ -- License: Creative Commons 0

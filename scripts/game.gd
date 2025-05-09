@@ -34,7 +34,7 @@ func NewGame() -> void:
 	GameState.PlayerLives = GameState.NumberLives
 	GameState.PlayerContinues = GameState.NumberContinues
 	GameState.PlayerScore = 0
-	await get_tree().create_timer(2.5).timeout
+	await get_tree().create_timer(3).timeout
 	MessageLabel.hide()
 	Player.show()
 	get_tree().paused = false
@@ -49,7 +49,7 @@ func GameOver() -> void:
 	Player.hide()
 	MessageLabel.text = "GAME OVER"
 	MessageLabel.show()
-	await get_tree().create_timer(2.5).timeout
+	await get_tree().create_timer(3).timeout
 	get_tree().paused = false
 	# Check if player reached a high score
 	var do_high_score = false

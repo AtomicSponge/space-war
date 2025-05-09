@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bkc5a257et21q" path="res://scripts/player.gd" id="1_ykyjo"]
 [ext_resource type="PackedScene" uid="uid://cuunh7dd6tcal" path="res://objects/bullet.tscn" id="2_uxov2"]
 [ext_resource type="PackedScene" uid="uid://c2w4qx65pxb7o" path="res://objects/explosion_red.tscn" id="3_nmc1l"]
-[ext_resource type="AudioStream" uid="uid://birkwqkop3j6y" path="res://audio/bullet.wav" id="5_f46kd"]
+[ext_resource type="AudioStream" uid="uid://4pqo87vvdupj" path="res://audio/bullet.ogg" id="5_3rerk"]
 [ext_resource type="AudioStream" uid="uid://bys6lysriih01" path="res://audio/player_explosion.ogg" id="6_3rerk"]
 
 [sub_resource type="Animation" id="Animation_uxov2"]
@@ -70,7 +70,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="BulletAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_f46kd")
+stream = ExtResource("5_3rerk")
 bus = &"Effects"
 
 [node name="ExplosionAudio" type="AudioStreamPlayer" parent="."]

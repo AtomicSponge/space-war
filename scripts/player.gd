@@ -10,10 +10,11 @@ extends Area2D
 @onready var ShotMarker: Marker2D = $ShotMarker
 @onready var ShotTimer: Timer = $ShotTimer
 @onready var BulletAudio: AudioStreamPlayer = $BulletAudio
+@onready var ExplosionAudio: AudioStreamPlayer = $ExplosionAudio
 
 @onready var ScreenSize: Vector2 = get_viewport_rect().size
 
-# Used to limit player from getting hit multiple times
+# Used to limit player from getting hit multiple times 
 # Reconnected in the _player_respawn() function
 signal player_hit
 
@@ -78,6 +79,7 @@ func PlayerRespawn():
 
 # Player was hit, process loss
 func _player_hit() -> void:
+	ExplosionAudio.play()
 	PlayerHitbox.set_deferred("disabled", true)
 	hide()
 	GameState.PlayerScore -= GameState.DEATH_PENALTY

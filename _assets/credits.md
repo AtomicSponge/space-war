@@ -29,3 +29,9 @@ Distorted soundtrack sci fi by numerocuatro -- https://freesound.org/s/797828/ -
 ```
 Gun_Zap2.wav by jonccox -- https://freesound.org/s/175269/ -- License: Attribution 3.0
 ```
+
+- Player Explosion Audio: <https://freesound.org/people/AceOfSpadesProduc100/sounds/341701/>
+
+```
+Shmup player explosion by AceOfSpadesProduc100 -- https://freesound.org/s/341701/ -- License: Attribution 4.0
+```

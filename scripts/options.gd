@@ -9,6 +9,7 @@ extends Node
 @onready var NumContinuesLabel: Label = $NumContinuesLabel
 @onready var DisplayList: ItemList = $DisplayList
 @onready var BackButton: Button = $BackButton
+@onready var EffectsAudio: AudioStreamPlayer = $EffectsAudio
 
 @onready var MasterBus: int = AudioServer.get_bus_index("Master")
 @onready var MusicBus: int = AudioServer.get_bus_index("Music")

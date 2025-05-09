@@ -23,3 +23,9 @@ Distorted soundtrack sci fi by numerocuatro -- https://freesound.org/s/797828/ -
 ```
 8 Bit Video Game Fight Music by bone666138 -- https://freesound.org/s/466998/ -- License: Creative Commons 0
 ```
+
+- Bullet Audio: <https://freesound.org/people/jonccox/sounds/175269/>
+
+```
+Gun_Zap2.wav by jonccox -- https://freesound.org/s/175269/ -- License: Attribution 3.0
+```

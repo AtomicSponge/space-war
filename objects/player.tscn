@@ -74,6 +74,7 @@ stream = ExtResource("5_3rerk")
 bus = &"Effects"
 
 [node name="ExplosionAudio" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("6_3rerk")
 bus = &"Effects"
 

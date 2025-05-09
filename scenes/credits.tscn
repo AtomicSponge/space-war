@@ -5,8 +5,8 @@
 
 [node name="Credits" type="Node"]
 script = ExtResource("1_2ckv8")
-scroll_time = 20.0
-scroll_stop = 1511
+scroll_time = 30.0
+scroll_stop = 2400
 
 [node name="Background" parent="." instance=ExtResource("1_0bpdh")]
 
@@ -20,18 +20,22 @@ theme_override_font_sizes/font_size = 64
 text = "CREDITS"
 
 [node name="CreditsScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(784, 0)
 offset_left = 248.0
 offset_top = 128.0
-offset_right = 1040.0
+offset_right = 1656.0
 offset_bottom = 720.0
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
 [node name="CreditsLabel" type="Label" parent="CreditsScrollContainer"]
+custom_minimum_size = Vector2(784, 1000)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "
+
+
 
 
 
@@ -74,6 +78,18 @@ The FontStruction “silvergun” by “canPoni”
 is licensed under a Creative Commons Attribution Share Alike license
 (http://creativecommons.org/licenses/by-sa/3.0/)
 
+TITLE BGM
+Distorted soundtrack sci fi by numerocuatro -- https://freesound.org/s/797828/ -- License: Creative Commons 0
+
+GAME BGM
+8 Bit Video Game Fight Music by bone666138 -- https://freesound.org/s/466998/ -- License: Creative Commons 0
+
+PLAYER BULLET AUDIO
+Gun_Zap2.wav by jonccox -- https://freesound.org/s/175269/ -- License: Attribution 3.0
+
+PLAYER EXPLOSION AUDIO
+Shmup player explosion by AceOfSpadesProduc100 -- https://freesound.org/s/341701/ -- License: Attribution 4.0
+
 DESIGN & DEVELOPMENT
 Matthew Evans
 
@@ -100,5 +116,16 @@ Thanks for playing!
 
 
 
+
+
+
+
+
+
+
+
+
+
 "
 horizontal_alignment = 1
+autowrap_mode = 3

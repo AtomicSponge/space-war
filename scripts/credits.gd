@@ -1,6 +1,8 @@
 extends Node
 
+# Length in time to scroll text
 @export var scroll_time: float
+# Length in charecters to scroll to
 @export var scroll_stop: int
 
 @onready var CreditsScrollContainer: ScrollContainer = $CreditsScrollContainer

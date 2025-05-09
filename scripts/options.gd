@@ -14,12 +14,12 @@ extends Node
 @onready var MusicBus: int = AudioServer.get_bus_index("Music")
 @onready var EffectsBus: int = AudioServer.get_bus_index("Effects")
 
-var CurrentDisplayMode: int = 0
-var CurrentLives: int = 0
-var CurrentContinues: int = 0
 var CurrentAudioVolume: float = 0.0
 var CurrentMusicVolume: float = 0.0
 var CurrentEffectsVolume: float = 0.0
+var CurrentDisplayMode: int = 0
+var CurrentLives: int = 0
+var CurrentContinues: int = 0
 
 signal save_complete
 

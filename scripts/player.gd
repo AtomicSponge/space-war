@@ -9,6 +9,7 @@ extends Area2D
 @onready var PlayerHitbox: CollisionShape2D = $PlayerHitbox
 @onready var ShotMarker: Marker2D = $ShotMarker
 @onready var ShotTimer: Timer = $ShotTimer
+@onready var BulletAudio: AudioStreamPlayer = $BulletAudio
 
 @onready var ScreenSize: Vector2 = get_viewport_rect().size
 
@@ -24,6 +25,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# Handle attacking
 	if Input.is_action_pressed("attack") and ShotTimer.is_stopped():
+		BulletAudio.play()
 		var b = Bullet.instantiate()
 		owner.add_child(b)
 		b.position = ShotMarker.global_position

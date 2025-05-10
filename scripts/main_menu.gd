@@ -5,12 +5,12 @@ extends Node
 @onready var CreditsTimer: Timer = $CreditsTimer
 
 enum Menu {
-	NewGame, HighScores, Options
+	NewGame, HighScores, Options, Credits
 }
 
 # Array of strings for the main button
 const MenuOptions: Array[String] = [
-	"NEW GAME", "HIGH SCORES", "OPTIONS", "QUIT"
+	"NEW GAME", "HIGH SCORES", "OPTIONS", "CREDITS", "QUIT"
 ]
 # Current menu option selected by player
 var CurrentOption: int = 0
@@ -49,6 +49,9 @@ func _menu_select() -> void:
 		# Options
 		Menu.Options:
 			SceneManager.SwitchScene("Options")
+		# Credits
+		Menu.Credits:
+			SceneManager.SwitchScene("Credits")
 		# Quit
 		_:
 			SceneManager.QuitGame()

@@ -27,16 +27,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	CannonSprite.look_at(GameState.PlayerLocation)
 	if not _is_ready:
 		return
-
-	CannonSprite.look_at(GameState.PlayerLocation)
 	
 	# Fire at player
 	if ShotTimer.is_stopped():
 		var b = Bullet.instantiate()
-		add_child(b)
-		b.position = ShotMarker.position
+		get_tree().get_current_scene().add_child(b)
+		b.global_position = ShotMarker.global_position
 		b.look_at(GameState.PlayerLocation)
 		ShotTimer.start()
 

@@ -35,3 +35,9 @@ Gun_Zap2.wav by jonccox -- https://freesound.org/s/175269/ -- License: Attributi
 ```
 Shmup player explosion by AceOfSpadesProduc100 -- https://freesound.org/s/341701/ -- License: Attribution 4.0
 ```
+
+- Enemy Explosion Audio: <https://freesound.org/people/Prof.Mudkip/sounds/386862/>
+
+```
+8-Bit explosion by Prof.Mudkip -- https://freesound.org/s/386862/ -- License: Attribution 3.0
+```

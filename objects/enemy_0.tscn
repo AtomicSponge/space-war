@@ -159,3 +159,4 @@ bus = &"Effects"
 [node name="ShotAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_xb7d3")
 max_distance = 600.0
+bus = &"Effects"

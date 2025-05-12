@@ -12,6 +12,7 @@ extends RigidBody2D
 @onready var CannonAnimationPlayer: AnimationPlayer = $CannonSprite/CannonAnimationPlayer
 @onready var ShotMarker: Marker2D = $ShotMarker
 @onready var ShotTimer: Timer = $ShotTimer
+@onready var ExplosionAudio: AudioStreamPlayer = $ExplosionAudio
 
 var _is_ready: bool = false
 
@@ -55,6 +56,7 @@ func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 		var explosionEffect = Explosion.instantiate()
 		add_child(explosionEffect)
 		explosionEffect.global_position = position
+		ExplosionAudio.play()
 		explosionEffect.emitting = true
 		await get_tree().create_timer(1.0).timeout
 		queue_free()

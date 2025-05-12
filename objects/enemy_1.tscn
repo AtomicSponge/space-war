@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c17m4r81q74an"]
+[gd_scene load_steps=9 format=3 uid="uid://c17m4r81q74an"]
 
 [ext_resource type="Script" uid="uid://cvvr35vlnrwb5" path="res://scripts/enemy_1.gd" id="1_3ct15"]
 [ext_resource type="Texture2D" uid="uid://c00nuxjn3kvsy" path="res://gfx/enemy1.png" id="2_tntx6"]
 [ext_resource type="PackedScene" uid="uid://corrrsjfutk6n" path="res://objects/explosion_yellow.tscn" id="2_v8n5m"]
+[ext_resource type="AudioStream" uid="uid://b0tgl5xgnv5c0" path="res://audio/enemy_explosion.ogg" id="4_01cyv"]
 
 [sub_resource type="Animation" id="Animation_tntx6"]
 resource_name = "Fade"
@@ -62,3 +63,7 @@ libraries = {
 
 [node name="EnemyHitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tntx6")
+
+[node name="ExplosionAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_01cyv")
+bus = &"Effects"

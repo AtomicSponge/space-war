@@ -7,6 +7,7 @@ extends RigidBody2D
 @onready var ShipSprite: Sprite2D = $ShipSprite
 @onready var ShipAnimationPlayer: AnimationPlayer = $ShipSprite/ShipAnimationPlayer
 @onready var EnemyHitbox: CollisionShape2D = $EnemyHitbox
+@onready var ExplosionAudio: AudioStreamPlayer = $ExplosionAudio
 
 var _is_ready: bool = false
 
@@ -38,6 +39,7 @@ func _take_damage(testName: StringName, _amount: int, bulletFlag: bool) -> void:
 		var explosionEffect = Explosion.instantiate()
 		add_child(explosionEffect)
 		explosionEffect.global_position = position
+		ExplosionAudio.play()
 		explosionEffect.emitting = true
 		await get_tree().create_timer(1.0).timeout
 		queue_free()

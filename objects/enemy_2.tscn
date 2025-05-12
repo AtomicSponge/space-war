@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfvdf4gjqh4dm"]
+[gd_scene load_steps=11 format=3 uid="uid://cfvdf4gjqh4dm"]
 
 [ext_resource type="Script" uid="uid://44rhaqmei5g6" path="res://scripts/enemy_2.gd" id="1_jav2a"]
 [ext_resource type="Texture2D" uid="uid://e5yc6mcywv26" path="res://gfx/enemy2.png" id="2_ynert"]
 [ext_resource type="PackedScene" uid="uid://bbh65bnriijcd" path="res://objects/explosion_orange.tscn" id="3_fnmif"]
+[ext_resource type="AudioStream" uid="uid://b0tgl5xgnv5c0" path="res://audio/enemy_explosion.ogg" id="4_fnmif"]
 
 [sub_resource type="Curve2D" id="Curve2D_plgxw"]
 _data = {
@@ -192,3 +193,7 @@ shape = SubResource("CapsuleShape2D_ynert")
 [node name="ExplosionOrange" parent="EnemyPathE/ShipE" instance=ExtResource("3_fnmif")]
 position = Vector2(443.782, -127.014)
 rotation = 1.57249
+
+[node name="ExplosionAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fnmif")
+bus = &"Effects"

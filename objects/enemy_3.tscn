@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3u7t8sexr68s"]
+[gd_scene load_steps=11 format=3 uid="uid://c3u7t8sexr68s"]
 
 [ext_resource type="Script" uid="uid://c1dsl8hd001mu" path="res://scripts/enemy_3.gd" id="1_25dg8"]
 [ext_resource type="Texture2D" uid="uid://uge13ohbyjmu" path="res://gfx/enemy3.png" id="1_ptwkw"]
 [ext_resource type="PackedScene" uid="uid://c2w4qx65pxb7o" path="res://objects/explosion_red.tscn" id="2_xcdj1"]
+[ext_resource type="AudioStream" uid="uid://b0tgl5xgnv5c0" path="res://audio/enemy_explosion.ogg" id="4_c86rc"]
 
 [sub_resource type="Curve2D" id="Curve2D_25dg8"]
 _data = {
@@ -88,3 +89,7 @@ libraries = {
 
 [node name="EnemyHitbox" type="CollisionShape2D" parent="EnemyPath/Saw"]
 shape = SubResource("CircleShape2D_ptwkw")
+
+[node name="ExplosionAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_c86rc")
+bus = &"Effects"

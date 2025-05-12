@@ -71,6 +71,8 @@ extends Path2D
 	TweenA, TweenB, TweenC, TweenD, TweenE
 ]
 
+@onready var ExplosionAudio: AudioStreamPlayer = $ExplosionAudio
+
 var _health: Array[int] = [ 50, 50, 50, 50, 50 ]
 var _foward_direction: Array[bool] = [ true, true, true, true, true ]
 var _moving: Array[bool] = [ false, false, false, false, false ]
@@ -126,6 +128,7 @@ func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 					GameState.PlayerScore += ScoreValue
 				ShipSpriteArray[idx].hide()
 				ExplosionEffectArray[idx].global_position = ShipArray[idx].global_position
+				ExplosionAudio.play()
 				ExplosionEffectArray[idx].emitting = true
 				_defeated[idx] = true
 	# All enemies in group defeated, remove

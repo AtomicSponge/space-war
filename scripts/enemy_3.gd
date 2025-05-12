@@ -13,6 +13,8 @@ extends Path2D
 @onready var rotateTween: Tween
 @onready var movementTween: Tween
 
+@onready var ExplosionAudio: AudioStreamPlayer = $ExplosionAudio
+
 var _rotating: bool = false
 var _moving: bool = false
 var _foward_direction: bool = true
@@ -66,6 +68,7 @@ func _take_damage(testName: StringName, amount: int, bulletFlag: bool) -> void:
 			var explosionEffect = Explosion.instantiate()
 			add_child(explosionEffect)
 			explosionEffect.global_position = Saw.global_position
+			ExplosionAudio.play()
 			explosionEffect.emitting = true
 			await get_tree().create_timer(1.0).timeout
 			queue_free()

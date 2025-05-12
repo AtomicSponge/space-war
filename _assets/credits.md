@@ -41,3 +41,9 @@ Shmup player explosion by AceOfSpadesProduc100 -- https://freesound.org/s/341701
 ```
 8-Bit explosion by Prof.Mudkip -- https://freesound.org/s/386862/ -- License: Attribution 3.0
 ```
+
+- Enemy Cannon Fire: <https://freesound.org/people/morganpurkis/sounds/394128/>
+
+```
+Space Explosion.wav by morganpurkis -- https://freesound.org/s/394128/ -- License: Creative Commons 0
+```

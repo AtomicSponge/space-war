@@ -13,6 +13,7 @@ extends RigidBody2D
 @onready var ShotMarker: Marker2D = $ShotMarker
 @onready var ShotTimer: Timer = $ShotTimer
 @onready var ExplosionAudio: AudioStreamPlayer = $ExplosionAudio
+@onready var ShotAudio: AudioStreamPlayer2D = $ShotAudio
 
 var _is_ready: bool = false
 
@@ -34,6 +35,7 @@ func _process(_delta: float) -> void:
 	
 	# Fire at player
 	if ShotTimer.is_stopped():
+		ShotAudio.play()
 		var b = Bullet.instantiate()
 		get_tree().get_current_scene().add_child(b)
 		b.global_position = ShotMarker.global_position

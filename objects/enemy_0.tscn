@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1qbbvs5fes35"]
+[gd_scene load_steps=17 format=3 uid="uid://c1qbbvs5fes35"]
 
 [ext_resource type="Script" uid="uid://dmwp8eqju0x8l" path="res://scripts/enemy_0.gd" id="1_pkbdq"]
 [ext_resource type="Texture2D" uid="uid://tcs1edo2lt7q" path="res://gfx/enemy0_tower.png" id="2_ipcih"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c2w4qx65pxb7o" path="res://objects/explosion_red.tscn" id="3_cg8gm"]
 [ext_resource type="Texture2D" uid="uid://cvv7krj87h45y" path="res://gfx/enemy0_cannon.png" id="3_ougn6"]
 [ext_resource type="AudioStream" uid="uid://b0tgl5xgnv5c0" path="res://audio/enemy_explosion.ogg" id="6_s32fa"]
+[ext_resource type="AudioStream" uid="uid://bq3iuuw0k6dcx" path="res://audio/enemy_shot.ogg" id="7_xb7d3"]
 
 [sub_resource type="Animation" id="Animation_ipcih"]
 resource_name = "Fade"
@@ -154,3 +155,7 @@ one_shot = true
 [node name="ExplosionAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_s32fa")
 bus = &"Effects"
+
+[node name="ShotAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_xb7d3")
+max_distance = 600.0

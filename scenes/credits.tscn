@@ -5,7 +5,7 @@
 
 [node name="Credits" type="Node"]
 script = ExtResource("1_2ckv8")
-scroll_time = 40.0
+scroll_time = 50.0
 scroll_stop = 2400
 
 [node name="Background" parent="." instance=ExtResource("1_0bpdh")]

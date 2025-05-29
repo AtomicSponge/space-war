@@ -2,4 +2,6 @@
 
 ---
 
-For Asset information please see CREDITS.md
+### Credits
+
+For asset information please see CREDITS.md

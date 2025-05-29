@@ -1,5 +1,3 @@
-# Assets used in development
-
 - Starfield: <https://godotshaders.com/shader/stars-shader/>
 
 ---

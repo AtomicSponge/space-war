@@ -1,4 +1,5 @@
-# Game Title
+# Space War
+### A Twin Stick Shooter written in Godot
 
 ---
 

@@ -1,5 +1,5 @@
 # Space War
-### A Twin Stick Shooter written in Godot
+### A Twin Stick Shooter created with Godot
 
 ---
 

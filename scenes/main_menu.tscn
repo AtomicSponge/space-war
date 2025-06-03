@@ -90,6 +90,12 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer/CenterContainerTop"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 184
+text = "SPACE WAR"
+
 [node name="CenterContainerBottom" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3

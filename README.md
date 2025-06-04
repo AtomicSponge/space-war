@@ -1,8 +1,20 @@
 # Space War
 ### A Twin Stick Shooter created with Godot
 
+<screenshot here>
+
+Check out the latest releases for Linux, Windows, or Mac downloads!
+
 ---
 
-### Credits
+## Controlls
+
+- Keyboard only
+- Mouse aim & keyboard movement
+- Gamepads supported
+
+---
+
+## Credits
 
 For asset information please see CREDITS.md

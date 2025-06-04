@@ -1,9 +1,9 @@
 # Space War
 ### A Twin Stick Shooter created with Godot
 
-<screenshot here>
+Dodge and blast enemies in space while aiming for the high score!
 
-Check out the latest releases for Linux, Windows, or Mac downloads!
+Check out the latest releases for Linux, Windows, or Mac downloads.
 
 ---
 

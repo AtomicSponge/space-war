@@ -10,15 +10,6 @@ env:
     PROJECT_PATH: .
 
 jobs:
-    make-release:
-        steps:
-            - name: Make Release
-              uses: softprops/action-gh-release@v2
-              with:
-                  make_latest: true
-                  append_body: true
-                  name: ${{ env.EXPORT_NAME }} ${{ github.ref_name }}
-
     export-windows:
         name: Windows Export
         runs-on: ubuntu-22.04
@@ -44,6 +35,8 @@ jobs:
             - name: Upload Release
               uses: softprops/action-gh-release@v2
               with:
+                name: ${{ env.EXPORT_NAME }} ${{ github.ref_name }}
+                make_latest: true
                 append_body: true
                 fail_on_unmatched_files: true
                 files: |

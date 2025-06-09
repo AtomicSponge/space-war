@@ -40,7 +40,7 @@ jobs:
                 append_body: true
                 fail_on_unmatched_files: true
                 files: |
-                    build/windows/*.*
+                  build/windows/*.*
 
     export-linux:
         name: Linux Export
@@ -88,8 +88,13 @@ jobs:
             EXPORT_DIR="$(readlink -f build)"
             cd $PROJECT_PATH
             godot --headless --verbose --export-release "macOS" "$EXPORT_DIR/mac/$EXPORT_NAME.zip"
-        - name: Upload Artifact
-          uses: actions/upload-artifact@v4
-          with:
-            name: space-war-mac
-            path: build/mac
+
+        - name: Upload Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ env.EXPORT_NAME }} ${{ github.ref_name }}
+          make_latest: true
+          append_body: true
+          fail_on_unmatched_files: true
+          files: |
+            build/mac/*.*

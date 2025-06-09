@@ -32,6 +32,8 @@ jobs:
                 EXPORT_DIR="$(readlink -f build)"
                 cd $PROJECT_PATH
                 godot --headless --verbose --export-release "Windows Desktop" "$EXPORT_DIR/windows/$EXPORT_NAME.exe"
+                cd build/windows
+                zip -r space-war-windows space-war.exe space-war.pck
             - name: Upload Release
               uses: softprops/action-gh-release@v2
               with:
@@ -40,7 +42,7 @@ jobs:
                 append_body: true
                 fail_on_unmatched_files: true
                 files: |
-                    build/windows/*.*
+                    build/windows/space-war-windows.zip
 
     export-linux:
         name: Linux Export
@@ -62,11 +64,17 @@ jobs:
             EXPORT_DIR="$(readlink -f build)"
             cd $PROJECT_PATH
             godot --headless --verbose --export-release "Linux" "$EXPORT_DIR/linux/$EXPORT_NAME.x86_64"
-        - name: Upload Artifact
-          uses: actions/upload-artifact@v4
+            cd build/linux
+            zip -r space-war-linux space-war.x86_64 space-war.pck
+        - name: Upload Release
+          uses: softprops/action-gh-release@v2
           with:
-            name: space-war-linux
-            path: build/linux
+            make_latest: true
+            append_body: true
+            fail_on_unmatched_files: true
+            files: |
+                build/linux/space-war-linux.zip
+
 
     export-mac:
         name: Mac Export
@@ -87,8 +95,7 @@ jobs:
             mkdir -v -p build/mac
             EXPORT_DIR="$(readlink -f build)"
             cd $PROJECT_PATH
-            godot --headless --verbose --export-release "macOS" "$EXPORT_DIR/mac/$EXPORT_NAME.zip"
-
+            godot --headless --verbose --export-release "macOS" "$EXPORT_DIR/mac/$EXPORT_NAME-mac.zip"
         - name: Upload Release
           uses: softprops/action-gh-release@v2
           with:
@@ -96,4 +103,4 @@ jobs:
             append_body: true
             fail_on_unmatched_files: true
             files: |
-                build/mac/*.*
+                build/mac/space-war-mac.zip

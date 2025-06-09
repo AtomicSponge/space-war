@@ -35,7 +35,7 @@ jobs:
             - name: Upload Artifact
               uses: actions/upload-artifact@v4
               with:
-                name: $EXPORT_NAME-windows
+                name: space-war-windows
                 path: build/windows
 
     export-linux:
@@ -61,7 +61,7 @@ jobs:
         - name: Upload Artifact
           uses: actions/upload-artifact@v4
           with:
-            name: $EXPORT_NAME-linux
+            name: space-war-linux
             path: build/linux
 
     export-mac:
@@ -87,5 +87,5 @@ jobs:
         - name: Upload Artifact
           uses: actions/upload-artifact@v4
           with:
-            name: $EXPORT_NAME-mac
+            name: space-war-mac
             path: build/mac

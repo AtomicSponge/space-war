@@ -54,36 +54,54 @@ const _SpawnQueue: Array[Dictionary] = [
 	{ "time": 135.0, "type": 1, "location": Vector2(656, 360), "rotation": 0.0 },
 	{ "time": 135.0, "type": 1, "location": Vector2(640, 344), "rotation": 0.0 },
 	{ "time": 135.0, "type": 1, "location": Vector2(640, 372), "rotation": 0.0 },
-	{ "time": 135.0, "type": 1, "location": Vector2(624, 360), "rotation": 0.0 },
-	{ "time": 135.0, "type": 1, "location": Vector2(656, 360), "rotation": 0.0 },
-	{ "time": 135.0, "type": 1, "location": Vector2(640, 344), "rotation": 0.0 },
-	{ "time": 135.0, "type": 1, "location": Vector2(640, 372), "rotation": 0.0 },
+	{ "time": 125.0, "type": 1, "location": Vector2(624, 360), "rotation": 0.0 },
+	{ "time": 125.0, "type": 1, "location": Vector2(656, 360), "rotation": 0.0 },
+	{ "time": 125.0, "type": 1, "location": Vector2(640, 344), "rotation": 0.0 },
+	{ "time": 125.0, "type": 1, "location": Vector2(640, 372), "rotation": 0.0 },
 	############################################################################
-	# WAVE 4 - 100.0 start
-	{ "time": 100.0, "type": 2, "location": Vector2(656, 0), "rotation": 90.0 },
-	{ "time": 100.0, "type": 2, "location": Vector2(624, 720), "rotation": 270.0 },
-	{ "time": 100.0, "type": 3, "location": Vector2(16, 16), "rotation": 90.0 },
-	{ "time": 100.0, "type": 3, "location": Vector2(80, 704), "rotation": 270.0 },
-	{ "time": 100.0, "type": 3, "location": Vector2(1264, 16), "rotation": 90.0 },
-	{ "time": 100.0, "type": 3, "location": Vector2(1200, 704), "rotation": 270.0 },
-	{ "time": 100.0, "type": 3, "location": Vector2(480, 100), "rotation": 90.0 },
-	{ "time": 100.0, "type": 3, "location": Vector2(800, 620), "rotation": 270.0 },
+	# WAVE 4 - 110.0 start
+	{ "time": 110.0, "type": 2, "location": Vector2(656, 0), "rotation": 90.0 },
+	{ "time": 110.0, "type": 2, "location": Vector2(624, 720), "rotation": 270.0 },
+	{ "time": 110.0, "type": 3, "location": Vector2(16, 16), "rotation": 90.0 },
+	{ "time": 110.0, "type": 3, "location": Vector2(80, 704), "rotation": 270.0 },
+	{ "time": 110.0, "type": 3, "location": Vector2(1264, 16), "rotation": 90.0 },
+	{ "time": 110.0, "type": 3, "location": Vector2(1200, 704), "rotation": 270.0 },
+	{ "time": 110.0, "type": 3, "location": Vector2(480, 100), "rotation": 90.0 },
+	{ "time": 110.0, "type": 3, "location": Vector2(800, 620), "rotation": 270.0 },
 	############################################################################
-	# WAVE 5 - 70.0 start
-	{ "time": 70.0, "type": 0, "location": Vector2(320, 50), "rotation": 0.0 },
-	{ "time": 70.0, "type": 0, "location": Vector2(960, 50), "rotation": 0.0 },
-	{ "time": 70.0, "type": 0, "location": Vector2(320, 670), "rotation": 0.0 },
-	{ "time": 70.0, "type": 0, "location": Vector2(960, 670), "rotation": 0.0 },
-	{ "time": 70.0, "type": 2, "location": Vector2(656, 0), "rotation": 90.0 },
-	{ "time": 70.0, "type": 2, "location": Vector2(624, 720), "rotation": 270.0 },
-	{ "time": 70.0, "type": 3, "location": Vector2(16, 16), "rotation": 90.0 },
-	{ "time": 70.0, "type": 3, "location": Vector2(80, 704), "rotation": 270.0 },
-	{ "time": 70.0, "type": 3, "location": Vector2(1264, 16), "rotation": 90.0 },
-	{ "time": 70.0, "type": 3, "location": Vector2(1200, 704), "rotation": 270.0 },
-	{ "time": 70.0, "type": 3, "location": Vector2(480, 100), "rotation": 90.0 },
-	{ "time": 70.0, "type": 3, "location": Vector2(800, 620), "rotation": 270.0 },
+	# WAVE 5 - 90.0 start
+	{ "time": 90.0, "type": 0, "location": Vector2(320, 50), "rotation": 0.0 },
+	{ "time": 90.0, "type": 0, "location": Vector2(960, 50), "rotation": 0.0 },
+	{ "time": 90.0, "type": 0, "location": Vector2(320, 670), "rotation": 0.0 },
+	{ "time": 90.0, "type": 0, "location": Vector2(960, 670), "rotation": 0.0 },
+	{ "time": 90.0, "type": 2, "location": Vector2(656, 0), "rotation": 90.0 },
+	{ "time": 90.0, "type": 2, "location": Vector2(624, 720), "rotation": 270.0 },
+	{ "time": 90.0, "type": 3, "location": Vector2(16, 16), "rotation": 90.0 },
+	{ "time": 90.0, "type": 3, "location": Vector2(80, 704), "rotation": 270.0 },
+	{ "time": 90.0, "type": 3, "location": Vector2(1264, 16), "rotation": 90.0 },
+	{ "time": 90.0, "type": 3, "location": Vector2(1200, 704), "rotation": 270.0 },
+	{ "time": 90.0, "type": 3, "location": Vector2(480, 100), "rotation": 90.0 },
+	{ "time": 90.0, "type": 3, "location": Vector2(800, 620), "rotation": 270.0 },
 	############################################################################
-	# WAVE 6 - 45.0 start
+	# WAVE 6 - 70.0 start
+	{ "time": 70.0, "type": 1, "location": Vector2(624, 360), "rotation": 0.0 },
+	{ "time": 70.0, "type": 1, "location": Vector2(656, 360), "rotation": 0.0 },
+	{ "time": 70.0, "type": 1, "location": Vector2(640, 344), "rotation": 0.0 },
+	{ "time": 70.0, "type": 1, "location": Vector2(640, 372), "rotation": 0.0 },
+	{ "time": 65.0, "type": 1, "location": Vector2(624, 360), "rotation": 0.0 },
+	{ "time": 65.0, "type": 1, "location": Vector2(656, 360), "rotation": 0.0 },
+	{ "time": 65.0, "type": 1, "location": Vector2(640, 344), "rotation": 0.0 },
+	{ "time": 65.0, "type": 1, "location": Vector2(640, 372), "rotation": 0.0 },
+	{ "time": 60.0, "type": 1, "location": Vector2(624, 360), "rotation": 0.0 },
+	{ "time": 60.0, "type": 1, "location": Vector2(656, 360), "rotation": 0.0 },
+	{ "time": 60.0, "type": 1, "location": Vector2(640, 344), "rotation": 0.0 },
+	{ "time": 60.0, "type": 1, "location": Vector2(640, 372), "rotation": 0.0 },
+	{ "time": 55.0, "type": 1, "location": Vector2(624, 360), "rotation": 0.0 },
+	{ "time": 55.0, "type": 1, "location": Vector2(656, 360), "rotation": 0.0 },
+	{ "time": 55.0, "type": 1, "location": Vector2(640, 344), "rotation": 0.0 },
+	{ "time": 55.0, "type": 1, "location": Vector2(640, 372), "rotation": 0.0 },
+	############################################################################
+	# WAVE 7 - 45.0 start
 	{ "time": 45.0, "type": 1, "location": Vector2(128, 128), "rotation": 0.0 },
 	{ "time": 45.0, "type": 1, "location": Vector2(192, 128), "rotation": 0.0 },
 	{ "time": 45.0, "type": 1, "location": Vector2(256, 128), "rotation": 0.0 },
@@ -125,7 +143,7 @@ const _SpawnQueue: Array[Dictionary] = [
 	{ "time": 35.0, "type": 2, "location": Vector2(-16, 0), "rotation": 0.0 },
 	{ "time": 35.0, "type": 2, "location": Vector2(1296, 720), "rotation": 180.0 },
 	############################################################################
-	# WAVE 7 - FINAL WAVE BEFORE REPEAT - 20.0 start
+	# WAVE 8 - FINAL WAVE BEFORE REPEAT - 20.0 start
 	{ "time": 20.0, "type": 1, "location": Vector2(128, 128), "rotation": 0.0 },
 	{ "time": 20.0, "type": 1, "location": Vector2(192, 128), "rotation": 0.0 },
 	{ "time": 20.0, "type": 1, "location": Vector2(256, 128), "rotation": 0.0 },
@@ -162,6 +180,12 @@ const _SpawnQueue: Array[Dictionary] = [
 	{ "time": 20.0, "type": 1, "location": Vector2(1152, 592), "rotation": 0.0 },
 	{ "time": 20.0, "type": 2, "location": Vector2(656, 0), "rotation": 90.0 },
 	{ "time": 20.0, "type": 2, "location": Vector2(624, 720), "rotation": 270.0 },
+	{ "time": 10.0, "type": 3, "location": Vector2(16, 16), "rotation": 90.0 },
+	{ "time": 10.0, "type": 3, "location": Vector2(80, 704), "rotation": 270.0 },
+	{ "time": 10.0, "type": 3, "location": Vector2(1264, 16), "rotation": 90.0 },
+	{ "time": 10.0, "type": 3, "location": Vector2(1200, 704), "rotation": 270.0 },
+	{ "time": 10.0, "type": 3, "location": Vector2(480, 100), "rotation": 90.0 },
+	{ "time": 10.0, "type": 3, "location": Vector2(800, 620), "rotation": 270.0 },
 ]
 
 # Get all enemies for the current time

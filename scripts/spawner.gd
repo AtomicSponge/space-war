@@ -60,24 +60,30 @@ const _SpawnQueue: Array[Dictionary] = [
 	#{ "time": 135.0, "type": 1, "location": Vector2(640, 372), "rotation": 0.0 },
 	############################################################################
 	# WAVE 4 - 100.0 start
-	{ "time": 180.0, "type": 2, "location": Vector2(656, 0), "rotation": 90.0 },
-	{ "time": 180.0, "type": 2, "location": Vector2(624, 720), "rotation": 270.0 },
-	{ "time": 180.0, "type": 3, "location": Vector2(16, 16), "rotation": 90.0 },
-	{ "time": 180.0, "type": 3, "location": Vector2(80, 704), "rotation": 270.0 },
-	{ "time": 180.0, "type": 3, "location": Vector2(1264, 16), "rotation": 90.0 },
-	{ "time": 180.0, "type": 3, "location": Vector2(1200, 704), "rotation": 270.0 },
-	{ "time": 180.0, "type": 3, "location": Vector2(480, 100), "rotation": 90.0 },
-	{ "time": 180.0, "type": 3, "location": Vector2(800, 620), "rotation": 270.0 },
+	#{ "time": 180.0, "type": 2, "location": Vector2(656, 0), "rotation": 90.0 },
+	#{ "time": 180.0, "type": 2, "location": Vector2(624, 720), "rotation": 270.0 },
+	#{ "time": 180.0, "type": 3, "location": Vector2(16, 16), "rotation": 90.0 },
+	#{ "time": 180.0, "type": 3, "location": Vector2(80, 704), "rotation": 270.0 },
+	#{ "time": 180.0, "type": 3, "location": Vector2(1264, 16), "rotation": 90.0 },
+	#{ "time": 180.0, "type": 3, "location": Vector2(1200, 704), "rotation": 270.0 },
+	#{ "time": 180.0, "type": 3, "location": Vector2(480, 100), "rotation": 90.0 },
+	#{ "time": 180.0, "type": 3, "location": Vector2(800, 620), "rotation": 270.0 },
 	############################################################################
 	# WAVE 5 - 70.0 start
-	{ "time": 150.0, "type": 2, "location": Vector2(656, 0), "rotation": 90.0 },
-	{ "time": 150.0, "type": 2, "location": Vector2(624, 720), "rotation": 270.0 },
-	{ "time": 150.0, "type": 3, "location": Vector2(16, 16), "rotation": 90.0 },
-	{ "time": 150.0, "type": 3, "location": Vector2(80, 704), "rotation": 270.0 },
-	{ "time": 150.0, "type": 3, "location": Vector2(1264, 16), "rotation": 90.0 },
-	{ "time": 150.0, "type": 3, "location": Vector2(1200, 704), "rotation": 270.0 },
-	{ "time": 150.0, "type": 3, "location": Vector2(480, 100), "rotation": 90.0 },
-	{ "time": 150.0, "type": 3, "location": Vector2(800, 620), "rotation": 270.0 },
+	#{ "time": 180.0, "type": 0, "location": Vector2(320, 50), "rotation": 0.0 },
+	#{ "time": 180.0, "type": 0, "location": Vector2(960, 50), "rotation": 0.0 },
+	#{ "time": 180.0, "type": 0, "location": Vector2(320, 670), "rotation": 0.0 },
+	#{ "time": 180.0, "type": 0, "location": Vector2(960, 670), "rotation": 0.0 },
+	#{ "time": 180.0, "type": 2, "location": Vector2(656, 0), "rotation": 90.0 },
+	#{ "time": 180.0, "type": 2, "location": Vector2(624, 720), "rotation": 270.0 },
+	#{ "time": 180.0, "type": 3, "location": Vector2(16, 16), "rotation": 90.0 },
+	#{ "time": 180.0, "type": 3, "location": Vector2(80, 704), "rotation": 270.0 },
+	#{ "time": 180.0, "type": 3, "location": Vector2(1264, 16), "rotation": 90.0 },
+	#{ "time": 180.0, "type": 3, "location": Vector2(1200, 704), "rotation": 270.0 },
+	#{ "time": 180.0, "type": 3, "location": Vector2(480, 100), "rotation": 90.0 },
+	#{ "time": 180.0, "type": 3, "location": Vector2(800, 620), "rotation": 270.0 },
+	############################################################################
+	# WAVE 6 - 40.0 start
 ]
 
 # Get all enemies for the current time

@@ -84,6 +84,8 @@ const _SpawnQueue: Array[Dictionary] = [
 	#{ "time": 180.0, "type": 3, "location": Vector2(800, 620), "rotation": 270.0 },
 	############################################################################
 	# WAVE 6 - 40.0 start
+	{ "time": 155.0, "type": 1, "location": Vector2(48, 16), "rotation": 0.0 },
+	# WAVE 7 - FINAL WAVE BEFORE REPEAT - 15.0 start
 ]
 
 # Get all enemies for the current time

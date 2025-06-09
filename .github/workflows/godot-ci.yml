@@ -5,7 +5,7 @@ on:
          - v*.*
 
 env:
-    GODOT_VERSION: 4.3
+    GODOT_VERSION: 4.4.1
     EXPORT_NAME: space-war
     PROJECT_PATH: .
 

@@ -35,7 +35,7 @@ jobs:
             - name: Upload Artifact
               uses: actions/upload-artifact@v4
               with:
-                name: windows
+                name: $EXPORT_NAME-windows
                 path: build/windows
 
     export-linux:
@@ -57,11 +57,11 @@ jobs:
             mkdir -v -p build/linux
             EXPORT_DIR="$(readlink -f build)"
             cd $PROJECT_PATH
-            godot --headless --verbose --export-release "Linux/X11" "$EXPORT_DIR/linux/$EXPORT_NAME.x86_64"
+            godot --headless --verbose --export-release "Linux" "$EXPORT_DIR/linux/$EXPORT_NAME.x86_64"
         - name: Upload Artifact
           uses: actions/upload-artifact@v4
           with:
-            name: linux
+            name: $EXPORT_NAME-linux
             path: build/linux
 
     export-mac:
@@ -87,5 +87,5 @@ jobs:
         - name: Upload Artifact
           uses: actions/upload-artifact@v4
           with:
-            name: mac
+            name: $EXPORT_NAME-mac
             path: build/mac

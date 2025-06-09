@@ -18,10 +18,32 @@ const _SpawnQueue: Array[Dictionary] = [
 	{ "time": 170.0, "type": 1, "location": Vector2(656, 360), "rotation": 0.0 },
 	{ "time": 170.0, "type": 1, "location": Vector2(640, 344), "rotation": 0.0 },
 	{ "time": 170.0, "type": 1, "location": Vector2(640, 372), "rotation": 0.0 },
-	
+	############################################################################
 	# WAVE 2
 	{ "time": 160.0, "type": 2, "location": Vector2(-16, 0), "rotation": 0.0 },
-	{ "time": 160.0, "type": 2, "location": Vector2(1296, 720), "rotation": 180.0 }
+	{ "time": 160.0, "type": 2, "location": Vector2(1296, 720), "rotation": 180.0 },
+
+	{ "time": 165.0, "type": 1, "location": Vector2(624, 360), "rotation": 0.0 },
+	{ "time": 165.0, "type": 1, "location": Vector2(656, 360), "rotation": 0.0 },
+	{ "time": 165.0, "type": 1, "location": Vector2(640, 344), "rotation": 0.0 },
+	{ "time": 165.0, "type": 1, "location": Vector2(640, 372), "rotation": 0.0 },
+
+	{ "time": 165.0, "type": 1, "location": Vector2(624, 360), "rotation": 0.0 },
+	{ "time": 165.0, "type": 1, "location": Vector2(656, 360), "rotation": 0.0 },
+	{ "time": 165.0, "type": 1, "location": Vector2(640, 344), "rotation": 0.0 },
+	{ "time": 165.0, "type": 1, "location": Vector2(640, 372), "rotation": 0.0 },
+
+	{ "time": 165.0, "type": 1, "location": Vector2(624, 360), "rotation": 0.0 },
+	{ "time": 165.0, "type": 1, "location": Vector2(656, 360), "rotation": 0.0 },
+	{ "time": 165.0, "type": 1, "location": Vector2(640, 344), "rotation": 0.0 },
+	{ "time": 165.0, "type": 1, "location": Vector2(640, 372), "rotation": 0.0 },
+	
+	{ "time": 165.0, "type": 1, "location": Vector2(624, 360), "rotation": 0.0 },
+	{ "time": 165.0, "type": 1, "location": Vector2(656, 360), "rotation": 0.0 },
+	{ "time": 165.0, "type": 1, "location": Vector2(640, 344), "rotation": 0.0 },
+	{ "time": 165.0, "type": 1, "location": Vector2(640, 372), "rotation": 0.0 },
+	############################################################################
+	# WAVE 3
 ]
 
 # Get all enemies for the current time

@@ -1,4 +1,5 @@
 name: Godot-ci Export"
+on:
     push:
         tags:
          - v*.*

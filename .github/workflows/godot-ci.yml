@@ -40,7 +40,7 @@ jobs:
                 append_body: true
                 fail_on_unmatched_files: true
                 files: |
-                  build/windows/*.*
+                    build/windows/*.*
 
     export-linux:
         name: Linux Export
@@ -90,11 +90,11 @@ jobs:
             godot --headless --verbose --export-release "macOS" "$EXPORT_DIR/mac/$EXPORT_NAME.zip"
 
         - name: Upload Release
-        uses: softprops/action-gh-release@v2
-        with:
-          name: ${{ env.EXPORT_NAME }} ${{ github.ref_name }}
-          make_latest: true
-          append_body: true
-          fail_on_unmatched_files: true
-          files: |
-            build/mac/*.*
+          uses: softprops/action-gh-release@v2
+          with:
+            name: ${{ env.EXPORT_NAME }} ${{ github.ref_name }}
+            make_latest: true
+            append_body: true
+            fail_on_unmatched_files: true
+            files: |
+                build/mac/*.*

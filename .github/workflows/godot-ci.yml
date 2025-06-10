@@ -1,8 +1,12 @@
-name: Godot-ci Export"
+name: Build Space War Game (Godot)
 on:
     push:
         tags:
          - v*.*
+
+# https://github.com/marketplace/actions/godot-ci
+# https://github.com/marketplace/actions/checkout
+# https://github.com/marketplace/actions/gh-release
 
 env:
     GODOT_VERSION: 4.4.1
